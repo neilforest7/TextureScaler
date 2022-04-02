@@ -1,0 +1,1168 @@
+<RCC>
+  <qresource prefix="icon">
+    <file>icons/wux-ionicons-4.3.0/md-radio 4.svg</file>
+    <file>icons/wux-ionicons-4.3.0/md-rainy 1.svg</file>
+    <file>icons/wux-ionicons-4.3.0/md-recording 2.svg</file>
+    <file>icons/wux-ionicons-4.3.0/md-redo 3.svg</file>
+    <file>icons/wux-ionicons-4.3.0/md-refresh 5.svg</file>
+    <file>icons/wux-ionicons-4.3.0/md-refresh-circle 0.svg</file>
+    <file>icons/wux-ionicons-4.3.0/md-remove 8.svg</file>
+    <file>icons/wux-ionicons-4.3.0/md-remove-circle 7.svg</file>
+    <file>icons/wux-ionicons-4.3.0/md-remove-circle-outline 6.svg</file>
+    <file>icons/wux-ionicons-4.3.0/md-reorder 9.svg</file>
+    <file>icons/wux-ionicons-4.3.0/md-repeat 13.svg</file>
+    <file>icons/wux-ionicons-4.3.0/md-resize 11.svg</file>
+    <file>icons/wux-ionicons-4.3.0/md-restaurant 10.svg</file>
+    <file>icons/wux-ionicons-4.3.0/md-return-left 14.svg</file>
+    <file>icons/wux-ionicons-4.3.0/md-return-right 12.svg</file>
+    <file>icons/wux-ionicons-4.3.0/md-reverse-camera 21.svg</file>
+    <file>icons/wux-ionicons-4.3.0/md-rewind 15.svg</file>
+    <file>icons/wux-ionicons-4.3.0/md-ribbon 16.svg</file>
+    <file>icons/wux-ionicons-4.3.0/md-rocket 17.svg</file>
+    <file>icons/wux-ionicons-4.3.0/md-rose 19.svg</file>
+    <file>icons/wux-ionicons-4.3.0/md-sad 18.svg</file>
+    <file>icons/wux-ionicons-4.3.0/md-save 22.svg</file>
+    <file>icons/wux-ionicons-4.3.0/md-school 20.svg</file>
+    <file>icons/wux-ionicons-4.3.0/md-search 24.svg</file>
+    <file>icons/wux-ionicons-4.3.0/md-send 23.svg</file>
+    <file>icons/wux-ionicons-4.3.0/md-settings 26.svg</file>
+    <file>icons/wux-ionicons-4.3.0/md-share 27.svg</file>
+    <file>icons/wux-ionicons-4.3.0/md-share-alt 25.svg</file>
+    <file>icons/wux-ionicons-4.3.0/md-shirt 30.svg</file>
+    <file>icons/wux-ionicons-4.3.0/md-shuffle 28.svg</file>
+    <file>icons/wux-ionicons-4.3.0/md-skip-backward 29.svg</file>
+    <file>icons/wux-ionicons-4.3.0/md-skip-forward 34.svg</file>
+    <file>icons/wux-ionicons-4.3.0/md-snow 31.svg</file>
+    <file>icons/wux-ionicons-4.3.0/md-speedometer 37.svg</file>
+    <file>icons/wux-ionicons-4.3.0/md-square 33.svg</file>
+    <file>icons/wux-ionicons-4.3.0/md-square-outline 32.svg</file>
+    <file>icons/wux-ionicons-4.3.0/md-star 35.svg</file>
+    <file>icons/wux-ionicons-4.3.0/md-star-half 36.svg</file>
+    <file>icons/wux-ionicons-4.3.0/md-star-outline 38.svg</file>
+    <file>icons/wux-ionicons-4.3.0/md-stats 39.svg</file>
+    <file>icons/wux-ionicons-4.3.0/md-stopwatch 47.svg</file>
+    <file>icons/wux-ionicons-4.3.0/md-subway 40.svg</file>
+    <file>icons/wux-ionicons-4.3.0/md-sunny 41.svg</file>
+    <file>icons/wux-ionicons-4.3.0/md-swap 42.svg</file>
+    <file>icons/wux-ionicons-4.3.0/md-switch 43.svg</file>
+    <file>icons/wux-ionicons-4.3.0/md-sync 45.svg</file>
+    <file>icons/wux-ionicons-4.3.0/md-tablet-landscape 44.svg</file>
+    <file>icons/wux-ionicons-4.3.0/md-tablet-portrait 46.svg</file>
+    <file>icons/wux-ionicons-4.3.0/md-tennisball 48.svg</file>
+    <file>icons/wux-ionicons-4.3.0/md-text 49.svg</file>
+    <file>icons/wux-ionicons-4.3.0/md-thermometer 50.svg</file>
+    <file>icons/wux-ionicons-4.3.0/md-thumbs-down 52.svg</file>
+    <file>icons/wux-ionicons-4.3.0/md-thumbs-up 51.svg</file>
+    <file>icons/wux-ionicons-4.3.0/md-thunderstorm 54.svg</file>
+    <file>icons/wux-ionicons-4.3.0/md-time 53.svg</file>
+    <file>icons/wux-ionicons-4.3.0/md-timer 55.svg</file>
+    <file>icons/wux-ionicons-4.3.0/md-today 56.svg</file>
+    <file>icons/wux-ionicons-4.3.0/md-train 57.svg</file>
+    <file>icons/wux-ionicons-4.3.0/md-transgender 60.svg</file>
+    <file>icons/wux-ionicons-4.3.0/md-trash 59.svg</file>
+    <file>icons/wux-ionicons-4.3.0/md-trending-down 58.svg</file>
+    <file>icons/wux-ionicons-4.3.0/md-trending-up 62.svg</file>
+    <file>icons/wux-ionicons-4.3.0/md-trophy 61.svg</file>
+    <file>icons/wux-ionicons-4.3.0/md-tv 63.svg</file>
+    <file>icons/wux-ionicons-4.3.0/md-umbrella 67.svg</file>
+    <file>icons/wux-ionicons-4.3.0/md-undo 64.svg</file>
+    <file>icons/wux-ionicons-4.3.0/md-unlock 65.svg</file>
+    <file>icons/wux-ionicons-4.3.0/md-videocam 68.svg</file>
+    <file>icons/wux-ionicons-4.3.0/md-volume-high 66.svg</file>
+    <file>icons/wux-ionicons-4.3.0/md-volume-low 70.svg</file>
+    <file>icons/wux-ionicons-4.3.0/md-volume-mute 69.svg</file>
+    <file>icons/wux-ionicons-4.3.0/md-volume-off 73.svg</file>
+    <file>icons/wux-ionicons-4.3.0/md-walk 71.svg</file>
+    <file>icons/wux-ionicons-4.3.0/md-wallet 72.svg</file>
+    <file>icons/wux-ionicons-4.3.0/md-warning 75.svg</file>
+    <file>icons/wux-ionicons-4.3.0/md-watch 76.svg</file>
+    <file>icons/wux-ionicons-4.3.0/md-water 74.svg</file>
+    <file>icons/wux-ionicons-4.3.0/md-wifi 78.svg</file>
+    <file>icons/wux-ionicons-4.3.0/md-wine 77.svg</file>
+    <file>icons/wux-ionicons-4.3.0/md-woman 79.svg</file>
+  </qresource>
+  <qresource prefix="icon_ant">
+    <file>icons/ant-svg/1_1 587.svg</file>
+    <file>icons/ant-svg/account book 151.svg</file>
+    <file>icons/ant-svg/account book-fill 324.svg</file>
+    <file>icons/ant-svg/add user 77.svg</file>
+    <file>icons/ant-svg/addteam 80.svg</file>
+    <file>icons/ant-svg/aim 588.svg</file>
+    <file>icons/ant-svg/alert 122.svg</file>
+    <file>icons/ant-svg/alert-fill 403.svg</file>
+    <file>icons/ant-svg/alibaba 428.svg</file>
+    <file>icons/ant-svg/align-center 248.svg</file>
+    <file>icons/ant-svg/align-left 249.svg</file>
+    <file>icons/ant-svg/align-right 247.svg</file>
+    <file>icons/ant-svg/alipay 438.svg</file>
+    <file>icons/ant-svg/alipay-circle-fill 476.svg</file>
+    <file>icons/ant-svg/alipay-square-fill 498.svg</file>
+    <file>icons/ant-svg/aliwangwang 449.svg</file>
+    <file>icons/ant-svg/aliwangwang-fill 477.svg</file>
+    <file>icons/ant-svg/amazon 436.svg</file>
+    <file>icons/ant-svg/amazon-circle-fill 479.svg</file>
+    <file>icons/ant-svg/amazon-square-fill 502.svg</file>
+    <file>icons/ant-svg/android 451.svg</file>
+    <file>icons/ant-svg/android-fill 463.svg</file>
+    <file>icons/ant-svg/ant design 429.svg</file>
+    <file>icons/ant-svg/ant-cloud 430.svg</file>
+    <file>icons/ant-svg/apartment 522.svg</file>
+    <file>icons/ant-svg/api 195.svg</file>
+    <file>icons/ant-svg/api-fill 404.svg</file>
+    <file>icons/ant-svg/app store 45.svg</file>
+    <file>icons/ant-svg/app store-fill 335.svg</file>
+    <file>icons/ant-svg/apple 450.svg</file>
+    <file>icons/ant-svg/apple-fill 464.svg</file>
+    <file>icons/ant-svg/appstore add 538.svg</file>
+    <file>icons/ant-svg/area chart 83.svg</file>
+    <file>icons/ant-svg/arrawsalt 214.svg</file>
+    <file>icons/ant-svg/arrowdown 228.svg</file>
+    <file>icons/ant-svg/arrowleft 227.svg</file>
+    <file>icons/ant-svg/arrowright 225.svg</file>
+    <file>icons/ant-svg/arrowup 226.svg</file>
+    <file>icons/ant-svg/attachment 192.svg</file>
+    <file>icons/ant-svg/audio 523.svg</file>
+    <file>icons/ant-svg/audio static 530.svg</file>
+    <file>icons/ant-svg/audio-fill 524.svg</file>
+    <file>icons/ant-svg/audit 115.svg</file>
+    <file>icons/ant-svg/backward 540.svg</file>
+    <file>icons/ant-svg/bank 133.svg</file>
+    <file>icons/ant-svg/bank-fill 414.svg</file>
+    <file>icons/ant-svg/bar chart 85.svg</file>
+    <file>icons/ant-svg/barcode 162.svg</file>
+    <file>icons/ant-svg/Batch folding 117.svg</file>
+    <file>icons/ant-svg/batch folding-fill 359.svg</file>
+    <file>icons/ant-svg/behance 431.svg</file>
+    <file>icons/ant-svg/behance-circle-fill 478.svg</file>
+    <file>icons/ant-svg/behance-square-fill 501.svg</file>
+    <file>icons/ant-svg/bell 127.svg</file>
+    <file>icons/ant-svg/bell-fill 385.svg</file>
+    <file>icons/ant-svg/bg-colors 276.svg</file>
+    <file>icons/ant-svg/block 186.svg</file>
+    <file>icons/ant-svg/bold 253.svg</file>
+    <file>icons/ant-svg/book 93.svg</file>
+    <file>icons/ant-svg/book-fill 338.svg</file>
+    <file>icons/ant-svg/border 63.svg</file>
+    <file>icons/ant-svg/border-bottom 66.svg</file>
+    <file>icons/ant-svg/border-horizontal 71.svg</file>
+    <file>icons/ant-svg/border-inner 69.svg</file>
+    <file>icons/ant-svg/border-left 67.svg</file>
+    <file>icons/ant-svg/border-outer 64.svg</file>
+    <file>icons/ant-svg/border-right 68.svg</file>
+    <file>icons/ant-svg/border-top 65.svg</file>
+    <file>icons/ant-svg/border-verticle 70.svg</file>
+    <file>icons/ant-svg/box plot 158.svg</file>
+    <file>icons/ant-svg/box plot-fill 426.svg</file>
+    <file>icons/ant-svg/branches 211.svg</file>
+    <file>icons/ant-svg/bug 529.svg</file>
+    <file>icons/ant-svg/bug-fill 528.svg</file>
+    <file>icons/ant-svg/build 159.svg</file>
+    <file>icons/ant-svg/build-fill 425.svg</file>
+    <file>icons/ant-svg/bulb 125.svg</file>
+    <file>icons/ant-svg/bulb-fill 384.svg</file>
+    <file>icons/ant-svg/calculator 60.svg</file>
+    <file>icons/ant-svg/calculator-fill 327.svg</file>
+    <file>icons/ant-svg/calendar 155.svg</file>
+    <file>icons/ant-svg/calendar-check 154.svg</file>
+    <file>icons/ant-svg/calendar-check-fill 367.svg</file>
+    <file>icons/ant-svg/calendar-fill 326.svg</file>
+    <file>icons/ant-svg/camera 163.svg</file>
+    <file>icons/ant-svg/camera-fill 415.svg</file>
+    <file>icons/ant-svg/car 166.svg</file>
+    <file>icons/ant-svg/caret-down 539.svg</file>
+    <file>icons/ant-svg/caret-left 543.svg</file>
+    <file>icons/ant-svg/caret-right 542.svg</file>
+    <file>icons/ant-svg/caret-up 541.svg</file>
+    <file>icons/ant-svg/car-fill 419.svg</file>
+    <file>icons/ant-svg/carry out 153.svg</file>
+    <file>icons/ant-svg/carry out-fill 325.svg</file>
+    <file>icons/ant-svg/check 265.svg</file>
+    <file>icons/ant-svg/check-circle 0.svg</file>
+    <file>icons/ant-svg/check-circle-fill 284.svg</file>
+    <file>icons/ant-svg/check-square 62.svg</file>
+    <file>icons/ant-svg/check-square-fill 314.svg</file>
+    <file>icons/ant-svg/chrome 447.svg</file>
+    <file>icons/ant-svg/chrome-fill 475.svg</file>
+    <file>icons/ant-svg/CI 1.svg</file>
+    <file>icons/ant-svg/CI-circle-fill 297.svg</file>
+    <file>icons/ant-svg/clear 558.svg</file>
+    <file>icons/ant-svg/close 268.svg</file>
+    <file>icons/ant-svg/close-circle 4.svg</file>
+    <file>icons/ant-svg/close-circle-fill 288.svg</file>
+    <file>icons/ant-svg/close-square 46.svg</file>
+    <file>icons/ant-svg/close-square-fill 317.svg</file>
+    <file>icons/ant-svg/cloud 171.svg</file>
+    <file>icons/ant-svg/cloud-download 172.svg</file>
+    <file>icons/ant-svg/cloud-fill 394.svg</file>
+    <file>icons/ant-svg/cloud-server 169.svg</file>
+    <file>icons/ant-svg/cloud-sync 173.svg</file>
+    <file>icons/ant-svg/cloud-upload 170.svg</file>
+    <file>icons/ant-svg/cluster 164.svg</file>
+    <file>icons/ant-svg/code 263.svg</file>
+    <file>icons/ant-svg/code library 52.svg</file>
+    <file>icons/ant-svg/code library-fill 318.svg</file>
+    <file>icons/ant-svg/codepen 448.svg</file>
+    <file>icons/ant-svg/codepen-circle-fill 480.svg</file>
+    <file>icons/ant-svg/codepen-square-fill 503.svg</file>
+    <file>icons/ant-svg/CodeSandbox 446.svg</file>
+    <file>icons/ant-svg/CodeSandbox-circle-f 481.svg</file>
+    <file>icons/ant-svg/CodeSandbox-square-f 500.svg</file>
+    <file>icons/ant-svg/collapse 559.svg</file>
+    <file>icons/ant-svg/colum-height 230.svg</file>
+    <file>icons/ant-svg/column-width 264.svg</file>
+    <file>icons/ant-svg/comment 531.svg</file>
+    <file>icons/ant-svg/compass 3.svg</file>
+    <file>icons/ant-svg/compass-fill 298.svg</file>
+    <file>icons/ant-svg/compress 589.svg</file>
+    <file>icons/ant-svg/Console-SQL 586.svg</file>
+    <file>icons/ant-svg/contacts 152.svg</file>
+    <file>icons/ant-svg/contacts-fill 373.svg</file>
+    <file>icons/ant-svg/container 87.svg</file>
+    <file>icons/ant-svg/container-fill 365.svg</file>
+    <file>icons/ant-svg/control 51.svg</file>
+    <file>icons/ant-svg/control-fill 333.svg</file>
+    <file>icons/ant-svg/copyright 10.svg</file>
+    <file>icons/ant-svg/copyright-circle-fil 296.svg</file>
+    <file>icons/ant-svg/credit card 184.svg</file>
+    <file>icons/ant-svg/credit card-fill 370.svg</file>
+    <file>icons/ant-svg/crown 277.svg</file>
+    <file>icons/ant-svg/crown-fill 417.svg</file>
+    <file>icons/ant-svg/customerservice 140.svg</file>
+    <file>icons/ant-svg/customerservice-fill 395.svg</file>
+    <file>icons/ant-svg/dash 267.svg</file>
+    <file>icons/ant-svg/dashboard 33.svg</file>
+    <file>icons/ant-svg/dashboard-fill 312.svg</file>
+    <file>icons/ant-svg/database 88.svg</file>
+    <file>icons/ant-svg/database-fill 364.svg</file>
+    <file>icons/ant-svg/delete 123.svg</file>
+    <file>icons/ant-svg/delete column 561.svg</file>
+    <file>icons/ant-svg/delete row 575.svg</file>
+    <file>icons/ant-svg/delete team 78.svg</file>
+    <file>icons/ant-svg/delete user 79.svg</file>
+    <file>icons/ant-svg/delete-fill 374.svg</file>
+    <file>icons/ant-svg/deployment unit 150.svg</file>
+    <file>icons/ant-svg/desktop 279.svg</file>
+    <file>icons/ant-svg/detail 53.svg</file>
+    <file>icons/ant-svg/detail-fill 330.svg</file>
+    <file>icons/ant-svg/diff 116.svg</file>
+    <file>icons/ant-svg/diff-fill 356.svg</file>
+    <file>icons/ant-svg/dingtalk 462.svg</file>
+    <file>icons/ant-svg/dingtalk-circle-fill 490.svg</file>
+    <file>icons/ant-svg/dingtalk-square-fill 499.svg</file>
+    <file>icons/ant-svg/disconnect 196.svg</file>
+    <file>icons/ant-svg/Dollar 2.svg</file>
+    <file>icons/ant-svg/Dollar-circle-fill 299.svg</file>
+    <file>icons/ant-svg/double right 224.svg</file>
+    <file>icons/ant-svg/doubleleft 223.svg</file>
+    <file>icons/ant-svg/down 220.svg</file>
+    <file>icons/ant-svg/down-circle 8.svg</file>
+    <file>icons/ant-svg/down-circle-fill 286.svg</file>
+    <file>icons/ant-svg/download 235.svg</file>
+    <file>icons/ant-svg/down-square 47.svg</file>
+    <file>icons/ant-svg/down-square-fill 315.svg</file>
+    <file>icons/ant-svg/drag 278.svg</file>
+    <file>icons/ant-svg/dribbble 454.svg</file>
+    <file>icons/ant-svg/dribbble-circle-fill 484.svg</file>
+    <file>icons/ant-svg/dribbble-square-fill 504.svg</file>
+    <file>icons/ant-svg/dropbox 461.svg</file>
+    <file>icons/ant-svg/dropbox-circle-fill 482.svg</file>
+    <file>icons/ant-svg/dropbox-square-fill 505.svg</file>
+    <file>icons/ant-svg/earth 22.svg</file>
+    <file>icons/ant-svg/edit 193.svg</file>
+    <file>icons/ant-svg/edit-fill 407.svg</file>
+    <file>icons/ant-svg/edit-square 41.svg</file>
+    <file>icons/ant-svg/ellipsis 266.svg</file>
+    <file>icons/ant-svg/enter 269.svg</file>
+    <file>icons/ant-svg/error 187.svg</file>
+    <file>icons/ant-svg/error-fill 416.svg</file>
+    <file>icons/ant-svg/EURO 9.svg</file>
+    <file>icons/ant-svg/EURO-circle-fill 294.svg</file>
+    <file>icons/ant-svg/exclaimination 255.svg</file>
+    <file>icons/ant-svg/expand 560.svg</file>
+    <file>icons/ant-svg/expend 590.svg</file>
+    <file>icons/ant-svg/experiment 126.svg</file>
+    <file>icons/ant-svg/experiment-fill 396.svg</file>
+    <file>icons/ant-svg/export 42.svg</file>
+    <file>icons/ant-svg/eye 39.svg</file>
+    <file>icons/ant-svg/eye close-fill 556.svg</file>
+    <file>icons/ant-svg/eye-close 557.svg</file>
+    <file>icons/ant-svg/eye-fill 397.svg</file>
+    <file>icons/ant-svg/facebook 444.svg</file>
+    <file>icons/ant-svg/facebook-fill 506.svg</file>
+    <file>icons/ant-svg/fall 238.svg</file>
+    <file>icons/ant-svg/fast-backward 544.svg</file>
+    <file>icons/ant-svg/fast-forward 546.svg</file>
+    <file>icons/ant-svg/Field-Binary 585.svg</file>
+    <file>icons/ant-svg/Field-number 577.svg</file>
+    <file>icons/ant-svg/Field-String 578.svg</file>
+    <file>icons/ant-svg/Field-time 580.svg</file>
+    <file>icons/ant-svg/file 110.svg</file>
+    <file>icons/ant-svg/file done 94.svg</file>
+    <file>icons/ant-svg/file -exception 96.svg</file>
+    <file>icons/ant-svg/file protect 100.svg</file>
+    <file>icons/ant-svg/file search 98.svg</file>
+    <file>icons/ant-svg/file sync 97.svg</file>
+    <file>icons/ant-svg/file-add 101.svg</file>
+    <file>icons/ant-svg/file-add-fill 345.svg</file>
+    <file>icons/ant-svg/file-copy 113.svg</file>
+    <file>icons/ant-svg/file-copy-fill 357.svg</file>
+    <file>icons/ant-svg/file-excel 102.svg</file>
+    <file>icons/ant-svg/file-excel-fill 347.svg</file>
+    <file>icons/ant-svg/file-exclamation 103.svg</file>
+    <file>icons/ant-svg/file-exclamation-fil 344.svg</file>
+    <file>icons/ant-svg/file-fill 346.svg</file>
+    <file>icons/ant-svg/file-GIF 592.svg</file>
+    <file>icons/ant-svg/file-image 105.svg</file>
+    <file>icons/ant-svg/file-image-fill 355.svg</file>
+    <file>icons/ant-svg/file-markdown 106.svg</file>
+    <file>icons/ant-svg/file-markdown-fill 348.svg</file>
+    <file>icons/ant-svg/file-pdf 104.svg</file>
+    <file>icons/ant-svg/file-pdf-fill 354.svg</file>
+    <file>icons/ant-svg/file-ppt 108.svg</file>
+    <file>icons/ant-svg/file-ppt-fill 350.svg</file>
+    <file>icons/ant-svg/file-text 112.svg</file>
+    <file>icons/ant-svg/file-text-fill 349.svg</file>
+    <file>icons/ant-svg/file-unknown 107.svg</file>
+    <file>icons/ant-svg/file-unknown-fill 351.svg</file>
+    <file>icons/ant-svg/file-word 109.svg</file>
+    <file>icons/ant-svg/file-word-fill 352.svg</file>
+    <file>icons/ant-svg/file-zip 111.svg</file>
+    <file>icons/ant-svg/file-zip-fill 353.svg</file>
+    <file>icons/ant-svg/filter 134.svg</file>
+    <file>icons/ant-svg/filter-fill 386.svg</file>
+    <file>icons/ant-svg/fire 282.svg</file>
+    <file>icons/ant-svg/fire-fill 387.svg</file>
+    <file>icons/ant-svg/flag 141.svg</file>
+    <file>icons/ant-svg/flag-fill 376.svg</file>
+    <file>icons/ant-svg/folder 147.svg</file>
+    <file>icons/ant-svg/folder-add 149.svg</file>
+    <file>icons/ant-svg/folder-add-fill 361.svg</file>
+    <file>icons/ant-svg/folder-fill 362.svg</file>
+    <file>icons/ant-svg/folder-open 148.svg</file>
+    <file>icons/ant-svg/folder-open-fill 363.svg</file>
+    <file>icons/ant-svg/folder-view 591.svg</file>
+    <file>icons/ant-svg/font-colors 254.svg</file>
+    <file>icons/ant-svg/font-size 256.svg</file>
+    <file>icons/ant-svg/fork 212.svg</file>
+    <file>icons/ant-svg/format painter 570.svg</file>
+    <file>icons/ant-svg/format painter-fill 572.svg</file>
+    <file>icons/ant-svg/forward 545.svg</file>
+    <file>icons/ant-svg/frown 5.svg</file>
+    <file>icons/ant-svg/frown-fill 295.svg</file>
+    <file>icons/ant-svg/fullscreen 221.svg</file>
+    <file>icons/ant-svg/fullscreen-exit 222.svg</file>
+    <file>icons/ant-svg/Function 579.svg</file>
+    <file>icons/ant-svg/fund 179.svg</file>
+    <file>icons/ant-svg/fund-fill 371.svg</file>
+    <file>icons/ant-svg/funnel plot 135.svg</file>
+    <file>icons/ant-svg/funnel plot-fill 388.svg</file>
+    <file>icons/ant-svg/gateway 165.svg</file>
+    <file>icons/ant-svg/GIF 581.svg</file>
+    <file>icons/ant-svg/gift 280.svg</file>
+    <file>icons/ant-svg/gift-fill 389.svg</file>
+    <file>icons/ant-svg/github-fill 483.svg</file>
+    <file>icons/ant-svg/Gitlab 453.svg</file>
+    <file>icons/ant-svg/Gitlab-fill 460.svg</file>
+    <file>icons/ant-svg/gold 189.svg</file>
+    <file>icons/ant-svg/golden-fill 424.svg</file>
+    <file>icons/ant-svg/google 434.svg</file>
+    <file>icons/ant-svg/google plus 432.svg</file>
+    <file>icons/ant-svg/google plus-circle-f 485.svg</file>
+    <file>icons/ant-svg/google plus-square-f 507.svg</file>
+    <file>icons/ant-svg/google-circle-fill 489.svg</file>
+    <file>icons/ant-svg/google-square-fill 508.svg</file>
+    <file>icons/ant-svg/group 593.svg</file>
+    <file>icons/ant-svg/heart 185.svg</file>
+    <file>icons/ant-svg/heart-fill 310.svg</file>
+    <file>icons/ant-svg/heat map 190.svg</file>
+    <file>icons/ant-svg/highlight 197.svg</file>
+    <file>icons/ant-svg/highlight-fill 405.svg</file>
+    <file>icons/ant-svg/home 132.svg</file>
+    <file>icons/ant-svg/home-fill 391.svg</file>
+    <file>icons/ant-svg/hourglass 124.svg</file>
+    <file>icons/ant-svg/hourglass-fill 390.svg</file>
+    <file>icons/ant-svg/HTML5 441.svg</file>
+    <file>icons/ant-svg/HTML5-fill 465.svg</file>
+    <file>icons/ant-svg/id card 183.svg</file>
+    <file>icons/ant-svg/id card-fill 369.svg</file>
+    <file>icons/ant-svg/IE 435.svg</file>
+    <file>icons/ant-svg/IE-circle-fill 488.svg</file>
+    <file>icons/ant-svg/IE-square-fill 510.svg</file>
+    <file>icons/ant-svg/image 180.svg</file>
+    <file>icons/ant-svg/image-fill 368.svg</file>
+    <file>icons/ant-svg/Import 44.svg</file>
+    <file>icons/ant-svg/indent 242.svg</file>
+    <file>icons/ant-svg/index 583.svg</file>
+    <file>icons/ant-svg/info-circle 6.svg</file>
+    <file>icons/ant-svg/info-circle-fill 289.svg</file>
+    <file>icons/ant-svg/infomation 257.svg</file>
+    <file>icons/ant-svg/insert row above 567.svg</file>
+    <file>icons/ant-svg/insert row below 566.svg</file>
+    <file>icons/ant-svg/insert row left 573.svg</file>
+    <file>icons/ant-svg/insert row right 571.svg</file>
+    <file>icons/ant-svg/instagram 455.svg</file>
+    <file>icons/ant-svg/instagram-fill 509.svg</file>
+    <file>icons/ant-svg/insurance  121.svg</file>
+    <file>icons/ant-svg/insurance-fill 342.svg</file>
+    <file>icons/ant-svg/interation 61.svg</file>
+    <file>icons/ant-svg/interation-fill 328.svg</file>
+    <file>icons/ant-svg/issues close 34.svg</file>
+    <file>icons/ant-svg/italic 262.svg</file>
+    <file>icons/ant-svg/key 194.svg</file>
+    <file>icons/ant-svg/laptop 161.svg</file>
+    <file>icons/ant-svg/layout 48.svg</file>
+    <file>icons/ant-svg/layout-fill 334.svg</file>
+    <file>icons/ant-svg/left 218.svg</file>
+    <file>icons/ant-svg/left-circle 7.svg</file>
+    <file>icons/ant-svg/left-circle-fill 285.svg</file>
+    <file>icons/ant-svg/left-square 49.svg</file>
+    <file>icons/ant-svg/left-square-fill 319.svg</file>
+    <file>icons/ant-svg/like 136.svg</file>
+    <file>icons/ant-svg/like-fill 398.svg</file>
+    <file>icons/ant-svg/line 270.svg</file>
+    <file>icons/ant-svg/line chart 84.svg</file>
+    <file>icons/ant-svg/line-height 258.svg</file>
+    <file>icons/ant-svg/link 199.svg</file>
+    <file>icons/ant-svg/linkedin 442.svg</file>
+    <file>icons/ant-svg/linkedin-fill 512.svg</file>
+    <file>icons/ant-svg/location 40.svg</file>
+    <file>icons/ant-svg/location-fill 393.svg</file>
+    <file>icons/ant-svg/lock 139.svg</file>
+    <file>icons/ant-svg/lock-fill 399.svg</file>
+    <file>icons/ant-svg/login 549.svg</file>
+    <file>icons/ant-svg/logout 36.svg</file>
+    <file>icons/ant-svg/mail 181.svg</file>
+    <file>icons/ant-svg/mail-fill 418.svg</file>
+    <file>icons/ant-svg/man 200.svg</file>
+    <file>icons/ant-svg/medicine box-fill 378.svg</file>
+    <file>icons/ant-svg/medicinebox 143.svg</file>
+    <file>icons/ant-svg/medium 433.svg</file>
+    <file>icons/ant-svg/medium-circle-fill 486.svg</file>
+    <file>icons/ant-svg/medium-square-fill 511.svg</file>
+    <file>icons/ant-svg/meh 12.svg</file>
+    <file>icons/ant-svg/meh-fill 301.svg</file>
+    <file>icons/ant-svg/menu 244.svg</file>
+    <file>icons/ant-svg/merge-cells 562.svg</file>
+    <file>icons/ant-svg/message 32.svg</file>
+    <file>icons/ant-svg/message-fill 313.svg</file>
+    <file>icons/ant-svg/minus 271.svg</file>
+    <file>icons/ant-svg/minus-circle 11.svg</file>
+    <file>icons/ant-svg/minus-circle-fill 287.svg</file>
+    <file>icons/ant-svg/minus-square 54.svg</file>
+    <file>icons/ant-svg/minus-square-fill 316.svg</file>
+    <file>icons/ant-svg/mobile 90.svg</file>
+    <file>icons/ant-svg/mobile-fill 336.svg</file>
+    <file>icons/ant-svg/money collect 142.svg</file>
+    <file>icons/ant-svg/money collect-fill 377.svg</file>
+    <file>icons/ant-svg/monitor 198.svg</file>
+    <file>icons/ant-svg/mr 209.svg</file>
+    <file>icons/ant-svg/notification 175.svg</file>
+    <file>icons/ant-svg/notification-fill 375.svg</file>
+    <file>icons/ant-svg/number 261.svg</file>
+    <file>icons/ant-svg/ordered list 246.svg</file>
+    <file>icons/ant-svg/outdent 243.svg</file>
+    <file>icons/ant-svg/Partition 582.svg</file>
+    <file>icons/ant-svg/pause 275.svg</file>
+    <file>icons/ant-svg/percentage 201.svg</file>
+    <file>icons/ant-svg/phone 203.svg</file>
+    <file>icons/ant-svg/phone-fill 406.svg</file>
+    <file>icons/ant-svg/pic-center 250.svg</file>
+    <file>icons/ant-svg/pic-left 252.svg</file>
+    <file>icons/ant-svg/pic-right 251.svg</file>
+    <file>icons/ant-svg/pie chart 37.svg</file>
+    <file>icons/ant-svg/pie chart-circle-fil 311.svg</file>
+    <file>icons/ant-svg/play-circle 14.svg</file>
+    <file>icons/ant-svg/play-circle-fill 302.svg</file>
+    <file>icons/ant-svg/play-square 50.svg</file>
+    <file>icons/ant-svg/play-square-fill 320.svg</file>
+    <file>icons/ant-svg/plus 555.svg</file>
+    <file>icons/ant-svg/plus-circle 13.svg</file>
+    <file>icons/ant-svg/plus-circle-fill 292.svg</file>
+    <file>icons/ant-svg/plus-square 55.svg</file>
+    <file>icons/ant-svg/plus-square-fill 323.svg</file>
+    <file>icons/ant-svg/point map 86.svg</file>
+    <file>icons/ant-svg/Pound 16.svg</file>
+    <file>icons/ant-svg/Pound-circle-fill 303.svg</file>
+    <file>icons/ant-svg/poweroff 35.svg</file>
+    <file>icons/ant-svg/poweroff-circle-fill 300.svg</file>
+    <file>icons/ant-svg/printer 167.svg</file>
+    <file>icons/ant-svg/printer-fill 420.svg</file>
+    <file>icons/ant-svg/project 57.svg</file>
+    <file>icons/ant-svg/project-fill 329.svg</file>
+    <file>icons/ant-svg/property safety 119.svg</file>
+    <file>icons/ant-svg/property safety-fill 341.svg</file>
+    <file>icons/ant-svg/pushpin 202.svg</file>
+    <file>icons/ant-svg/pushpin-fill 408.svg</file>
+    <file>icons/ant-svg/QQ 467.svg</file>
+    <file>icons/ant-svg/QQ-circle-fill 487.svg</file>
+    <file>icons/ant-svg/QQ-square-fill 513.svg</file>
+    <file>icons/ant-svg/qrcode 178.svg</file>
+    <file>icons/ant-svg/question 272.svg</file>
+    <file>icons/ant-svg/question-circle 15.svg</file>
+    <file>icons/ant-svg/question-circle-fill 293.svg</file>
+    <file>icons/ant-svg/radar chart 177.svg</file>
+    <file>icons/ant-svg/radius-bottomleft 72.svg</file>
+    <file>icons/ant-svg/radius-bottomright 73.svg</file>
+    <file>icons/ant-svg/radius-setting 76.svg</file>
+    <file>icons/ant-svg/radius-upleft 74.svg</file>
+    <file>icons/ant-svg/radius-upright 75.svg</file>
+    <file>icons/ant-svg/read 168.svg</file>
+    <file>icons/ant-svg/read-fill 372.svg</file>
+    <file>icons/ant-svg/reconciliation 95.svg</file>
+    <file>icons/ant-svg/reconciliation-fill 360.svg</file>
+    <file>icons/ant-svg/red envelope 92.svg</file>
+    <file>icons/ant-svg/red envelope-fill 339.svg</file>
+    <file>icons/ant-svg/reddit 456.svg</file>
+    <file>icons/ant-svg/reddit-circle-fill 497.svg</file>
+    <file>icons/ant-svg/reddit-square-fill 514.svg</file>
+    <file>icons/ant-svg/redo 29.svg</file>
+    <file>icons/ant-svg/reload 30.svg</file>
+    <file>icons/ant-svg/reload time 31.svg</file>
+    <file>icons/ant-svg/Report 595.svg</file>
+    <file>icons/ant-svg/rest 129.svg</file>
+    <file>icons/ant-svg/rest-fill 379.svg</file>
+    <file>icons/ant-svg/retweet 548.svg</file>
+    <file>icons/ant-svg/right 217.svg</file>
+    <file>icons/ant-svg/right-circle 17.svg</file>
+    <file>icons/ant-svg/right-circle-fill 291.svg</file>
+    <file>icons/ant-svg/right-square 56.svg</file>
+    <file>icons/ant-svg/right-square-fill 322.svg</file>
+    <file>icons/ant-svg/rise 241.svg</file>
+    <file>icons/ant-svg/robot 525.svg</file>
+    <file>icons/ant-svg/robot-fill 527.svg</file>
+    <file>icons/ant-svg/rocket 145.svg</file>
+    <file>icons/ant-svg/rocket-fill 409.svg</file>
+    <file>icons/ant-svg/rollback 273.svg</file>
+    <file>icons/ant-svg/rotate-left 564.svg</file>
+    <file>icons/ant-svg/rotate-right 565.svg</file>
+    <file>icons/ant-svg/safety certificate 120.svg</file>
+    <file>icons/ant-svg/safety certificate-f 340.svg</file>
+    <file>icons/ant-svg/save 43.svg</file>
+    <file>icons/ant-svg/save-fill 331.svg</file>
+    <file>icons/ant-svg/scan 156.svg</file>
+    <file>icons/ant-svg/scissor 208.svg</file>
+    <file>icons/ant-svg/search 547.svg</file>
+    <file>icons/ant-svg/security scan 118.svg</file>
+    <file>icons/ant-svg/security scan-fill 343.svg</file>
+    <file>icons/ant-svg/select 157.svg</file>
+    <file>icons/ant-svg/send 594.svg</file>
+    <file>icons/ant-svg/setting 38.svg</file>
+    <file>icons/ant-svg/setting-fill 422.svg</file>
+    <file>icons/ant-svg/sever 89.svg</file>
+    <file>icons/ant-svg/sever-fill 366.svg</file>
+    <file>icons/ant-svg/shake 204.svg</file>
+    <file>icons/ant-svg/share 210.svg</file>
+    <file>icons/ant-svg/shop 144.svg</file>
+    <file>icons/ant-svg/shop-fill 421.svg</file>
+    <file>icons/ant-svg/shopping 146.svg</file>
+    <file>icons/ant-svg/shopping-fill 380.svg</file>
+    <file>icons/ant-svg/shortcut 597.svg</file>
+    <file>icons/ant-svg/shortcut-fill 534.svg</file>
+    <file>icons/ant-svg/shrink 213.svg</file>
+    <file>icons/ant-svg/signal-fill 532.svg</file>
+    <file>icons/ant-svg/sisternode 576.svg</file>
+    <file>icons/ant-svg/sketch 452.svg</file>
+    <file>icons/ant-svg/sketch-circle-fill 491.svg</file>
+    <file>icons/ant-svg/sketch-square-fill 516.svg</file>
+    <file>icons/ant-svg/skin 131.svg</file>
+    <file>icons/ant-svg/skin-fill 381.svg</file>
+    <file>icons/ant-svg/skype 445.svg</file>
+    <file>icons/ant-svg/skype-fill 469.svg</file>
+    <file>icons/ant-svg/slack 437.svg</file>
+    <file>icons/ant-svg/slack-circle-fill 492.svg</file>
+    <file>icons/ant-svg/slack-square-fill 517.svg</file>
+    <file>icons/ant-svg/sliders 160.svg</file>
+    <file>icons/ant-svg/sliders-fill 427.svg</file>
+    <file>icons/ant-svg/small-dash 274.svg</file>
+    <file>icons/ant-svg/smile 18.svg</file>
+    <file>icons/ant-svg/smile-fill 304.svg</file>
+    <file>icons/ant-svg/snippets 114.svg</file>
+    <file>icons/ant-svg/snippets-fill 358.svg</file>
+    <file>icons/ant-svg/solit-cells 569.svg</file>
+    <file>icons/ant-svg/solution 99.svg</file>
+    <file>icons/ant-svg/sort-ascending 237.svg</file>
+    <file>icons/ant-svg/sort-descending 236.svg</file>
+    <file>icons/ant-svg/sound 176.svg</file>
+    <file>icons/ant-svg/sound-fill 383.svg</file>
+    <file>icons/ant-svg/star 188.svg</file>
+    <file>icons/ant-svg/star-fill 401.svg</file>
+    <file>icons/ant-svg/step-backward 550.svg</file>
+    <file>icons/ant-svg/step-forward 551.svg</file>
+    <file>icons/ant-svg/stock 240.svg</file>
+    <file>icons/ant-svg/stop 281.svg</file>
+    <file>icons/ant-svg/stop-fill 305.svg</file>
+    <file>icons/ant-svg/Stored procedure 584.svg</file>
+    <file>icons/ant-svg/strikethrough 259.svg</file>
+    <file>icons/ant-svg/subnode 563.svg</file>
+    <file>icons/ant-svg/swap 239.svg</file>
+    <file>icons/ant-svg/swap-left 553.svg</file>
+    <file>icons/ant-svg/swap-right 552.svg</file>
+    <file>icons/ant-svg/switch user 536.svg</file>
+    <file>icons/ant-svg/sync 26.svg</file>
+    <file>icons/ant-svg/table 182.svg</file>
+    <file>icons/ant-svg/table 568.svg</file>
+    <file>icons/ant-svg/tablet 91.svg</file>
+    <file>icons/ant-svg/tablet-fill 337.svg</file>
+    <file>icons/ant-svg/tag 205.svg</file>
+    <file>icons/ant-svg/tag-fill 411.svg</file>
+    <file>icons/ant-svg/tags 207.svg</file>
+    <file>icons/ant-svg/tags-fill 413.svg</file>
+    <file>icons/ant-svg/taobao 439.svg</file>
+    <file>icons/ant-svg/taobao-circle-fill 494.svg</file>
+    <file>icons/ant-svg/taobao-square-fill 518.svg</file>
+    <file>icons/ant-svg/team 82.svg</file>
+    <file>icons/ant-svg/thunderbolt 283.svg</file>
+    <file>icons/ant-svg/thunderbolt-fill 410.svg</file>
+    <file>icons/ant-svg/time out 21.svg</file>
+    <file>icons/ant-svg/time-circle 20.svg</file>
+    <file>icons/ant-svg/time-circle-fill 307.svg</file>
+    <file>icons/ant-svg/totop 233.svg</file>
+    <file>icons/ant-svg/trademark 19.svg</file>
+    <file>icons/ant-svg/trademark-circle-fil 308.svg</file>
+    <file>icons/ant-svg/transaction 27.svg</file>
+    <file>icons/ant-svg/translate 574.svg</file>
+    <file>icons/ant-svg/trophy 128.svg</file>
+    <file>icons/ant-svg/trophy-fill 392.svg</file>
+    <file>icons/ant-svg/twitter 468.svg</file>
+    <file>icons/ant-svg/twitter-circle-fill 493.svg</file>
+    <file>icons/ant-svg/twitter-square-fill 515.svg</file>
+    <file>icons/ant-svg/underline 260.svg</file>
+    <file>icons/ant-svg/undo 28.svg</file>
+    <file>icons/ant-svg/ungroup 598.svg</file>
+    <file>icons/ant-svg/unlike 137.svg</file>
+    <file>icons/ant-svg/unlike-fill 400.svg</file>
+    <file>icons/ant-svg/unlock 138.svg</file>
+    <file>icons/ant-svg/unlock-fill 402.svg</file>
+    <file>icons/ant-svg/unordered list 245.svg</file>
+    <file>icons/ant-svg/up 219.svg</file>
+    <file>icons/ant-svg/up-circle 24.svg</file>
+    <file>icons/ant-svg/up-circle-fill 290.svg</file>
+    <file>icons/ant-svg/upload 229.svg</file>
+    <file>icons/ant-svg/up-square 59.svg</file>
+    <file>icons/ant-svg/up-square-fill 321.svg</file>
+    <file>icons/ant-svg/USB 130.svg</file>
+    <file>icons/ant-svg/USB-fill 423.svg</file>
+    <file>icons/ant-svg/user 81.svg</file>
+    <file>icons/ant-svg/verified 533.svg</file>
+    <file>icons/ant-svg/vertical left 216.svg</file>
+    <file>icons/ant-svg/vertical right 215.svg</file>
+    <file>icons/ant-svg/vertical-align-botto 231.svg</file>
+    <file>icons/ant-svg/vertical-align-middl 232.svg</file>
+    <file>icons/ant-svg/vertical-align-top 234.svg</file>
+    <file>icons/ant-svg/video 174.svg</file>
+    <file>icons/ant-svg/videocamera add 535.svg</file>
+    <file>icons/ant-svg/video-fill 382.svg</file>
+    <file>icons/ant-svg/View 596.svg</file>
+    <file>icons/ant-svg/wallet 58.svg</file>
+    <file>icons/ant-svg/wallet-fill 332.svg</file>
+    <file>icons/ant-svg/warning-circle 25.svg</file>
+    <file>icons/ant-svg/warning-circle-fill 306.svg</file>
+    <file>icons/ant-svg/wechat-fill 474.svg</file>
+    <file>icons/ant-svg/weibo 470.svg</file>
+    <file>icons/ant-svg/weibo-circle-fill 495.svg</file>
+    <file>icons/ant-svg/weibo-square-fill 519.svg</file>
+    <file>icons/ant-svg/whatsapp 537.svg</file>
+    <file>icons/ant-svg/wifi 191.svg</file>
+    <file>icons/ant-svg/windows 457.svg</file>
+    <file>icons/ant-svg/windows-fill 466.svg</file>
+    <file>icons/ant-svg/woman 554.svg</file>
+    <file>icons/ant-svg/wrench 206.svg</file>
+    <file>icons/ant-svg/wrench-fill 412.svg</file>
+    <file>icons/ant-svg/yahoo 443.svg</file>
+    <file>icons/ant-svg/yahoo-fill 473.svg</file>
+    <file>icons/ant-svg/Youtube 459.svg</file>
+    <file>icons/ant-svg/Youtube-fill 472.svg</file>
+    <file>icons/ant-svg/YUAN 23.svg</file>
+    <file>icons/ant-svg/YUAN-circle-fill 309.svg</file>
+    <file>icons/ant-svg/yuque 458.svg</file>
+    <file>icons/ant-svg/yuque-fill 471.svg</file>
+    <file>icons/ant-svg/zhihu 440.svg</file>
+    <file>icons/ant-svg/zhihu-circle-fill 496.svg</file>
+    <file>icons/ant-svg/zhihu-square-fill 520.svg</file>
+    <file>icons/ant-svg/zoom in 526.svg</file>
+    <file>icons/ant-svg/zoom out 521.svg</file>
+  </qresource>
+  <qresource prefix="icon_alibaba">
+    <file>icons/alibaba/crop.svg</file>
+    <file>icons/alibaba/2years 35.svg</file>
+    <file>icons/alibaba/2years-fill 235.svg</file>
+    <file>icons/alibaba/3column 30.svg</file>
+    <file>icons/alibaba/4column 32.svg</file>
+    <file>icons/alibaba/account 386.svg</file>
+    <file>icons/alibaba/account-fill 378.svg</file>
+    <file>icons/alibaba/add 33.svg</file>
+    <file>icons/alibaba/Add Products 432.svg</file>
+    <file>icons/alibaba/add-account 31.svg</file>
+    <file>icons/alibaba/add-account 234.svg</file>
+    <file>icons/alibaba/add-cart 36.svg</file>
+    <file>icons/alibaba/add-cart-fill 236.svg</file>
+    <file>icons/alibaba/addcell 434.svg</file>
+    <file>icons/alibaba/add-fill 237.svg</file>
+    <file>icons/alibaba/add-select 382.svg</file>
+    <file>icons/alibaba/agriculture 34.svg</file>
+    <file>icons/alibaba/ali-clould 67.svg</file>
+    <file>icons/alibaba/ali-clould-fill 251.svg</file>
+    <file>icons/alibaba/all 1.svg</file>
+    <file>icons/alibaba/all 40.svg</file>
+    <file>icons/alibaba/all-fill 22.svg</file>
+    <file>icons/alibaba/all-fill 238.svg</file>
+    <file>icons/alibaba/apparel 39.svg</file>
+    <file>icons/alibaba/arrow-down 385.svg</file>
+    <file>icons/alibaba/arrow-left 38.svg</file>
+    <file>icons/alibaba/arrow-right 37.svg</file>
+    <file>icons/alibaba/arrow-up 41.svg</file>
+    <file>icons/alibaba/ascending 42.svg</file>
+    <file>icons/alibaba/ashbin 43.svg</file>
+    <file>icons/alibaba/ashbin-fill 239.svg</file>
+    <file>icons/alibaba/asp结算 443.svg</file>
+    <file>icons/alibaba/assessed-badge 50.svg</file>
+    <file>icons/alibaba/atm 44.svg</file>
+    <file>icons/alibaba/atm-away 49.svg</file>
+    <file>icons/alibaba/atm-away-fill 247.svg</file>
+    <file>icons/alibaba/atm-fill 243.svg</file>
+    <file>icons/alibaba/attachent 46.svg</file>
+    <file>icons/alibaba/auto 0.svg</file>
+    <file>icons/alibaba/auto 51.svg</file>
+    <file>icons/alibaba/aviation 219.svg</file>
+    <file>icons/alibaba/background-color 435.svg</file>
+    <file>icons/alibaba/bad 45.svg</file>
+    <file>icons/alibaba/bad-fill 241.svg</file>
+    <file>icons/alibaba/bags 52.svg</file>
+    <file>icons/alibaba/beauty 48.svg</file>
+    <file>icons/alibaba/become a gold supplier 472.svg</file>
+    <file>icons/alibaba/beijing 437.svg</file>
+    <file>icons/alibaba/block 478.svg</file>
+    <file>icons/alibaba/bmp-fill 371.svg</file>
+    <file>icons/alibaba/bold 438.svg</file>
+    <file>icons/alibaba/brand 354.svg</file>
+    <file>icons/alibaba/brand-fill 350.svg</file>
+    <file>icons/alibaba/browse 47.svg</file>
+    <file>icons/alibaba/bussiness-man 2.svg</file>
+    <file>icons/alibaba/bussiness-man-fill 242.svg</file>
+    <file>icons/alibaba/cad-fill 475.svg</file>
+    <file>icons/alibaba/calculator 55.svg</file>
+    <file>icons/alibaba/calculator-fill 249.svg</file>
+    <file>icons/alibaba/calendar 53.svg</file>
+    <file>icons/alibaba/calendar-fill 240.svg</file>
+    <file>icons/alibaba/camera 384.svg</file>
+    <file>icons/alibaba/camera switching 56.svg</file>
+    <file>icons/alibaba/camera switching-fill 246.svg</file>
+    <file>icons/alibaba/camera-fill 269.svg</file>
+    <file>icons/alibaba/cart- full 54.svg</file>
+    <file>icons/alibaba/cart- full-fill 244.svg</file>
+    <file>icons/alibaba/cart-Empty 61.svg</file>
+    <file>icons/alibaba/cart-Empty 388.svg</file>
+    <file>icons/alibaba/cart-Empty-fill 245.svg</file>
+    <file>icons/alibaba/cascades 436.svg</file>
+    <file>icons/alibaba/category 58.svg</file>
+    <file>icons/alibaba/category products 179.svg</file>
+    <file>icons/alibaba/category products-fill 319.svg</file>
+    <file>icons/alibaba/cecurity-protection 57.svg</file>
+    <file>icons/alibaba/cecurity-protection-fill 254.svg</file>
+    <file>icons/alibaba/centeralignment 441.svg</file>
+    <file>icons/alibaba/certified-supplier 60.svg</file>
+    <file>icons/alibaba/certified-supplier-fill 248.svg</file>
+    <file>icons/alibaba/checkstand 218.svg</file>
+    <file>icons/alibaba/click 442.svg</file>
+    <file>icons/alibaba/clock 74.svg</file>
+    <file>icons/alibaba/clock-fill 250.svg</file>
+    <file>icons/alibaba/close 59.svg</file>
+    <file>icons/alibaba/code 4.svg</file>
+    <file>icons/alibaba/code 62.svg</file>
+    <file>icons/alibaba/collection 351.svg</file>
+    <file>icons/alibaba/collection-fill 353.svg</file>
+    <file>icons/alibaba/color 63.svg</file>
+    <file>icons/alibaba/color-fill 252.svg</file>
+    <file>icons/alibaba/comments 387.svg</file>
+    <file>icons/alibaba/comments-fill 377.svg</file>
+    <file>icons/alibaba/company 66.svg</file>
+    <file>icons/alibaba/company-fill 274.svg</file>
+    <file>icons/alibaba/component 3.svg</file>
+    <file>icons/alibaba/conditions 64.svg</file>
+    <file>icons/alibaba/confirm 65.svg</file>
+    <file>icons/alibaba/connections 71.svg</file>
+    <file>icons/alibaba/consumption 362.svg</file>
+    <file>icons/alibaba/consumption-fill 352.svg</file>
+    <file>icons/alibaba/contacts 217.svg</file>
+    <file>icons/alibaba/contacts-fill 233.svg</file>
+    <file>icons/alibaba/copy 5.svg</file>
+    <file>icons/alibaba/copy 68.svg</file>
+    <file>icons/alibaba/costoms-alearance 73.svg</file>
+    <file>icons/alibaba/coupons 70.svg</file>
+    <file>icons/alibaba/coupons-fill 253.svg</file>
+    <file>icons/alibaba/credit card 216.svg</file>
+    <file>icons/alibaba/credit-level 69.svg</file>
+    <file>icons/alibaba/credit-level-fill 255.svg</file>
+    <file>icons/alibaba/cry 72.svg</file>
+    <file>icons/alibaba/cry-fill 262.svg</file>
+    <file>icons/alibaba/Currency Converter 75.svg</file>
+    <file>icons/alibaba/Currency Converter-fill 257.svg</file>
+    <file>icons/alibaba/Customer management 78.svg</file>
+    <file>icons/alibaba/Customer management-fill 258.svg</file>
+    <file>icons/alibaba/customization 81.svg</file>
+    <file>icons/alibaba/cut 76.svg</file>
+    <file>icons/alibaba/data 9.svg</file>
+    <file>icons/alibaba/data 77.svg</file>
+    <file>icons/alibaba/Daytime mode 220.svg</file>
+    <file>icons/alibaba/Daytime mode-fill 260.svg</file>
+    <file>icons/alibaba/default-template 86.svg</file>
+    <file>icons/alibaba/default-template-fill 256.svg</file>
+    <file>icons/alibaba/descending 79.svg</file>
+    <file>icons/alibaba/discount 83.svg</file>
+    <file>icons/alibaba/discount-fill 275.svg</file>
+    <file>icons/alibaba/discounts 222.svg</file>
+    <file>icons/alibaba/discounts-fill 259.svg</file>
+    <file>icons/alibaba/doc-fill 368.svg</file>
+    <file>icons/alibaba/dollar 6.svg</file>
+    <file>icons/alibaba/dollar 85.svg</file>
+    <file>icons/alibaba/double-arro- right 80.svg</file>
+    <file>icons/alibaba/double-arrow-left 82.svg</file>
+    <file>icons/alibaba/download 84.svg</file>
+    <file>icons/alibaba/earth 94.svg</file>
+    <file>icons/alibaba/editor 8.svg</file>
+    <file>icons/alibaba/editor 87.svg</file>
+    <file>icons/alibaba/electronics 89.svg</file>
+    <file>icons/alibaba/eletrical 88.svg</file>
+    <file>icons/alibaba/ellipsis 91.svg</file>
+    <file>icons/alibaba/email 92.svg</file>
+    <file>icons/alibaba/email-fill 263.svg</file>
+    <file>icons/alibaba/eraser 440.svg</file>
+    <file>icons/alibaba/etrical-equipm 90.svg</file>
+    <file>icons/alibaba/exchange rate 232.svg</file>
+    <file>icons/alibaba/exl-fill 261.svg</file>
+    <file>icons/alibaba/export services 20.svg</file>
+    <file>icons/alibaba/export services-fill 349.svg</file>
+    <file>icons/alibaba/extra-inquiries 452.svg</file>
+    <file>icons/alibaba/falg-fill 445.svg</file>
+    <file>icons/alibaba/falling 93.svg</file>
+    <file>icons/alibaba/favorites 389.svg</file>
+    <file>icons/alibaba/favorites-fill 23.svg</file>
+    <file>icons/alibaba/Fee 446.svg</file>
+    <file>icons/alibaba/feed-logo 380.svg</file>
+    <file>icons/alibaba/feed-logo-fill 379.svg</file>
+    <file>icons/alibaba/feeds 98.svg</file>
+    <file>icons/alibaba/feeds-fill 266.svg</file>
+    <file>icons/alibaba/filling 447.svg</file>
+    <file>icons/alibaba/filter 95.svg</file>
+    <file>icons/alibaba/filter-fill 264.svg</file>
+    <file>icons/alibaba/flag 444.svg</file>
+    <file>icons/alibaba/folder 97.svg</file>
+    <file>icons/alibaba/folder-fill 265.svg</file>
+    <file>icons/alibaba/Foreign currency 448.svg</file>
+    <file>icons/alibaba/form 105.svg</file>
+    <file>icons/alibaba/form-fill 268.svg</file>
+    <file>icons/alibaba/free 474.svg</file>
+    <file>icons/alibaba/furniture 96.svg</file>
+    <file>icons/alibaba/gif-fill 370.svg</file>
+    <file>icons/alibaba/gift 10.svg</file>
+    <file>icons/alibaba/gift 104.svg</file>
+    <file>icons/alibaba/gold-supplie-fill 267.svg</file>
+    <file>icons/alibaba/gold-supplier 364.svg</file>
+    <file>icons/alibaba/good 102.svg</file>
+    <file>icons/alibaba/good-fill 270.svg</file>
+    <file>icons/alibaba/guanliyuan 449.svg</file>
+    <file>icons/alibaba/hardware 100.svg</file>
+    <file>icons/alibaba/help 101.svg</file>
+    <file>icons/alibaba/help 280.svg</file>
+    <file>icons/alibaba/history 7.svg</file>
+    <file>icons/alibaba/history 99.svg</file>
+    <file>icons/alibaba/home 374.svg</file>
+    <file>icons/alibaba/home 375.svg</file>
+    <file>icons/alibaba/home-fill 381.svg</file>
+    <file>icons/alibaba/homepage-ads 357.svg</file>
+    <file>icons/alibaba/homepage-ads-fill 356.svg</file>
+    <file>icons/alibaba/hot 107.svg</file>
+    <file>icons/alibaba/hot-fill 273.svg</file>
+    <file>icons/alibaba/Household appliances 103.svg</file>
+    <file>icons/alibaba/image-text 106.svg</file>
+    <file>icons/alibaba/image-text-fill 271.svg</file>
+    <file>icons/alibaba/infant &amp; mom 221.svg</file>
+    <file>icons/alibaba/inquiry-template 115.svg</file>
+    <file>icons/alibaba/inquiry-template-fill 277.svg</file>
+    <file>icons/alibaba/inspection 108.svg</file>
+    <file>icons/alibaba/inspection 477.svg</file>
+    <file>icons/alibaba/inspection-fill 272.svg</file>
+    <file>icons/alibaba/insurance 224.svg</file>
+    <file>icons/alibaba/insurance-fill 276.svg</file>
+    <file>icons/alibaba/integral 11.svg</file>
+    <file>icons/alibaba/integral 113.svg</file>
+    <file>icons/alibaba/integral-fill 24.svg</file>
+    <file>icons/alibaba/integral-fill 279.svg</file>
+    <file>icons/alibaba/invoice 223.svg</file>
+    <file>icons/alibaba/ipad 111.svg</file>
+    <file>icons/alibaba/Italic 453.svg</file>
+    <file>icons/alibaba/jewelry 110.svg</file>
+    <file>icons/alibaba/jpge-fill 369.svg</file>
+    <file>icons/alibaba/kitchen 114.svg</file>
+    <file>icons/alibaba/land transportation 230.svg</file>
+    <file>icons/alibaba/language 450.svg</file>
+    <file>icons/alibaba/left arrow 112.svg</file>
+    <file>icons/alibaba/left button 109.svg</file>
+    <file>icons/alibaba/left button-fill 278.svg</file>
+    <file>icons/alibaba/leftalignment 451.svg</file>
+    <file>icons/alibaba/libra 117.svg</file>
+    <file>icons/alibaba/lights 120.svg</file>
+    <file>icons/alibaba/link 116.svg</file>
+    <file>icons/alibaba/listing-content 119.svg</file>
+    <file>icons/alibaba/listing-content-fill 281.svg</file>
+    <file>icons/alibaba/loading 118.svg</file>
+    <file>icons/alibaba/logistic-logo 145.svg</file>
+    <file>icons/alibaba/logistic-logo-fill 282.svg</file>
+    <file>icons/alibaba/logistics-icon 121.svg</file>
+    <file>icons/alibaba/logistics-icon-fill 286.svg</file>
+    <file>icons/alibaba/machinery 148.svg</file>
+    <file>icons/alibaba/manage-order 124.svg</file>
+    <file>icons/alibaba/manage-order-fill 284.svg</file>
+    <file>icons/alibaba/map 128.svg</file>
+    <file>icons/alibaba/map 294.svg</file>
+    <file>icons/alibaba/message center 122.svg</file>
+    <file>icons/alibaba/message center-fill 365.svg</file>
+    <file>icons/alibaba/microphone 395.svg</file>
+    <file>icons/alibaba/mobile-phone 123.svg</file>
+    <file>icons/alibaba/Money management 126.svg</file>
+    <file>icons/alibaba/Money management-fill 283.svg</file>
+    <file>icons/alibaba/move 125.svg</file>
+    <file>icons/alibaba/multi-language 130.svg</file>
+    <file>icons/alibaba/multi-language-fill 285.svg</file>
+    <file>icons/alibaba/mute 291.svg</file>
+    <file>icons/alibaba/namecard 127.svg</file>
+    <file>icons/alibaba/namecard-fill 25.svg</file>
+    <file>icons/alibaba/nav-list 12.svg</file>
+    <file>icons/alibaba/new 473.svg</file>
+    <file>icons/alibaba/New user zone 129.svg</file>
+    <file>icons/alibaba/New user zone-fill 287.svg</file>
+    <file>icons/alibaba/night mode 225.svg</file>
+    <file>icons/alibaba/night mode-fill 288.svg</file>
+    <file>icons/alibaba/Non-staple food 154.svg</file>
+    <file>icons/alibaba/Not visible 14.svg</file>
+    <file>icons/alibaba/Not visible 136.svg</file>
+    <file>icons/alibaba/notice 132.svg</file>
+    <file>icons/alibaba/notice-fill 290.svg</file>
+    <file>icons/alibaba/office 131.svg</file>
+    <file>icons/alibaba/office-supplies 134.svg</file>
+    <file>icons/alibaba/office-supplies-fill 289.svg</file>
+    <file>icons/alibaba/on time shipment 133.svg</file>
+    <file>icons/alibaba/online-tracking 139.svg</file>
+    <file>icons/alibaba/online-tracking-fill 297.svg</file>
+    <file>icons/alibaba/operation 137.svg</file>
+    <file>icons/alibaba/order 390.svg</file>
+    <file>icons/alibaba/order-fill 292.svg</file>
+    <file>icons/alibaba/packaging 138.svg</file>
+    <file>icons/alibaba/packing-labeling 140.svg</file>
+    <file>icons/alibaba/packing-labeling-fill 348.svg</file>
+    <file>icons/alibaba/password 135.svg</file>
+    <file>icons/alibaba/password 293.svg</file>
+    <file>icons/alibaba/paylater 160.svg</file>
+    <file>icons/alibaba/paylater-fill 295.svg</file>
+    <file>icons/alibaba/pcm 454.svg</file>
+    <file>icons/alibaba/pdf-fill 299.svg</file>
+    <file>icons/alibaba/phone 141.svg</file>
+    <file>icons/alibaba/phone 300.svg</file>
+    <file>icons/alibaba/phone-fill 296.svg</file>
+    <file>icons/alibaba/pic 13.svg</file>
+    <file>icons/alibaba/pic 142.svg</file>
+    <file>icons/alibaba/pic-fill 26.svg</file>
+    <file>icons/alibaba/pic-fill 306.svg</file>
+    <file>icons/alibaba/pin 143.svg</file>
+    <file>icons/alibaba/pin-fill 301.svg</file>
+    <file>icons/alibaba/play 15.svg</file>
+    <file>icons/alibaba/play 144.svg</file>
+    <file>icons/alibaba/play-fill 27.svg</file>
+    <file>icons/alibaba/play-fill 298.svg</file>
+    <file>icons/alibaba/png-fill 373.svg</file>
+    <file>icons/alibaba/pointerleft 457.svg</file>
+    <file>icons/alibaba/print 146.svg</file>
+    <file>icons/alibaba/process 149.svg</file>
+    <file>icons/alibaba/product 147.svg</file>
+    <file>icons/alibaba/product 308.svg</file>
+    <file>icons/alibaba/product-fill 302.svg</file>
+    <file>icons/alibaba/prompt 150.svg</file>
+    <file>icons/alibaba/prompt-fill 28.svg</file>
+    <file>icons/alibaba/prompt-fill 309.svg</file>
+    <file>icons/alibaba/QRcode 17.svg</file>
+    <file>icons/alibaba/QRcode 151.svg</file>
+    <file>icons/alibaba/quick 366.svg</file>
+    <file>icons/alibaba/ranking list 307.svg</file>
+    <file>icons/alibaba/ranking list-fill 303.svg</file>
+    <file>icons/alibaba/raw 171.svg</file>
+    <file>icons/alibaba/reduce 153.svg</file>
+    <file>icons/alibaba/reducecell 455.svg</file>
+    <file>icons/alibaba/reduce-fill 304.svg</file>
+    <file>icons/alibaba/reeor 152.svg</file>
+    <file>icons/alibaba/reeor-fill 305.svg</file>
+    <file>icons/alibaba/rejected-order 155.svg</file>
+    <file>icons/alibaba/rejected-order-fill 355.svg</file>
+    <file>icons/alibaba/remind 157.svg</file>
+    <file>icons/alibaba/remind-fill 311.svg</file>
+    <file>icons/alibaba/resonse rate 156.svg</file>
+    <file>icons/alibaba/resonse rate-fill 310.svg</file>
+    <file>icons/alibaba/response time 158.svg</file>
+    <file>icons/alibaba/return 159.svg</file>
+    <file>icons/alibaba/RFQ-logo 164.svg</file>
+    <file>icons/alibaba/RFQ-logo-fill 313.svg</file>
+    <file>icons/alibaba/RFQ-word 200.svg</file>
+    <file>icons/alibaba/RFQ-word-fill 314.svg</file>
+    <file>icons/alibaba/Right arrow 162.svg</file>
+    <file>icons/alibaba/Right button 176.svg</file>
+    <file>icons/alibaba/Right button-fill 312.svg</file>
+    <file>icons/alibaba/rightalignment 456.svg</file>
+    <file>icons/alibaba/rising 16.svg</file>
+    <file>icons/alibaba/rising 161.svg</file>
+    <file>icons/alibaba/rmb 18.svg</file>
+    <file>icons/alibaba/rmb 163.svg</file>
+    <file>icons/alibaba/robot 476.svg</file>
+    <file>icons/alibaba/sales center 168.svg</file>
+    <file>icons/alibaba/sales center-fill 316.svg</file>
+    <file>icons/alibaba/sami-select 383.svg</file>
+    <file>icons/alibaba/save 165.svg</file>
+    <file>icons/alibaba/save-fill 317.svg</file>
+    <file>icons/alibaba/scanning 166.svg</file>
+    <file>icons/alibaba/scenes 359.svg</file>
+    <file>icons/alibaba/scenes-fill 358.svg</file>
+    <file>icons/alibaba/search 391.svg</file>
+    <file>icons/alibaba/search cart 170.svg</file>
+    <file>icons/alibaba/search cart-fill 315.svg</file>
+    <file>icons/alibaba/security 167.svg</file>
+    <file>icons/alibaba/security-fill 318.svg</file>
+    <file>icons/alibaba/seleted 169.svg</file>
+    <file>icons/alibaba/send inquiry 21.svg</file>
+    <file>icons/alibaba/send inquiry-fill 376.svg</file>
+    <file>icons/alibaba/service 172.svg</file>
+    <file>icons/alibaba/service-fill 321.svg</file>
+    <file>icons/alibaba/set 210.svg</file>
+    <file>icons/alibaba/set 335.svg</file>
+    <file>icons/alibaba/share 173.svg</file>
+    <file>icons/alibaba/shoes 207.svg</file>
+    <file>icons/alibaba/shuffling-banner 175.svg</file>
+    <file>icons/alibaba/shuffling-banner-fill 322.svg</file>
+    <file>icons/alibaba/signboard 174.svg</file>
+    <file>icons/alibaba/signboard-fill 320.svg</file>
+    <file>icons/alibaba/similar-product 19.svg</file>
+    <file>icons/alibaba/similar-product-fill 360.svg</file>
+    <file>icons/alibaba/smile 193.svg</file>
+    <file>icons/alibaba/smile-fill 325.svg</file>
+    <file>icons/alibaba/sorting 177.svg</file>
+    <file>icons/alibaba/sound-filling 180.svg</file>
+    <file>icons/alibaba/sound-filling-fill 327.svg</file>
+    <file>icons/alibaba/sound-Mute 178.svg</file>
+    <file>icons/alibaba/sound-Mute 328.svg</file>
+    <file>icons/alibaba/sport 215.svg</file>
+    <file>icons/alibaba/square 459.svg</file>
+    <file>icons/alibaba/stop 182.svg</file>
+    <file>icons/alibaba/stop-fill 29.svg</file>
+    <file>icons/alibaba/store 211.svg</file>
+    <file>icons/alibaba/store-fill 324.svg</file>
+    <file>icons/alibaba/Subscribe 471.svg</file>
+    <file>icons/alibaba/subscript 458.svg</file>
+    <file>icons/alibaba/success 183.svg</file>
+    <file>icons/alibaba/success-fill 326.svg</file>
+    <file>icons/alibaba/suggest 181.svg</file>
+    <file>icons/alibaba/superscript 460.svg</file>
+    <file>icons/alibaba/supplier-features 184.svg</file>
+    <file>icons/alibaba/supplier-features-fill 323.svg</file>
+    <file>icons/alibaba/survey 186.svg</file>
+    <file>icons/alibaba/suspended 189.svg</file>
+    <file>icons/alibaba/suspended-fill 329.svg</file>
+    <file>icons/alibaba/switch 185.svg</file>
+    <file>icons/alibaba/tag-subscript 461.svg</file>
+    <file>icons/alibaba/task-management 190.svg</file>
+    <file>icons/alibaba/task-management-fill 331.svg</file>
+    <file>icons/alibaba/template 187.svg</file>
+    <file>icons/alibaba/template-fill 345.svg</file>
+    <file>icons/alibaba/text 188.svg</file>
+    <file>icons/alibaba/textile-products 194.svg</file>
+    <file>icons/alibaba/tif-fill 372.svg</file>
+    <file>icons/alibaba/tool 191.svg</file>
+    <file>icons/alibaba/tool-fill 330.svg</file>
+    <file>icons/alibaba/tool-hardware 212.svg</file>
+    <file>icons/alibaba/top 192.svg</file>
+    <file>icons/alibaba/top sales 196.svg</file>
+    <file>icons/alibaba/top-fill 336.svg</file>
+    <file>icons/alibaba/topraning 363.svg</file>
+    <file>icons/alibaba/topraning-fill 361.svg</file>
+    <file>icons/alibaba/toy 214.svg</file>
+    <file>icons/alibaba/trade alert 195.svg</file>
+    <file>icons/alibaba/trade-assurance 392.svg</file>
+    <file>icons/alibaba/trade-assurance-fill 342.svg</file>
+    <file>icons/alibaba/trading data 394.svg</file>
+    <file>icons/alibaba/trading volume 197.svg</file>
+    <file>icons/alibaba/training 198.svg</file>
+    <file>icons/alibaba/training 347.svg</file>
+    <file>icons/alibaba/Transfer money 463.svg</file>
+    <file>icons/alibaba/trust 204.svg</file>
+    <file>icons/alibaba/trust-fill 333.svg</file>
+    <file>icons/alibaba/txt 396.svg</file>
+    <file>icons/alibaba/under-line 464.svg</file>
+    <file>icons/alibaba/unlock 227.svg</file>
+    <file>icons/alibaba/unlock-fill 332.svg</file>
+    <file>icons/alibaba/upload 199.svg</file>
+    <file>icons/alibaba/user center 226.svg</file>
+    <file>icons/alibaba/user center 393.svg</file>
+    <file>icons/alibaba/vehivles 203.svg</file>
+    <file>icons/alibaba/video 208.svg</file>
+    <file>icons/alibaba/video 344.svg</file>
+    <file>icons/alibaba/view larger 201.svg</file>
+    <file>icons/alibaba/view larger 337.svg</file>
+    <file>icons/alibaba/viewgallery 202.svg</file>
+    <file>icons/alibaba/viewlist 209.svg</file>
+    <file>icons/alibaba/vip 228.svg</file>
+    <file>icons/alibaba/vip-fill 334.svg</file>
+    <file>icons/alibaba/voice 231.svg</file>
+    <file>icons/alibaba/voice-fill 338.svg</file>
+    <file>icons/alibaba/vs 213.svg</file>
+    <file>icons/alibaba/vs-fill 343.svg</file>
+    <file>icons/alibaba/wallet 229.svg</file>
+    <file>icons/alibaba/wallet 346.svg</file>
+    <file>icons/alibaba/warehouse 206.svg</file>
+    <file>icons/alibaba/warehouse-fill 340.svg</file>
+    <file>icons/alibaba/warning 205.svg</file>
+    <file>icons/alibaba/warning-fill 339.svg</file>
+    <file>icons/alibaba/writing 367.svg</file>
+    <file>icons/alibaba/xiakuangxian 465.svg</file>
+    <file>icons/alibaba/xlsx 397.svg</file>
+    <file>icons/alibaba/zip-fill 341.svg</file>
+    <file>icons/alibaba/办证服务 398.svg</file>
+    <file>icons/alibaba/仓库 399.svg</file>
+    <file>icons/alibaba/代办财税 400.svg</file>
+    <file>icons/alibaba/贷款 405.svg</file>
+    <file>icons/alibaba/单据转换 462.svg</file>
+    <file>icons/alibaba/动态 404.svg</file>
+    <file>icons/alibaba/分层配置 408.svg</file>
+    <file>icons/alibaba/购买偏好 470.svg</file>
+    <file>icons/alibaba/集装箱 401.svg</file>
+    <file>icons/alibaba/角标 402.svg</file>
+    <file>icons/alibaba/结汇 407.svg</file>
+    <file>icons/alibaba/客户盘点 403.svg</file>
+    <file>icons/alibaba/客户权益 412.svg</file>
+    <file>icons/alibaba/快递物流 419.svg</file>
+    <file>icons/alibaba/权益配置 414.svg</file>
+    <file>icons/alibaba/上传 411.svg</file>
+    <file>icons/alibaba/上传备案单证 410.svg</file>
+    <file>icons/alibaba/申请记录 409.svg</file>
+    <file>icons/alibaba/生意经 406.svg</file>
+    <file>icons/alibaba/收货icon 479.svg</file>
+    <file>icons/alibaba/收起 466.svg</file>
+    <file>icons/alibaba/双审 415.svg</file>
+    <file>icons/alibaba/缩小 413.svg</file>
+    <file>icons/alibaba/通关 416.svg</file>
+    <file>icons/alibaba/通关数据 418.svg</file>
+    <file>icons/alibaba/通讯录 468.svg</file>
+    <file>icons/alibaba/退税 417.svg</file>
+    <file>icons/alibaba/退税融资 431.svg</file>
+    <file>icons/alibaba/外汇数据 421.svg</file>
+    <file>icons/alibaba/物流产品 420.svg</file>
+    <file>icons/alibaba/物流订单 424.svg</file>
+    <file>icons/alibaba/新外综业务 423.svg</file>
+    <file>icons/alibaba/信息bar_手机 422.svg</file>
+    <file>icons/alibaba/信息bar_账户 426.svg</file>
+    <file>icons/alibaba/旋转90度 430.svg</file>
+    <file>icons/alibaba/一达通 427.svg</file>
+    <file>icons/alibaba/已关注供应商 469.svg</file>
+    <file>icons/alibaba/展开 467.svg</file>
+    <file>icons/alibaba/账户操作 429.svg</file>
+    <file>icons/alibaba/中间人 425.svg</file>
+    <file>icons/alibaba/专业权威 428.svg</file>
+    <file>icons/alibaba/资金 439.svg</file>
+    <file>icons/alibaba/自营业务 433.svg</file>
+  </qresource>
+</RCC>
