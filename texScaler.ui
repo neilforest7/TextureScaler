@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1075</width>
-    <height>501</height>
+    <width>1096</width>
+    <height>535</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -18,7 +18,6 @@
   </property>
   <property name="font">
    <font>
-    <family>Franklin Gothic Medium Cond</family>
     <pointsize>10</pointsize>
     <stylestrategy>PreferAntialias</stylestrategy>
    </font>
@@ -68,7 +67,6 @@
            <widget class="QFrame" name="frame_3">
             <property name="font">
              <font>
-              <family>Franklin Gothic Medium Cond</family>
               <pointsize>9</pointsize>
               <stylestrategy>PreferAntialias</stylestrategy>
              </font>
@@ -119,7 +117,6 @@
                </property>
                <property name="font">
                 <font>
-                 <family>Franklin Gothic Medium Cond</family>
                  <pointsize>10</pointsize>
                  <bold>true</bold>
                  <stylestrategy>PreferAntialias</stylestrategy>
@@ -222,7 +219,6 @@
                </property>
                <property name="font">
                 <font>
-                 <family>Franklin Gothic Medium Cond</family>
                  <pointsize>9</pointsize>
                  <stylestrategy>PreferAntialias</stylestrategy>
                  <kerning>true</kerning>
@@ -412,7 +408,6 @@
                         </property>
                         <property name="font">
                          <font>
-                          <family>Franklin Gothic Medium Cond</family>
                           <pointsize>9</pointsize>
                           <stylestrategy>PreferAntialias</stylestrategy>
                          </font>
@@ -563,7 +558,6 @@
                         </property>
                         <property name="font">
                          <font>
-                          <family>Franklin Gothic Medium Cond</family>
                           <pointsize>9</pointsize>
                           <stylestrategy>PreferAntialias</stylestrategy>
                          </font>
@@ -623,6 +617,38 @@
               <number>0</number>
              </property>
              <item>
+              <spacer name="horizontalSpacer_2">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>40</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+             <item>
+              <widget class="QProgressBar" name="progressBar">
+               <property name="minimumSize">
+                <size>
+                 <width>400</width>
+                 <height>0</height>
+                </size>
+               </property>
+               <property name="value">
+                <number>60</number>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignCenter</set>
+               </property>
+               <property name="textVisible">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item>
               <spacer name="horizontalSpacer">
                <property name="orientation">
                 <enum>Qt::Horizontal</enum>
@@ -674,7 +700,6 @@
                   </property>
                   <property name="font">
                    <font>
-                    <family>Franklin Gothic Medium Cond</family>
                     <pointsize>12</pointsize>
                     <stylestrategy>PreferAntialias</stylestrategy>
                    </font>

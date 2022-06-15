@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'texScalerDebAVN.ui'
+## Form generated from reading UI file 'texScalerxBBbGA.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.1.0
 ##
@@ -18,10 +18,9 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(1075, 501)
+        MainWindow.resize(1096, 535)
         MainWindow.setMinimumSize(QSize(1000, 0))
         font = QFont()
-        font.setFamilies([u"Franklin Gothic Medium Cond"])
         font.setPointSize(10)
         font.setStyleStrategy(QFont.PreferAntialias)
         MainWindow.setFont(font)
@@ -43,7 +42,6 @@ class Ui_MainWindow(object):
         self.frame_3 = QFrame(self.frame_2)
         self.frame_3.setObjectName(u"frame_3")
         font1 = QFont()
-        font1.setFamilies([u"Franklin Gothic Medium Cond"])
         font1.setPointSize(9)
         font1.setStyleStrategy(QFont.PreferAntialias)
         self.frame_3.setFont(font1)
@@ -66,7 +64,6 @@ class Ui_MainWindow(object):
         self.path_label.setMinimumSize(QSize(0, 25))
         self.path_label.setMaximumSize(QSize(16777215, 25))
         font2 = QFont()
-        font2.setFamilies([u"Franklin Gothic Medium Cond"])
         font2.setPointSize(10)
         font2.setBold(True)
         font2.setStyleStrategy(QFont.PreferAntialias)
@@ -138,7 +135,6 @@ class Ui_MainWindow(object):
         self.tableWidget.setMinimumSize(QSize(550, 0))
         self.tableWidget.setMaximumSize(QSize(1000, 16777215))
         font4 = QFont()
-        font4.setFamilies([u"Franklin Gothic Medium Cond"])
         font4.setPointSize(9)
         font4.setKerning(True)
         font4.setStyleStrategy(QFont.PreferAntialias)
@@ -333,6 +329,19 @@ class Ui_MainWindow(object):
         self.horizontalLayout_4 = QHBoxLayout(self.frame_5)
         self.horizontalLayout_4.setObjectName(u"horizontalLayout_4")
         self.horizontalLayout_4.setContentsMargins(0, 0, 0, 0)
+        self.horizontalSpacer_2 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout_4.addItem(self.horizontalSpacer_2)
+
+        self.progressBar = QProgressBar(self.frame_5)
+        self.progressBar.setObjectName(u"progressBar")
+        self.progressBar.setMinimumSize(QSize(400, 0))
+        self.progressBar.setValue(60)
+        self.progressBar.setAlignment(Qt.AlignCenter)
+        self.progressBar.setTextVisible(True)
+
+        self.horizontalLayout_4.addWidget(self.progressBar)
+
         self.horizontalSpacer = QSpacerItem(0, 0, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
         self.horizontalLayout_4.addItem(self.horizontalSpacer)
@@ -358,7 +367,6 @@ class Ui_MainWindow(object):
         self.execute_btn.setObjectName(u"execute_btn")
         self.execute_btn.setMinimumSize(QSize(220, 0))
         font5 = QFont()
-        font5.setFamilies([u"Franklin Gothic Medium Cond"])
         font5.setPointSize(12)
         font5.setStyleStrategy(QFont.PreferAntialias)
         self.execute_btn.setFont(font5)

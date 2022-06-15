@@ -71,6 +71,7 @@ class MyWindow(QMainWindow):
         self.ui.select_none_btn.clicked.connect(lambda: self.selectNone())
         self.ui.execute_btn.clicked.connect(lambda: self.excute())
         self.ui.restart_btn.clicked.connect(lambda: self.restart())
+        self.ui.progressBar.hide()
 
     def browsefile(self):
         f = self.openFileNamesDialog()
@@ -240,12 +241,12 @@ class MyWindow(QMainWindow):
                 for f in self.selected_row:
                     var = globals()[f'foo_{f}']
                     self.scale_image(var, 1)
-                    # self.ui.tableWidget.item(f, 1).setCheckState(PySide6.QtCore.Qt.Unchecked)
+                    # p = f.index()/len(self.selected_row)
+                    # self.progress()
             else:
                 for f in self.selected_row:
                     var = globals()[f'foo_{f}']
                     self.scale_image(var, 0)
-                    # self.ui.tableWidget.item(f, 1).setCheckState(PySide6.QtCore.Qt.Unchecked)
             msg = QMessageBox.question(self, "Success", "Scaled Texture Exported!!", QMessageBox.Open | QMessageBox.Ok)
             if msg == QMessageBox.Open:
                 from subprocess import Popen
@@ -310,6 +311,9 @@ class MyWindow(QMainWindow):
         if self.ui.tableWidget.rowCount() > 0:
             for row in range(self.ui.tableWidget.rowCount()):
                 self.ui.tableWidget.removeRow(self.ui.tableWidget.rowCount()-1)
+
+    # def progress(self):
+    #     pass
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
