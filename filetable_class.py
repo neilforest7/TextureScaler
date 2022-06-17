@@ -1,6 +1,6 @@
 class FileLine:
     def __init__(self, index, **kwargs):
-        print(f'{self}')
+        # print(f'{self}')
         self.filename = kwargs['filename']
         self.enable = kwargs['enable']
         self.x = kwargs['x']

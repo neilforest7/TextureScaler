@@ -1,6 +1,7 @@
 import os
 import shutil
 import sys
+import time
 
 import OpenImageIO as oiio
 import PySide6
@@ -71,7 +72,13 @@ class MyWindow(QMainWindow):
         self.ui.select_none_btn.clicked.connect(lambda: self.selectNone())
         self.ui.execute_btn.clicked.connect(lambda: self.excute())
         self.ui.restart_btn.clicked.connect(lambda: self.restart())
+        ######################################################################
+        # Progress Bar
+        ######################################################################
         self.ui.progressBar.hide()
+        # self.ui.progressBar.setValue(0)
+        # self.worker = WorkerThread()
+        # self.progressbar()
 
     def browsefile(self):
         f = self.openFileNamesDialog()
@@ -238,11 +245,11 @@ class MyWindow(QMainWindow):
         print('#####################executing#########################')
         if self.selected_row:
             if self.ui.rename_old_btn.isChecked():
-                for f in self.selected_row:
-                    var = globals()[f'foo_{f}']
+                for MyWindow.f in self.selected_row:
+                    var = globals()[f'foo_{MyWindow.f}']
                     self.scale_image(var, 1)
-                    # p = f.index()/len(self.selected_row)
-                    # self.progress()
+                    # SEND Variable to QThread Class
+                    # MyWindow.done = (MyWindow.f + 1) / len(self.selected_row)
             else:
                 for f in self.selected_row:
                     var = globals()[f'foo_{f}']
@@ -270,7 +277,7 @@ class MyWindow(QMainWindow):
             # source image is portrait
             target_height = int(w * var.line[5] / h)
         resized = oiio.ImageBuf(oiio.ImageSpec(var.line[5], target_height, spec.nchannels, spec.format))
-        oiio.ImageBufAlgo.resize(resized, buf)
+        oiio.ImageBufAlgo.resize(resized, buf)  # , nthreads=-2
         ############################ User Chose Rename #########################
         if arg == 1:
             path, name = os.path.split(var.line[0])
@@ -283,7 +290,6 @@ class MyWindow(QMainWindow):
             new_name = os.path.join(new_path, name + "_origSize" + extension)
             if not os.path.exists(new_name):
                 shutil.copy(var.line[0], new_name)
-                # print(var.line[0], "\nas\n", new_name)
             else:
                 os.renames(new_name, new_name + '_deprecated')
                 try:
@@ -293,7 +299,7 @@ class MyWindow(QMainWindow):
             resized.write(var.line[0])
         ############################ User Chose Overwritten #########################
         if arg == 0:
-            print(var.line[0],'\n',var.line[1],'\n',var.line[5])
+            print(var.line[0], '\n', var.line[1], '\n', var.line[5])
             resized.write(var.line[0])
         ########################## Try Catching Error from buf #######################
         if resized.geterror():
@@ -310,10 +316,25 @@ class MyWindow(QMainWindow):
         self.ui.rename_old_btn.setChecked(1)
         if self.ui.tableWidget.rowCount() > 0:
             for row in range(self.ui.tableWidget.rowCount()):
-                self.ui.tableWidget.removeRow(self.ui.tableWidget.rowCount()-1)
+                self.ui.tableWidget.removeRow(self.ui.tableWidget.rowCount() - 1)
 
-    # def progress(self):
-    #     pass
+    # def progressbar(self):
+    #     self.worker.start()
+    #     # self.ui.progressBar.show()
+    #     self.worker.percentage.connect(self.update_prg)
+    #
+    # def update_prg(self, val):
+    #     self.ui.progressBar.setValue(val)
+
+
+class WorkerThread(QtCore.QThread):
+    percentage = QtCore.pyqtSignal(int)
+
+    def run(self):
+        for x in range(1000):
+            time.sleep(1)
+            self.percentage.emit(self.MyWindow.done)
+
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
