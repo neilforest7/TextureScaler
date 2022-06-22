@@ -1,0 +1,1 @@
+"C:\Users\Lukee\AppData\Local\Programs\Python\Python39\Lib\site-packages\PySide6\rcc.exe" -binary "A:\Projects\Coding\TinyProjects\JupiterUtil\TextureScaler\icons.qrc" -o icons_rc.rcc

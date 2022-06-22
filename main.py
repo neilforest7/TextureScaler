@@ -11,7 +11,7 @@ from PySide6 import QtWidgets, QtCore
 from PySide6.QtGui import Qt
 from PySide6.QtWidgets import *
 
-from icons_rc import *
+import icons_rc
 from filetable_class import FileLine
 from ui_texScaler import Ui_MainWindow
 
