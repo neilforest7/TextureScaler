@@ -1,7 +1,7 @@
 import os
 import shutil
 import sys
-import time
+# import time
 
 import OpenImageIO as oiio
 import PySide6
@@ -326,14 +326,14 @@ class MyWindow(QMainWindow):
     # def update_prg(self, val):
     #     self.ui.progressBar.setValue(val)
 
-
-class WorkerThread(QtCore.QThread):
-    percentage = QtCore.pyqtSignal(int)
-
-    def run(self):
-        for x in range(1000):
-            time.sleep(1)
-            self.percentage.emit(self.MyWindow.done)
+#
+# class WorkerThread(QtCore.QThread):
+#     percentage = QtCore.pyqtSignal(int)
+#
+#     def run(self):
+#         for x in range(1000):
+#             time.sleep(1)
+#             self.percentage.emit(self.MyWindow.done)
 
 
 if __name__ == '__main__':

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1096</width>
-    <height>535</height>
+    <width>1031</width>
+    <height>534</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -29,6 +29,13 @@
    <string>NoFrame</string>
   </property>
   <widget class="QWidget" name="centralwidget">
+   <property name="font">
+    <font>
+     <family>Franklin Gothic Medium Cond</family>
+     <pointsize>10</pointsize>
+     <stylestrategy>PreferAntialias</stylestrategy>
+    </font>
+   </property>
    <layout class="QVBoxLayout" name="verticalLayout_4">
     <property name="spacing">
      <number>0</number>
@@ -47,9 +54,23 @@
     </property>
     <item>
      <widget class="QFrame" name="frame">
+      <property name="font">
+       <font>
+        <family>Franklin Gothic Medium Cond</family>
+        <pointsize>10</pointsize>
+        <stylestrategy>PreferAntialias</stylestrategy>
+       </font>
+      </property>
       <layout class="QHBoxLayout" name="horizontalLayout_7">
        <item>
         <widget class="QFrame" name="frame_2">
+         <property name="font">
+          <font>
+           <family>Franklin Gothic Medium Cond</family>
+           <pointsize>10</pointsize>
+           <stylestrategy>PreferAntialias</stylestrategy>
+          </font>
+         </property>
          <layout class="QVBoxLayout" name="verticalLayout">
           <property name="leftMargin">
            <number>9</number>
@@ -67,6 +88,7 @@
            <widget class="QFrame" name="frame_3">
             <property name="font">
              <font>
+              <family>Franklin Gothic Medium Cond</family>
               <pointsize>9</pointsize>
               <stylestrategy>PreferAntialias</stylestrategy>
              </font>
@@ -91,6 +113,13 @@
                  <width>50</width>
                  <height>0</height>
                 </size>
+               </property>
+               <property name="font">
+                <font>
+                 <family>Franklin Gothic Medium Cond</family>
+                 <pointsize>9</pointsize>
+                 <stylestrategy>PreferAntialias</stylestrategy>
+                </font>
                </property>
                <property name="text">
                 <string>Restart</string>
@@ -117,7 +146,9 @@
                </property>
                <property name="font">
                 <font>
+                 <family>Franklin Gothic Medium Cond</family>
                  <pointsize>10</pointsize>
+                 <weight>75</weight>
                  <bold>true</bold>
                  <stylestrategy>PreferAntialias</stylestrategy>
                 </font>
@@ -140,6 +171,13 @@
                  <width>84</width>
                  <height>0</height>
                 </size>
+               </property>
+               <property name="font">
+                <font>
+                 <family>Franklin Gothic Medium Cond</family>
+                 <pointsize>9</pointsize>
+                 <stylestrategy>PreferAntialias</stylestrategy>
+                </font>
                </property>
                <property name="text">
                 <string>Open Folder</string>
@@ -164,6 +202,13 @@
                  <height>0</height>
                 </size>
                </property>
+               <property name="font">
+                <font>
+                 <family>Franklin Gothic Medium Cond</family>
+                 <pointsize>9</pointsize>
+                 <stylestrategy>PreferAntialias</stylestrategy>
+                </font>
+               </property>
                <property name="text">
                 <string>Open Images</string>
                </property>
@@ -184,6 +229,9 @@
           </item>
           <item>
            <widget class="QFrame" name="frame_4">
+            <property name="styleSheet">
+             <string notr="true"/>
+            </property>
             <layout class="QHBoxLayout" name="horizontalLayout_3">
              <property name="leftMargin">
               <number>0</number>
@@ -219,6 +267,7 @@
                </property>
                <property name="font">
                 <font>
+                 <family>Franklin Gothic Medium Cond</family>
                  <pointsize>9</pointsize>
                  <stylestrategy>PreferAntialias</stylestrategy>
                  <kerning>true</kerning>
@@ -347,6 +396,13 @@
                 </property>
                 <item>
                  <widget class="QGroupBox" name="groupBox">
+                  <property name="font">
+                   <font>
+                    <family>Franklin Gothic Medium Cond</family>
+                    <pointsize>10</pointsize>
+                    <stylestrategy>PreferAntialias</stylestrategy>
+                   </font>
+                  </property>
                   <property name="title">
                    <string>Select</string>
                   </property>
@@ -362,6 +418,13 @@
                      <layout class="QHBoxLayout" name="horizontalLayout">
                       <item>
                        <widget class="QPushButton" name="select_all_btn">
+                        <property name="font">
+                         <font>
+                          <family>Franklin Gothic Medium Cond</family>
+                          <pointsize>10</pointsize>
+                          <stylestrategy>PreferAntialias</stylestrategy>
+                         </font>
+                        </property>
                         <property name="text">
                          <string>All</string>
                         </property>
@@ -369,6 +432,13 @@
                       </item>
                       <item>
                        <widget class="QPushButton" name="select_none_btn">
+                        <property name="font">
+                         <font>
+                          <family>Franklin Gothic Medium Cond</family>
+                          <pointsize>10</pointsize>
+                          <stylestrategy>PreferAntialias</stylestrategy>
+                         </font>
+                        </property>
                         <property name="text">
                          <string>None</string>
                         </property>
@@ -408,6 +478,7 @@
                         </property>
                         <property name="font">
                          <font>
+                          <family>Franklin Gothic Medium Cond</family>
                           <pointsize>9</pointsize>
                           <stylestrategy>PreferAntialias</stylestrategy>
                          </font>
@@ -431,6 +502,13 @@
                       </item>
                       <item>
                        <widget class="QPushButton" name="set_thres_btn">
+                        <property name="font">
+                         <font>
+                          <family>Franklin Gothic Medium Cond</family>
+                          <pointsize>10</pointsize>
+                          <stylestrategy>PreferAntialias</stylestrategy>
+                         </font>
+                        </property>
                         <property name="text">
                          <string>By Threshold</string>
                         </property>
@@ -457,6 +535,13 @@
                 </item>
                 <item>
                  <widget class="QGroupBox" name="set_res_group">
+                  <property name="font">
+                   <font>
+                    <family>Franklin Gothic Medium Cond</family>
+                    <pointsize>10</pointsize>
+                    <stylestrategy>PreferAntialias</stylestrategy>
+                   </font>
+                  </property>
                   <property name="title">
                    <string>Set Resolution</string>
                   </property>
@@ -465,6 +550,13 @@
                     <layout class="QGridLayout" name="gridLayout">
                      <item row="1" column="0">
                       <widget class="QPushButton" name="res_512_btn">
+                       <property name="font">
+                        <font>
+                         <family>Franklin Gothic Medium Cond</family>
+                         <pointsize>10</pointsize>
+                         <stylestrategy>PreferAntialias</stylestrategy>
+                        </font>
+                       </property>
                        <property name="text">
                         <string>512</string>
                        </property>
@@ -472,6 +564,13 @@
                      </item>
                      <item row="1" column="1">
                       <widget class="QPushButton" name="res_1024_btn">
+                       <property name="font">
+                        <font>
+                         <family>Franklin Gothic Medium Cond</family>
+                         <pointsize>10</pointsize>
+                         <stylestrategy>PreferAntialias</stylestrategy>
+                        </font>
+                       </property>
                        <property name="text">
                         <string>1024</string>
                        </property>
@@ -479,6 +578,13 @@
                      </item>
                      <item row="3" column="1">
                       <widget class="QPushButton" name="res_quater_btn">
+                       <property name="font">
+                        <font>
+                         <family>Franklin Gothic Medium Cond</family>
+                         <pointsize>10</pointsize>
+                         <stylestrategy>PreferAntialias</stylestrategy>
+                        </font>
+                       </property>
                        <property name="text">
                         <string>Quater</string>
                        </property>
@@ -486,6 +592,13 @@
                      </item>
                      <item row="2" column="0">
                       <widget class="QPushButton" name="res_2048_btn">
+                       <property name="font">
+                        <font>
+                         <family>Franklin Gothic Medium Cond</family>
+                         <pointsize>10</pointsize>
+                         <stylestrategy>PreferAntialias</stylestrategy>
+                        </font>
+                       </property>
                        <property name="text">
                         <string>2048</string>
                        </property>
@@ -493,6 +606,13 @@
                      </item>
                      <item row="2" column="1">
                       <widget class="QPushButton" name="res_4096_btn">
+                       <property name="font">
+                        <font>
+                         <family>Franklin Gothic Medium Cond</family>
+                         <pointsize>10</pointsize>
+                         <stylestrategy>PreferAntialias</stylestrategy>
+                        </font>
+                       </property>
                        <property name="text">
                         <string>4096</string>
                        </property>
@@ -500,6 +620,13 @@
                      </item>
                      <item row="3" column="0">
                       <widget class="QPushButton" name="res_half_btn">
+                       <property name="font">
+                        <font>
+                         <family>Franklin Gothic Medium Cond</family>
+                         <pointsize>10</pointsize>
+                         <stylestrategy>PreferAntialias</stylestrategy>
+                        </font>
+                       </property>
                        <property name="text">
                         <string>Half</string>
                        </property>
@@ -507,6 +634,13 @@
                      </item>
                      <item row="0" column="0">
                       <widget class="QPushButton" name="res_128_btn">
+                       <property name="font">
+                        <font>
+                         <family>Franklin Gothic Medium Cond</family>
+                         <pointsize>10</pointsize>
+                         <stylestrategy>PreferAntialias</stylestrategy>
+                        </font>
+                       </property>
                        <property name="text">
                         <string>128</string>
                        </property>
@@ -514,6 +648,13 @@
                      </item>
                      <item row="0" column="1">
                       <widget class="QPushButton" name="res_256_btn">
+                       <property name="font">
+                        <font>
+                         <family>Franklin Gothic Medium Cond</family>
+                         <pointsize>10</pointsize>
+                         <stylestrategy>PreferAntialias</stylestrategy>
+                        </font>
+                       </property>
                        <property name="text">
                         <string>256</string>
                        </property>
@@ -558,6 +699,7 @@
                         </property>
                         <property name="font">
                          <font>
+                          <family>Franklin Gothic Medium Cond</family>
                           <pointsize>9</pointsize>
                           <stylestrategy>PreferAntialias</stylestrategy>
                          </font>
@@ -578,6 +720,13 @@
                       </item>
                       <item>
                        <widget class="QPushButton" name="set_res_btn">
+                        <property name="font">
+                         <font>
+                          <family>Franklin Gothic Medium Cond</family>
+                          <pointsize>10</pointsize>
+                          <stylestrategy>PreferAntialias</stylestrategy>
+                         </font>
+                        </property>
                         <property name="text">
                          <string>Set Resolution</string>
                         </property>
@@ -597,6 +746,9 @@
           </item>
           <item>
            <widget class="QFrame" name="frame_5">
+            <property name="autoFillBackground">
+             <bool>true</bool>
+            </property>
             <property name="frameShape">
              <enum>QFrame::StyledPanel</enum>
             </property>
@@ -637,6 +789,13 @@
                  <height>0</height>
                 </size>
                </property>
+               <property name="font">
+                <font>
+                 <family>Franklin Gothic Medium Cond</family>
+                 <pointsize>10</pointsize>
+                 <stylestrategy>PreferAntialias</stylestrategy>
+                </font>
+               </property>
                <property name="value">
                 <number>60</number>
                </property>
@@ -675,6 +834,13 @@
                <layout class="QHBoxLayout" name="horizontalLayout_8">
                 <item>
                  <widget class="QRadioButton" name="overwrite_btn">
+                  <property name="font">
+                   <font>
+                    <family>Franklin Gothic Medium Cond</family>
+                    <pointsize>10</pointsize>
+                    <stylestrategy>PreferAntialias</stylestrategy>
+                   </font>
+                  </property>
                   <property name="text">
                    <string>Overwrite Existing Texture</string>
                   </property>
@@ -682,6 +848,13 @@
                 </item>
                 <item>
                  <widget class="QRadioButton" name="rename_old_btn">
+                  <property name="font">
+                   <font>
+                    <family>Franklin Gothic Medium Cond</family>
+                    <pointsize>10</pointsize>
+                    <stylestrategy>PreferAntialias</stylestrategy>
+                   </font>
+                  </property>
                   <property name="text">
                    <string>Rename Existing Texture</string>
                   </property>
@@ -700,6 +873,7 @@
                   </property>
                   <property name="font">
                    <font>
+                    <family>Franklin Gothic Medium Cond</family>
                     <pointsize>12</pointsize>
                     <stylestrategy>PreferAntialias</stylestrategy>
                    </font>
@@ -734,6 +908,30 @@
    </layout>
   </widget>
  </widget>
+ <tabstops>
+  <tabstop>open_path_btn</tabstop>
+  <tabstop>open_file_btn</tabstop>
+  <tabstop>select_all_btn</tabstop>
+  <tabstop>select_none_btn</tabstop>
+  <tabstop>size_thres_entry</tabstop>
+  <tabstop>set_thres_btn</tabstop>
+  <tabstop>size_res_entry</tabstop>
+  <tabstop>set_res_btn</tabstop>
+  <tabstop>overwrite_btn</tabstop>
+  <tabstop>rename_old_btn</tabstop>
+  <tabstop>execute_btn</tabstop>
+  <tabstop>res_128_btn</tabstop>
+  <tabstop>res_256_btn</tabstop>
+  <tabstop>res_512_btn</tabstop>
+  <tabstop>res_1024_btn</tabstop>
+  <tabstop>res_2048_btn</tabstop>
+  <tabstop>res_4096_btn</tabstop>
+  <tabstop>res_half_btn</tabstop>
+  <tabstop>res_quater_btn</tabstop>
+  <tabstop>path_label</tabstop>
+  <tabstop>restart_btn</tabstop>
+  <tabstop>tableWidget</tabstop>
+ </tabstops>
  <resources>
   <include location="icons.qrc"/>
  </resources>
