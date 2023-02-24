@@ -1,7 +1,6 @@
 import os
 import shutil
 import sys
-# import time
 
 import OpenImageIO as oiio
 import PySide6
@@ -245,11 +244,11 @@ class MyWindow(QMainWindow):
         print('#####################executing#########################')
         if self.selected_row:
             if self.ui.rename_old_btn.isChecked():
-                for MyWindow.f in self.selected_row:
-                    var = globals()[f'foo_{MyWindow.f}']
+                for f in self.selected_row:
+                    var = globals()[f'foo_{f}']
                     self.scale_image(var, 1)
-                    # SEND Variable to QThread Class
-                    # MyWindow.done = (MyWindow.f + 1) / len(self.selected_row)
+                    # p = f.index()/len(self.selected_row)
+                    # self.progress()
             else:
                 for f in self.selected_row:
                     var = globals()[f'foo_{f}']
