@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'texScalerxBBbGA.ui'
+## Form generated from reading UI file 'texScalerifkrIX.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.1.0
 ##
@@ -12,13 +12,13 @@ from PySide6.QtCore import *
 from PySide6.QtGui import *
 from PySide6.QtWidgets import *
 
-import icons_rc
+import icons_new_rc
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(1096, 535)
+        MainWindow.resize(1031, 534)
         MainWindow.setMinimumSize(QSize(1000, 0))
         font = QFont()
         font.setPointSize(10)
@@ -26,16 +26,19 @@ class Ui_MainWindow(object):
         MainWindow.setFont(font)
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
+        self.centralwidget.setFont(font)
         self.verticalLayout_4 = QVBoxLayout(self.centralwidget)
         self.verticalLayout_4.setSpacing(0)
         self.verticalLayout_4.setObjectName(u"verticalLayout_4")
         self.verticalLayout_4.setContentsMargins(0, 0, 0, 0)
         self.frame = QFrame(self.centralwidget)
         self.frame.setObjectName(u"frame")
+        self.frame.setFont(font)
         self.horizontalLayout_7 = QHBoxLayout(self.frame)
         self.horizontalLayout_7.setObjectName(u"horizontalLayout_7")
         self.frame_2 = QFrame(self.frame)
         self.frame_2.setObjectName(u"frame_2")
+        self.frame_2.setFont(font)
         self.verticalLayout = QVBoxLayout(self.frame_2)
         self.verticalLayout.setObjectName(u"verticalLayout")
         self.verticalLayout.setContentsMargins(9, 0, 9, 9)
@@ -53,9 +56,11 @@ class Ui_MainWindow(object):
         self.restart_btn = QPushButton(self.frame_3)
         self.restart_btn.setObjectName(u"restart_btn")
         self.restart_btn.setMinimumSize(QSize(50, 0))
+        self.restart_btn.setFont(font)
         icon = QIcon()
-        icon.addFile(u":/icon_ant/icons/ant-svg/reload 30.svg", QSize(), QIcon.Normal, QIcon.Off)
+        icon.addFile(u":/icons/icons/reload 30.svg", QSize(), QIcon.Normal, QIcon.Off)
         self.restart_btn.setIcon(icon)
+        self.restart_btn.setIconSize(QSize(10, 12))
 
         self.horizontalLayout_2.addWidget(self.restart_btn)
 
@@ -64,8 +69,8 @@ class Ui_MainWindow(object):
         self.path_label.setMinimumSize(QSize(0, 25))
         self.path_label.setMaximumSize(QSize(16777215, 25))
         font2 = QFont()
-        font2.setPointSize(10)
-        font2.setBold(True)
+        font2.setPointSize(9)
+        font2.setBold(False)
         font2.setStyleStrategy(QFont.PreferAntialias)
         self.path_label.setFont(font2)
         self.path_label.setDragEnabled(True)
@@ -76,20 +81,22 @@ class Ui_MainWindow(object):
         self.open_path_btn = QPushButton(self.frame_3)
         self.open_path_btn.setObjectName(u"open_path_btn")
         self.open_path_btn.setMinimumSize(QSize(84, 0))
+        self.open_path_btn.setFont(font)
         icon1 = QIcon()
-        icon1.addFile(u":/icon_ant/icons/ant-svg/folder-open-fill 363.svg", QSize(), QIcon.Normal, QIcon.Off)
+        icon1.addFile(u":/icons/icons/folder-open-fill 363.svg", QSize(), QIcon.Normal, QIcon.Off)
         self.open_path_btn.setIcon(icon1)
-        self.open_path_btn.setIconSize(QSize(60, 20))
+        self.open_path_btn.setIconSize(QSize(60, 12))
 
         self.horizontalLayout_2.addWidget(self.open_path_btn)
 
         self.open_file_btn = QPushButton(self.frame_3)
         self.open_file_btn.setObjectName(u"open_file_btn")
         self.open_file_btn.setMinimumSize(QSize(84, 0))
+        self.open_file_btn.setFont(font)
         icon2 = QIcon()
-        icon2.addFile(u":/icon_ant/icons/ant-svg/file-copy-fill 357.svg", QSize(), QIcon.Normal, QIcon.Off)
+        icon2.addFile(u":/icons/icons/file-copy-fill 357.svg", QSize(), QIcon.Normal, QIcon.Off)
         self.open_file_btn.setIcon(icon2)
-        self.open_file_btn.setIconSize(QSize(60, 20))
+        self.open_file_btn.setIconSize(QSize(60, 12))
 
         self.horizontalLayout_2.addWidget(self.open_file_btn)
 
@@ -98,33 +105,36 @@ class Ui_MainWindow(object):
 
         self.frame_4 = QFrame(self.frame_2)
         self.frame_4.setObjectName(u"frame_4")
+        self.frame_4.setFont(font1)
+        self.frame_4.setStyleSheet(u"")
         self.horizontalLayout_3 = QHBoxLayout(self.frame_4)
         self.horizontalLayout_3.setObjectName(u"horizontalLayout_3")
         self.horizontalLayout_3.setContentsMargins(0, 0, 0, 0)
         self.tableWidget = QTableWidget(self.frame_4)
         if (self.tableWidget.columnCount() < 5):
             self.tableWidget.setColumnCount(5)
-        font3 = QFont()
         __qtablewidgetitem = QTableWidgetItem()
         __qtablewidgetitem.setTextAlignment(Qt.AlignCenter);
-        __qtablewidgetitem.setFont(font3);
+        __qtablewidgetitem.setFont(font1);
         self.tableWidget.setHorizontalHeaderItem(0, __qtablewidgetitem)
+        font3 = QFont()
+        font3.setPointSize(7)
+        font3.setStyleStrategy(QFont.PreferAntialias)
         __qtablewidgetitem1 = QTableWidgetItem()
         __qtablewidgetitem1.setTextAlignment(Qt.AlignCenter);
         __qtablewidgetitem1.setFont(font3);
         self.tableWidget.setHorizontalHeaderItem(1, __qtablewidgetitem1)
         __qtablewidgetitem2 = QTableWidgetItem()
         __qtablewidgetitem2.setTextAlignment(Qt.AlignCenter);
-        __qtablewidgetitem2.setFont(font3);
-        __qtablewidgetitem2.setBackground(QColor(116, 151, 156, 120));
+        __qtablewidgetitem2.setFont(font1);
         self.tableWidget.setHorizontalHeaderItem(2, __qtablewidgetitem2)
         __qtablewidgetitem3 = QTableWidgetItem()
         __qtablewidgetitem3.setTextAlignment(Qt.AlignCenter);
-        __qtablewidgetitem3.setFont(font3);
+        __qtablewidgetitem3.setFont(font1);
         self.tableWidget.setHorizontalHeaderItem(3, __qtablewidgetitem3)
         __qtablewidgetitem4 = QTableWidgetItem()
         __qtablewidgetitem4.setTextAlignment(Qt.AlignCenter);
-        __qtablewidgetitem4.setFont(font3);
+        __qtablewidgetitem4.setFont(font1);
         self.tableWidget.setHorizontalHeaderItem(4, __qtablewidgetitem4)
         self.tableWidget.setObjectName(u"tableWidget")
         sizePolicy = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
@@ -135,8 +145,8 @@ class Ui_MainWindow(object):
         self.tableWidget.setMinimumSize(QSize(550, 0))
         self.tableWidget.setMaximumSize(QSize(1000, 16777215))
         font4 = QFont()
+        font4.setFamilies([u"Franklin Gothic Medium Cond"])
         font4.setPointSize(9)
-        font4.setKerning(True)
         font4.setStyleStrategy(QFont.PreferAntialias)
         self.tableWidget.setFont(font4)
         self.tableWidget.setStyleSheet(u"selection-background-color: rgb(204, 232, 255);")
@@ -169,6 +179,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_2.setContentsMargins(-1, -1, 0, -1)
         self.groupBox = QGroupBox(self.frame_6)
         self.groupBox.setObjectName(u"groupBox")
+        self.groupBox.setFont(font1)
         self.verticalLayout_5 = QVBoxLayout(self.groupBox)
         self.verticalLayout_5.setObjectName(u"verticalLayout_5")
         self.frame_9 = QFrame(self.groupBox)
@@ -179,11 +190,13 @@ class Ui_MainWindow(object):
         self.horizontalLayout.setObjectName(u"horizontalLayout")
         self.select_all_btn = QPushButton(self.frame_9)
         self.select_all_btn.setObjectName(u"select_all_btn")
+        self.select_all_btn.setFont(font)
 
         self.horizontalLayout.addWidget(self.select_all_btn)
 
         self.select_none_btn = QPushButton(self.frame_9)
         self.select_none_btn.setObjectName(u"select_none_btn")
+        self.select_none_btn.setFont(font)
 
         self.horizontalLayout.addWidget(self.select_none_btn)
 
@@ -217,6 +230,7 @@ class Ui_MainWindow(object):
 
         self.set_thres_btn = QPushButton(self.frame_7)
         self.set_thres_btn.setObjectName(u"set_thres_btn")
+        self.set_thres_btn.setFont(font)
 
         self.horizontalLayout_5.addWidget(self.set_thres_btn)
 
@@ -232,47 +246,56 @@ class Ui_MainWindow(object):
 
         self.set_res_group = QGroupBox(self.frame_6)
         self.set_res_group.setObjectName(u"set_res_group")
+        self.set_res_group.setFont(font1)
         self.verticalLayout_3 = QVBoxLayout(self.set_res_group)
         self.verticalLayout_3.setObjectName(u"verticalLayout_3")
         self.gridLayout = QGridLayout()
         self.gridLayout.setObjectName(u"gridLayout")
         self.res_512_btn = QPushButton(self.set_res_group)
         self.res_512_btn.setObjectName(u"res_512_btn")
+        self.res_512_btn.setFont(font1)
 
         self.gridLayout.addWidget(self.res_512_btn, 1, 0, 1, 1)
 
         self.res_1024_btn = QPushButton(self.set_res_group)
         self.res_1024_btn.setObjectName(u"res_1024_btn")
+        self.res_1024_btn.setFont(font1)
 
         self.gridLayout.addWidget(self.res_1024_btn, 1, 1, 1, 1)
 
         self.res_quater_btn = QPushButton(self.set_res_group)
         self.res_quater_btn.setObjectName(u"res_quater_btn")
+        self.res_quater_btn.setFont(font1)
 
         self.gridLayout.addWidget(self.res_quater_btn, 3, 1, 1, 1)
 
         self.res_2048_btn = QPushButton(self.set_res_group)
         self.res_2048_btn.setObjectName(u"res_2048_btn")
+        self.res_2048_btn.setFont(font1)
 
         self.gridLayout.addWidget(self.res_2048_btn, 2, 0, 1, 1)
 
         self.res_4096_btn = QPushButton(self.set_res_group)
         self.res_4096_btn.setObjectName(u"res_4096_btn")
+        self.res_4096_btn.setFont(font1)
 
         self.gridLayout.addWidget(self.res_4096_btn, 2, 1, 1, 1)
 
         self.res_half_btn = QPushButton(self.set_res_group)
         self.res_half_btn.setObjectName(u"res_half_btn")
+        self.res_half_btn.setFont(font1)
 
         self.gridLayout.addWidget(self.res_half_btn, 3, 0, 1, 1)
 
         self.res_128_btn = QPushButton(self.set_res_group)
         self.res_128_btn.setObjectName(u"res_128_btn")
+        self.res_128_btn.setFont(font1)
 
         self.gridLayout.addWidget(self.res_128_btn, 0, 0, 1, 1)
 
         self.res_256_btn = QPushButton(self.set_res_group)
         self.res_256_btn.setObjectName(u"res_256_btn")
+        self.res_256_btn.setFont(font1)
 
         self.gridLayout.addWidget(self.res_256_btn, 0, 1, 1, 1)
 
@@ -286,6 +309,7 @@ class Ui_MainWindow(object):
         sizePolicy4.setVerticalStretch(0)
         sizePolicy4.setHeightForWidth(self.frame_8.sizePolicy().hasHeightForWidth())
         self.frame_8.setSizePolicy(sizePolicy4)
+        self.frame_8.setFont(font1)
         self.horizontalLayout_6 = QHBoxLayout(self.frame_8)
         self.horizontalLayout_6.setObjectName(u"horizontalLayout_6")
         self.horizontalLayout_6.setContentsMargins(0, -1, 0, -1)
@@ -307,6 +331,7 @@ class Ui_MainWindow(object):
 
         self.set_res_btn = QPushButton(self.frame_8)
         self.set_res_btn.setObjectName(u"set_res_btn")
+        self.set_res_btn.setFont(font)
 
         self.horizontalLayout_6.addWidget(self.set_res_btn)
 
@@ -324,18 +349,16 @@ class Ui_MainWindow(object):
 
         self.frame_5 = QFrame(self.frame_2)
         self.frame_5.setObjectName(u"frame_5")
+        self.frame_5.setAutoFillBackground(True)
         self.frame_5.setFrameShape(QFrame.StyledPanel)
         self.frame_5.setFrameShadow(QFrame.Sunken)
         self.horizontalLayout_4 = QHBoxLayout(self.frame_5)
         self.horizontalLayout_4.setObjectName(u"horizontalLayout_4")
         self.horizontalLayout_4.setContentsMargins(0, 0, 0, 0)
-        self.horizontalSpacer_2 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
-
-        self.horizontalLayout_4.addItem(self.horizontalSpacer_2)
-
         self.progressBar = QProgressBar(self.frame_5)
         self.progressBar.setObjectName(u"progressBar")
         self.progressBar.setMinimumSize(QSize(400, 0))
+        self.progressBar.setFont(font)
         self.progressBar.setValue(60)
         self.progressBar.setAlignment(Qt.AlignCenter)
         self.progressBar.setTextVisible(True)
@@ -354,14 +377,20 @@ class Ui_MainWindow(object):
         self.horizontalLayout_8.setObjectName(u"horizontalLayout_8")
         self.overwrite_btn = QRadioButton(self.frame_10)
         self.overwrite_btn.setObjectName(u"overwrite_btn")
+        self.overwrite_btn.setFont(font)
 
         self.horizontalLayout_8.addWidget(self.overwrite_btn)
 
         self.rename_old_btn = QRadioButton(self.frame_10)
         self.rename_old_btn.setObjectName(u"rename_old_btn")
+        self.rename_old_btn.setFont(font)
         self.rename_old_btn.setChecked(True)
 
         self.horizontalLayout_8.addWidget(self.rename_old_btn)
+
+        self.horizontalSpacer_2 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout_8.addItem(self.horizontalSpacer_2)
 
         self.execute_btn = QPushButton(self.frame_10)
         self.execute_btn.setObjectName(u"execute_btn")
@@ -371,9 +400,9 @@ class Ui_MainWindow(object):
         font5.setStyleStrategy(QFont.PreferAntialias)
         self.execute_btn.setFont(font5)
         icon3 = QIcon()
-        icon3.addFile(u":/icon_ant/icons/ant-svg/shrink 213.svg", QSize(), QIcon.Normal, QIcon.Off)
+        icon3.addFile(u":/icons/icons/shrink 213.svg", QSize(), QIcon.Normal, QIcon.Off)
         self.execute_btn.setIcon(icon3)
-        self.execute_btn.setIconSize(QSize(60, 20))
+        self.execute_btn.setIconSize(QSize(60, 16))
 
         self.horizontalLayout_8.addWidget(self.execute_btn)
 
@@ -390,6 +419,27 @@ class Ui_MainWindow(object):
         self.verticalLayout_4.addWidget(self.frame)
 
         MainWindow.setCentralWidget(self.centralwidget)
+        QWidget.setTabOrder(self.open_path_btn, self.open_file_btn)
+        QWidget.setTabOrder(self.open_file_btn, self.select_all_btn)
+        QWidget.setTabOrder(self.select_all_btn, self.select_none_btn)
+        QWidget.setTabOrder(self.select_none_btn, self.size_thres_entry)
+        QWidget.setTabOrder(self.size_thres_entry, self.set_thres_btn)
+        QWidget.setTabOrder(self.set_thres_btn, self.size_res_entry)
+        QWidget.setTabOrder(self.size_res_entry, self.set_res_btn)
+        QWidget.setTabOrder(self.set_res_btn, self.overwrite_btn)
+        QWidget.setTabOrder(self.overwrite_btn, self.rename_old_btn)
+        QWidget.setTabOrder(self.rename_old_btn, self.execute_btn)
+        QWidget.setTabOrder(self.execute_btn, self.res_128_btn)
+        QWidget.setTabOrder(self.res_128_btn, self.res_256_btn)
+        QWidget.setTabOrder(self.res_256_btn, self.res_512_btn)
+        QWidget.setTabOrder(self.res_512_btn, self.res_1024_btn)
+        QWidget.setTabOrder(self.res_1024_btn, self.res_2048_btn)
+        QWidget.setTabOrder(self.res_2048_btn, self.res_4096_btn)
+        QWidget.setTabOrder(self.res_4096_btn, self.res_half_btn)
+        QWidget.setTabOrder(self.res_half_btn, self.res_quater_btn)
+        QWidget.setTabOrder(self.res_quater_btn, self.path_label)
+        QWidget.setTabOrder(self.path_label, self.restart_btn)
+        QWidget.setTabOrder(self.restart_btn, self.tableWidget)
 
         self.retranslateUi(MainWindow)
 

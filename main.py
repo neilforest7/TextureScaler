@@ -10,7 +10,6 @@ from PySide6 import QtWidgets, QtCore
 from PySide6.QtGui import Qt
 from PySide6.QtWidgets import *
 
-import icons_rc
 from filetable_class import FileLine
 from ui_texScaler import Ui_MainWindow
 
@@ -24,6 +23,9 @@ def resource_path(relative_path):
         base_path = os.path.abspath(".")
 
     return os.path.join(base_path, relative_path)
+
+CURRENT_PATH = os.path.dirname(__file__)
+style_path = os.path.join(CURRENT_PATH, 'style', 'font.css')
 
 
 def no_selection():
@@ -40,6 +42,11 @@ class MyWindow(QMainWindow):
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
         self.show()
+
+        # load and set stylesheet
+        with open(style_path, "r") as fh:
+            self.setStyleSheet(fh.read())
+            print(f"{fh}")
 
         self.files = list()
         self.selected_row = list()
@@ -324,6 +331,7 @@ class MyWindow(QMainWindow):
     #
     # def update_prg(self, val):
     #     self.ui.progressBar.setValue(val)
+
 
 #
 # class WorkerThread(QtCore.QThread):
