@@ -24,6 +24,7 @@ def resource_path(relative_path):
 
     return os.path.join(base_path, relative_path)
 
+
 CURRENT_PATH = os.path.dirname(__file__)
 style_path = os.path.join(CURRENT_PATH, 'style', 'font.css')
 
@@ -248,6 +249,7 @@ class MyWindow(QMainWindow):
         self.addTableCheckbox()
 
     def excute(self):
+        # TODO: add multiprocessing to Execute
         print('#####################executing#########################')
         if self.selected_row:
             if self.ui.rename_old_btn.isChecked():
@@ -285,6 +287,7 @@ class MyWindow(QMainWindow):
         resized = oiio.ImageBuf(oiio.ImageSpec(var.line[5], target_height, spec.nchannels, spec.format))
         oiio.ImageBufAlgo.resize(resized, buf)  # , nthreads=-2
         ############################ User Chose Rename #########################
+        # TODO: improve "rename old image" method from "add suffix to file" to "add suffix to backup folder"
         if arg == 1:
             path, name = os.path.split(var.line[0])
             name, extension = os.path.splitext(name)
