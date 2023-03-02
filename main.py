@@ -1,6 +1,7 @@
 import os
 import shutil
 import sys
+import time
 
 import OpenImageIO as oiio
 import PySide6
@@ -13,9 +14,14 @@ from PySide6.QtWidgets import *
 from filetable_class import FileLine
 from ui_texScaler import Ui_MainWindow
 
+from multiprocessing import Pool
+
+
+# from multiprocessing.dummy import Pool as ThreadPool
+
 
 def resource_path(relative_path):
-    """ Get absolute path to resource, works for dev and for PyInstaller """
+    # Get absolute path to resource, works for dev and for PyInstaller
     try:
         # PyInstaller creates a temp folder and stores path in _MEIPASS
         base_path = sys._MEIPASS
@@ -37,7 +43,6 @@ def no_selection():
     # load and set stylesheet
     with open(style_path, "r") as fh:
         msg.setStyleSheet(fh.read())
-        print(f"{fh}")
     msg.exec()
 
 
@@ -51,7 +56,6 @@ class MyWindow(QMainWindow):
         # load and set stylesheet
         with open(style_path, "r") as fh:
             self.setStyleSheet(fh.read())
-            print(f"{fh}")
 
         self.files = list()
         self.selected_row = list()
@@ -128,15 +132,13 @@ class MyWindow(QMainWindow):
             currentState = item.checkState()
             if currentState != lastState:
                 if currentState == PySide6.QtCore.Qt.Checked:
-                    print("checked")
                     if row not in self.selected_row:
                         self.selected_row.append(row)
-                        print(self.selected_row)
+                        # print(self.selected_row)
                 else:
-                    print("unchecked")
                     try:
                         self.selected_row.remove(row)
-                        print(self.selected_row)
+                        # print(self.selected_row)
                     except ValueError:
                         pass
                 item.setData(self.LastStateRole, currentState)
@@ -162,7 +164,7 @@ class MyWindow(QMainWindow):
                     self.selected_row.append(f)
                     self.ui.tableWidget.item(f, 1).setCheckState(PySide6.QtCore.Qt.Checked)
                     self.ui.tableWidget.selectRow(f)
-            print(self.selected_row)  # store row number as self.selected_row
+            # print(self.selected_row)  # store row number as self.selected_row
         else:
             msg = QMessageBox()
             msg.setIcon(QMessageBox.Question)
@@ -172,7 +174,6 @@ class MyWindow(QMainWindow):
             # load and set stylesheet
             with open(style_path, "r") as fh:
                 msg.setStyleSheet(fh.read())
-                print(f"{fh}")
             self.ui.size_thres_entry.setFocus()
 
     def setResolution(self, res):
@@ -194,7 +195,6 @@ class MyWindow(QMainWindow):
             # load and set stylesheet
             with open(style_path, "r") as fh:
                 msg.setStyleSheet(fh.read())
-                print(f"{fh}")
             self.ui.size_res_entry.setFocus()
 
     def halfResolution(self, *arg):
@@ -213,7 +213,7 @@ class MyWindow(QMainWindow):
                                                 "Images (*.exr *.png *.jpg *.jpeg *.hdr *.tif *.tga);;All Files (*)",
                                                 options=options)
         if files:
-            print(files)
+            # print(files)
             return files
 
     def saveFileDialog(self):
@@ -264,21 +264,21 @@ class MyWindow(QMainWindow):
         # TODO: add multiprocessing to Execute
         print('#####################executing#########################')
         if self.selected_row:
-            if self.ui.rename_old_btn.isChecked():
+            start_t = time.perf_counter()
+            rename_btn = self.ui.rename_old_btn.isChecked()
+            with Pool(processes=12) as pool:
                 for f in self.selected_row:
                     var = globals()[f'foo_{f}']
-                    self.scale_image(var, 1)
-                    # p = f.index()/len(self.selected_row)
-                    # self.progress()
-            else:
-                for f in self.selected_row:
-                    var = globals()[f'foo_{f}']
-                    self.scale_image(var, 0)
+                    pool.imap(self.scale_image(var, rename_btn), f, chunksize=5)
+                    # print(var, "===", rename_btn)
+            end_t = time.perf_counter()
+            total_duration = end_t - start_t
+            print("total_duration :::", total_duration)
+
             msg = QMessageBox.question(self, "Success", "Scaled Texture Exported!!", QMessageBox.Open | QMessageBox.Ok)
             # load and set stylesheet
-            with open(style_path, "r") as fh:
-                msg.setStyleSheet(fh.read())
-                print(f"{fh}")
+            # with open(style_path, "r") as fh:
+            #     msg.setStyleSheet(fh.read())
             if msg == QMessageBox.Open:
                 from subprocess import Popen
                 f = os.path.realpath(globals()[f'foo_{0}'].line[0])
@@ -311,7 +311,8 @@ class MyWindow(QMainWindow):
             try:
                 os.mkdir(new_path)
             except FileExistsError:
-                print("Directory ", new_path, " already exists")
+                # print("Directory ", new_path, " already exists")
+                pass
             new_name = os.path.join(new_path, name + "_origSize" + extension)
             if not os.path.exists(new_name):
                 shutil.copy(var.line[0], new_name)
@@ -324,7 +325,7 @@ class MyWindow(QMainWindow):
             resized.write(var.line[0])
         ############################ User Chose Overwritten #########################
         if arg == 0:
-            print(var.line[0], '\n', var.line[1], '\n', var.line[5])
+            # print(var.line[0], '\n', var.line[1], '\n', var.line[5])
             resized.write(var.line[0])
         ########################## Try Catching Error from buf #######################
         if resized.geterror():
