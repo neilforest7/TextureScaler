@@ -34,6 +34,10 @@ def no_selection():
     msg.setIcon(QMessageBox.Question)
     msg.setText('No Texture Selected\n' + 'Please use checkbox to select textures')
     msg.setWindowTitle("No Selection")
+    # load and set stylesheet
+    with open(style_path, "r") as fh:
+        msg.setStyleSheet(fh.read())
+        print(f"{fh}")
     msg.exec()
 
 
@@ -165,6 +169,10 @@ class MyWindow(QMainWindow):
             msg.setText('Size Threshold Not Set')
             msg.setWindowTitle("Size Threshold")
             msg.exec()
+            # load and set stylesheet
+            with open(style_path, "r") as fh:
+                msg.setStyleSheet(fh.read())
+                print(f"{fh}")
             self.ui.size_thres_entry.setFocus()
 
     def setResolution(self, res):
@@ -183,6 +191,10 @@ class MyWindow(QMainWindow):
             msg.setText('Target Size Not Set')
             msg.setWindowTitle("Target Size")
             msg.exec()
+            # load and set stylesheet
+            with open(style_path, "r") as fh:
+                msg.setStyleSheet(fh.read())
+                print(f"{fh}")
             self.ui.size_res_entry.setFocus()
 
     def halfResolution(self, *arg):
@@ -263,6 +275,10 @@ class MyWindow(QMainWindow):
                     var = globals()[f'foo_{f}']
                     self.scale_image(var, 0)
             msg = QMessageBox.question(self, "Success", "Scaled Texture Exported!!", QMessageBox.Open | QMessageBox.Ok)
+            # load and set stylesheet
+            with open(style_path, "r") as fh:
+                msg.setStyleSheet(fh.read())
+                print(f"{fh}")
             if msg == QMessageBox.Open:
                 from subprocess import Popen
                 f = os.path.realpath(globals()[f'foo_{0}'].line[0])
