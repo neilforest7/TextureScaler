@@ -6,21 +6,17 @@ import time
 import traceback
 
 import OpenImageIO as oiio
-import PySide6
+# import PySide6
 import qdarktheme
 from OpenImageIO import ImageInput
+
 from PySide6 import QtWidgets, QtCore
 from PySide6.QtGui import Qt
 from PySide6.QtWidgets import *
+from PySide6.QtCore import QThreadPool, QRunnable, QObject, Slot, Signal
 
 from filetable_class import FileLine
 from ui_texScaler import Ui_MainWindow
-
-# from multiprocessing import Pool
-from PySide6.QtCore import QThreadPool, QRunnable, QObject, Slot, Signal
-
-# from multiprocessing.dummy import Pool as ThreadPool
-# import asyncio
 
 CURRENT_PATH = os.path.dirname(__file__)
 style_path = os.path.join(CURRENT_PATH, 'style', 'font.css')
@@ -170,8 +166,8 @@ class MyWindow(QMainWindow):
     def addTableCheckbox(self):
         for row in range(self.ui.tableWidget.rowCount()):
             item = QtWidgets.QTableWidgetItem()
-            item.setFlags(PySide6.QtCore.Qt.ItemIsUserCheckable | PySide6.QtCore.Qt.ItemIsEnabled)
-            item.setCheckState(PySide6.QtCore.Qt.Unchecked)
+            item.setFlags(QtCore.Qt.ItemIsUserCheckable | QtCore.Qt.ItemIsEnabled)
+            item.setCheckState(QtCore.Qt.Unchecked)
             item.setData(self.LastStateRole, item.checkState())
             self.ui.tableWidget.setItem(row, 1, item)
 
@@ -181,7 +177,7 @@ class MyWindow(QMainWindow):
             lastState = item.data(self.LastStateRole)
             currentState = item.checkState()
             if currentState != lastState:
-                if currentState == PySide6.QtCore.Qt.Checked:
+                if currentState == QtCore.Qt.Checked:
                     if row not in self.selected_row:
                         self.selected_row.append(row)
                         # print(self.selected_row)
@@ -197,22 +193,22 @@ class MyWindow(QMainWindow):
         self.selected_row = []
         for row in range(self.ui.tableWidget.rowCount()):
             self.selected_row.append(row)
-            self.ui.tableWidget.item(row, 1).setCheckState(PySide6.QtCore.Qt.Checked)
+            self.ui.tableWidget.item(row, 1).setCheckState(QtCore.Qt.Checked)
 
     def selectNone(self):
         self.selected_row = []
         for row in range(self.ui.tableWidget.rowCount()):
-            self.ui.tableWidget.item(row, 1).setCheckState(PySide6.QtCore.Qt.Unchecked)
+            self.ui.tableWidget.item(row, 1).setCheckState(QtCore.Qt.Unchecked)
 
     def setThreshold(self, size):
         if size:
             self.selected_row = []
             for f in range(self.ui.tableWidget.rowCount()):
-                self.ui.tableWidget.item(f, 1).setCheckState(PySide6.QtCore.Qt.Unchecked)
+                self.ui.tableWidget.item(f, 1).setCheckState(QtCore.Qt.Unchecked)
                 var = globals()[f'foo_{f}']
                 if var.line[2] > int(size):
                     self.selected_row.append(f)
-                    self.ui.tableWidget.item(f, 1).setCheckState(PySide6.QtCore.Qt.Checked)
+                    self.ui.tableWidget.item(f, 1).setCheckState(QtCore.Qt.Checked)
                     self.ui.tableWidget.selectRow(f)
             # print(self.selected_row)  # store row number as self.selected_row
         else:
@@ -307,7 +303,8 @@ class MyWindow(QMainWindow):
         self.ui.tableWidget.item(r, 3).setTextAlignment(Qt.AlignCenter)
         self.ui.tableWidget.item(r, 4).setTextAlignment(Qt.AlignCenter)
         self.addTableCheckbox()
-    #TODO: add selection count label to the top of table
+
+    # TODO: add selection count label to the top of table
     @staticmethod
     def no_selection():
         msg = QMessageBox()
@@ -330,15 +327,15 @@ class MyWindow(QMainWindow):
         worker = Worker(self.excute)
         worker.signals.progress.connect(self.progressbar)
         worker.signals.result.connect(lambda: print("This is Result"))
-        worker.signals.finished.connect(lambda: print("Finished signal Received"))
+        worker.signals.finished.connect(lambda: self.finish())
         self.threadpool.start(worker)
 
     def excute(self, progress_callback):
-        # Todo: threading for progressbar to progress
         # Todo: add compare between orig_size and target size, if same skip resizing
         pgrs = 0
         print('#####################executing#########################')
         if self.selected_row:
+            self.lockui(1)
             total_pgrs = len(self.selected_row)
             start_t = time.perf_counter()
             rename_btn = self.ui.rename_old_btn.isChecked()
@@ -346,16 +343,12 @@ class MyWindow(QMainWindow):
                 var = globals()[f'foo_{f}']
                 self.scale_image(var, rename_btn)
                 pgrs += 1
-                current_pgrs = math.ceil(pgrs/total_pgrs*100)
-                print(f"prgr = {pgrs}, total_pgrs = {total_pgrs}, current = {current_pgrs}")
-                progress_callback.emit(pgrs)
+                progress_callback.emit(round(pgrs / total_pgrs * 100))
             end_t = time.perf_counter()
             total_duration = end_t - start_t
             print("total_duration :::", total_duration)
             print("iteration finished")
-            self.selected_row = []
-            self.init_info(self.files)
-            # self.ui.progressBar.reset()
+            self.lockui(0)
         else:
             self.no_selection()
 
@@ -412,6 +405,10 @@ class MyWindow(QMainWindow):
             from subprocess import Popen
             f = os.path.realpath(globals()[f'foo_{0}'].line[0])
             Popen(f'explorer /select,{f}')
+        self.selected_row.clear()
+        self.init_info(self.files)
+        self.ui.progressBar.reset()
+        self.ui.progressBar.hide()
 
     def restart(self):
         self.selected_row.clear()
@@ -422,6 +419,19 @@ class MyWindow(QMainWindow):
             for row in range(self.ui.tableWidget.rowCount()):
                 self.ui.tableWidget.removeRow(self.ui.tableWidget.rowCount() - 1)
 
+    def lockui(self, state):
+        #Todo: Add progress bar resizing to executing state
+        self.ui.execute_btn.setDisabled(state)
+        self.ui.frame_3.setDisabled(state)
+        self.ui.frame_4.setDisabled(state)
+        self.ui.rename_old_btn.setDisabled(state)
+        self.ui.overwrite_btn.setDisabled(state)
+        # if state:
+        #     self.ui.rename_old_btn.hide()
+        #     self.ui.overwrite_btn.hide()
+        # else:
+        #     self.ui.rename_old_btn.show()
+        #     self.ui.overwrite_btn.show()
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
