@@ -1,7 +1,9 @@
+import math
 import os
 import shutil
 import sys
 import time
+import traceback
 
 import OpenImageIO as oiio
 import PySide6
@@ -14,10 +16,14 @@ from PySide6.QtWidgets import *
 from filetable_class import FileLine
 from ui_texScaler import Ui_MainWindow
 
-from multiprocessing import Pool
-
+# from multiprocessing import Pool
+from PySide6.QtCore import QThreadPool, QRunnable, QObject, Slot, Signal
 
 # from multiprocessing.dummy import Pool as ThreadPool
+# import asyncio
+
+CURRENT_PATH = os.path.dirname(__file__)
+style_path = os.path.join(CURRENT_PATH, 'style', 'font.css')
 
 
 def resource_path(relative_path):
@@ -31,19 +37,65 @@ def resource_path(relative_path):
     return os.path.join(base_path, relative_path)
 
 
-CURRENT_PATH = os.path.dirname(__file__)
-style_path = os.path.join(CURRENT_PATH, 'style', 'font.css')
+class WorkerSignals(QObject):
+    '''
+    Defines the signals available from a running worker thread.
+
+    Supported signals are:
+
+    finished
+        No data
+    error
+        tuple (exctype, value, traceback.format_exc() )
+
+    result
+        object data returned from processing, anything
+
+    progress
+        int indicating % progress
+
+    '''
+    finished = Signal()
+    error = Signal(tuple)
+    result = Signal(object)
+    progress = Signal(float)
 
 
-def no_selection():
-    msg = QMessageBox()
-    msg.setIcon(QMessageBox.Question)
-    msg.setText('No Texture Selected\n' + 'Please use checkbox to select textures')
-    msg.setWindowTitle("No Selection")
-    # load and set stylesheet
-    with open(style_path, "r") as fh:
-        msg.setStyleSheet(fh.read())
-    msg.exec()
+class Worker(QRunnable):
+    '''
+    Worker thread
+    Inherits from QRunnable to handler worker thread setup, signals and wrap-up.
+    '''
+
+    def __init__(self, fn, *args, **kwargs):
+        super(Worker, self).__init__()
+
+        # Store constructor arguments (re-used for processing)
+        self.fn = fn
+        self.args = args
+        self.kwargs = kwargs
+        self.signals = WorkerSignals()
+
+        # Add the callback to our kwargs
+        self.kwargs['progress_callback'] = self.signals.progress
+
+    @Slot()
+    def run(self):
+        '''
+        Initialise the runner function with passed args, kwargs.
+        '''
+
+        # Retrieve args/kwargs here; and fire processing using them
+        try:
+            result = self.fn(*self.args, **self.kwargs)
+        except:
+            traceback.print_exc()
+            exctype, value = sys.exc_info()[:2]
+            self.signals.error.emit((exctype, value, traceback.format_exc()))
+        else:
+            self.signals.result.emit(result)  # Return the result of the processing
+        finally:
+            self.signals.finished.emit()  # Done
 
 
 class MyWindow(QMainWindow):
@@ -56,6 +108,9 @@ class MyWindow(QMainWindow):
         # load and set stylesheet
         with open(style_path, "r") as fh:
             self.setStyleSheet(fh.read())
+
+        self.threadpool = QThreadPool()
+        print("Multithreading with maximum %d threads" % self.threadpool.maxThreadCount())
 
         self.files = list()
         self.selected_row = list()
@@ -85,15 +140,10 @@ class MyWindow(QMainWindow):
         self.ui.res_quater_btn.clicked.connect(lambda: self.halfResolution(int(2)))
         self.ui.select_all_btn.clicked.connect(lambda: self.selectAll())
         self.ui.select_none_btn.clicked.connect(lambda: self.selectNone())
-        self.ui.execute_btn.clicked.connect(lambda: self.excute())
+        self.ui.execute_btn.clicked.connect(lambda: self.worker_to_execute())
         self.ui.restart_btn.clicked.connect(lambda: self.restart())
-        ######################################################################
-        # Progress Bar
-        ######################################################################
-        self.ui.progressBar.hide()
-        # self.ui.progressBar.setValue(0)
-        # self.worker = WorkerThread()
-        # self.progressbar()
+        self.progressbar(0)
+        # self.ui.progressBar.hide()
 
     def browsefile(self):
         f = self.openFileNamesDialog()
@@ -185,7 +235,7 @@ class MyWindow(QMainWindow):
                     # print(var.line[5])
                     self.ui.tableWidget.setItem(f, 3, QTableWidgetItem(str(var.line[5])))
             else:
-                no_selection()
+                self.no_selection()
         else:
             msg = QMessageBox()
             msg.setIcon(QMessageBox.Question)
@@ -204,7 +254,7 @@ class MyWindow(QMainWindow):
                 var.line[5] = int(var.line[2] * 0.5 ** arg[0])
                 self.ui.tableWidget.setItem(f, 3, QTableWidgetItem(str(var.line[5])))
         else:
-            no_selection()
+            self.no_selection()
 
     def openFileNamesDialog(self):
         options = QFileDialog.Options()
@@ -236,8 +286,6 @@ class MyWindow(QMainWindow):
 
     def init_info(self, files):
         self.selected_row.clear()
-        # globals().clear()
-        # self.ui.tableWidget.clearContents()
         run = -1
         for f in files:
             img = ImageInput.open(f)
@@ -259,34 +307,57 @@ class MyWindow(QMainWindow):
         self.ui.tableWidget.item(r, 3).setTextAlignment(Qt.AlignCenter)
         self.ui.tableWidget.item(r, 4).setTextAlignment(Qt.AlignCenter)
         self.addTableCheckbox()
+    #TODO: add selection count label to the top of table
+    @staticmethod
+    def no_selection():
+        msg = QMessageBox()
+        msg.setIcon(QMessageBox.Question)
+        msg.setText('No Texture Selected\n' + 'Please use checkbox to select textures')
+        msg.setWindowTitle("No Selection")
+        # load and set stylesheet
+        with open(style_path, "r") as fh:
+            msg.setStyleSheet(fh.read())
+        msg.exec()
 
-    def excute(self):
-        # TODO: add multiprocessing to Execute
+    def progressbar(self, pgrs):
+        # Progress Bar
+        self.ui.progressBar.show()
+        # self.ui.progressBar.setRange(0,1000)
+        self.ui.progressBar.setTextVisible(1)
+        self.ui.progressBar.setValue(pgrs)
+
+    def worker_to_execute(self):
+        worker = Worker(self.excute)
+        worker.signals.progress.connect(self.progressbar)
+        worker.signals.result.connect(lambda: print("This is Result"))
+        worker.signals.finished.connect(lambda: print("Finished signal Received"))
+        self.threadpool.start(worker)
+
+    def excute(self, progress_callback):
+        # Todo: threading for progressbar to progress
+        # Todo: add compare between orig_size and target size, if same skip resizing
+        pgrs = 0
         print('#####################executing#########################')
         if self.selected_row:
+            total_pgrs = len(self.selected_row)
             start_t = time.perf_counter()
             rename_btn = self.ui.rename_old_btn.isChecked()
-            with Pool(processes=12) as pool:
-                for f in self.selected_row:
-                    var = globals()[f'foo_{f}']
-                    pool.imap(self.scale_image(var, rename_btn), f, chunksize=5)
-                    # print(var, "===", rename_btn)
+            for f in self.selected_row:
+                var = globals()[f'foo_{f}']
+                self.scale_image(var, rename_btn)
+                pgrs += 1
+                current_pgrs = math.ceil(pgrs/total_pgrs*100)
+                print(f"prgr = {pgrs}, total_pgrs = {total_pgrs}, current = {current_pgrs}")
+                progress_callback.emit(pgrs)
             end_t = time.perf_counter()
             total_duration = end_t - start_t
             print("total_duration :::", total_duration)
-
-            msg = QMessageBox.question(self, "Success", "Scaled Texture Exported!!", QMessageBox.Open | QMessageBox.Ok)
-            # load and set stylesheet
-            # with open(style_path, "r") as fh:
-            #     msg.setStyleSheet(fh.read())
-            if msg == QMessageBox.Open:
-                from subprocess import Popen
-                f = os.path.realpath(globals()[f'foo_{0}'].line[0])
-                Popen(f'explorer /select,{f}')
+            print("iteration finished")
             self.selected_row = []
             self.init_info(self.files)
+            # self.ui.progressBar.reset()
         else:
-            no_selection()
+            self.no_selection()
 
     def scale_image(self, var, arg):
         buf = oiio.ImageBuf(var.line[0])
@@ -335,6 +406,13 @@ class MyWindow(QMainWindow):
         buf.reset()
         resized.reset()
 
+    def finish(self):
+        msg = QMessageBox.question(self, "Success", "Scaled Texture Exported!!", QMessageBox.Open | QMessageBox.Ok)
+        if msg == QMessageBox.Open:
+            from subprocess import Popen
+            f = os.path.realpath(globals()[f'foo_{0}'].line[0])
+            Popen(f'explorer /select,{f}')
+
     def restart(self):
         self.selected_row.clear()
         self.files.clear()
@@ -344,30 +422,13 @@ class MyWindow(QMainWindow):
             for row in range(self.ui.tableWidget.rowCount()):
                 self.ui.tableWidget.removeRow(self.ui.tableWidget.rowCount() - 1)
 
-    # def progressbar(self):
-    #     self.worker.start()
-    #     # self.ui.progressBar.show()
-    #     self.worker.percentage.connect(self.update_prg)
-    #
-    # def update_prg(self, val):
-    #     self.ui.progressBar.setValue(val)
-
-
-#
-# class WorkerThread(QtCore.QThread):
-#     percentage = QtCore.pyqtSignal(int)
-#
-#     def run(self):
-#         for x in range(1000):
-#             time.sleep(1)
-#             self.percentage.emit(self.MyWindow.done)
-
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
     app.setStyle('Fusion')
     app.setStyleSheet(qdarktheme.load_stylesheet('light'))
     window = MyWindow()
+
     window.show()
 
     sys.exit(app.exec())
