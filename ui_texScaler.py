@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'texScalerflFupN.ui'
+## Form generated from reading UI file 'texScalerNJeiJI.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.1.0
 ##
@@ -382,6 +382,10 @@ class Ui_MainWindow(object):
         self.horizontalLayout_4 = QHBoxLayout(self.frame_5)
         self.horizontalLayout_4.setObjectName(u"horizontalLayout_4")
         self.horizontalLayout_4.setContentsMargins(0, 0, 0, 0)
+        self.horizontalSpacer = QSpacerItem(10, 0, QSizePolicy.Maximum, QSizePolicy.Minimum)
+
+        self.horizontalLayout_4.addItem(self.horizontalSpacer)
+
         self.progressBar = QProgressBar(self.frame_5)
         self.progressBar.setObjectName(u"progressBar")
         self.progressBar.setMinimumSize(QSize(400, 0))
@@ -391,10 +395,6 @@ class Ui_MainWindow(object):
         self.progressBar.setTextVisible(True)
 
         self.horizontalLayout_4.addWidget(self.progressBar)
-
-        self.horizontalSpacer = QSpacerItem(0, 0, QSizePolicy.Expanding, QSizePolicy.Minimum)
-
-        self.horizontalLayout_4.addItem(self.horizontalSpacer)
 
         self.frame_10 = QFrame(self.frame_5)
         self.frame_10.setObjectName(u"frame_10")

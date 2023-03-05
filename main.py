@@ -163,15 +163,15 @@ class MyWindow(QMainWindow):
         if folderName:
             print(folderName)
             f = folderName
-        if f:
-            for root, dirs, files in os.walk(f, topdown=False):
-                for name in files:
-                    # print(os.path.join(root, name))
-                    self.files.append(os.path.join(root, name))
-            self.files = [fi for fi in self.files if fi.endswith(('.exr', '.png', '.jpg', '.hdr', '.tif', '.tga'))]
-        if self.files:
-            self.ui.path_label.setText(str(f) + f"     ::::     {len(self.files)} Images")
-            self.init_info(self.files)
+            if f:
+                for root, dirs, files in os.walk(f, topdown=False):
+                    for name in files:
+                        # print(os.path.join(root, name))
+                        self.files.append(os.path.join(root, name))
+                self.files = [fi for fi in self.files if fi.endswith(('.exr', '.png', '.jpg', '.hdr', '.tif', '.tga'))]
+            if self.files:
+                self.ui.path_label.setText(str(f) + f"     ::::     {len(self.files)} Images")
+                self.init_info(self.files)
 
     def init_info(self, files):
         self.selected_row.clear()
@@ -381,7 +381,7 @@ class MyWindow(QMainWindow):
                 target_height = int(h * var.line[5] / w)
             resized = oiio.ImageBuf(oiio.ImageSpec(var.line[5], target_height, spec.nchannels, spec.format))
             oiio.ImageBufAlgo.resize(resized, buf)  # , nthreads=-2
-            ############################ User Chose Rename #########################
+            # User Chose Rename
             if arg == 1:
                 path, name = os.path.split(var.line[0])
                 name, extension = os.path.splitext(name)
@@ -400,11 +400,10 @@ class MyWindow(QMainWindow):
                 except:
                     print("Error occurred while copying file.")
                 resized.write(var.line[0])
-            ############################ User Chose Overwritten #########################
+            # User Chose Overwritten
             if arg == 0:
-                # print(var.line[0], '\n', var.line[1], '\n', var.line[5])
                 resized.write(var.line[0])
-            ########################## Try Catching Error from buf #######################
+            # Try Catching Error from buf
             if resized.geterror():
                 print("oiio error:", resized.geterror())
             else:
@@ -446,14 +445,14 @@ class MyWindow(QMainWindow):
         self.ui.frame_4.setDisabled(state)
         self.ui.rename_old_btn.setDisabled(state)
         self.ui.overwrite_btn.setDisabled(state)
-        # if state:
-        #     self.ui.rename_old_btn.hide()
-        #     self.ui.overwrite_btn.hide()
-        #     self.ui.progressBar.adjustSize()
-        # else:
-        #     self.ui.rename_old_btn.show()
-        #     self.ui.overwrite_btn.show()
-        #     self.ui.progressBar.adjustSize()
+        if state:
+            self.ui.rename_old_btn.hide()
+            self.ui.overwrite_btn.hide()
+        else:
+            self.ui.rename_old_btn.show()
+            self.ui.overwrite_btn.show()
+        self.ui.frame_10.adjustSize()
+        self.ui.progressBar.adjustSize()
 
 
 if __name__ == '__main__':
