@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'texScalerifkrIX.ui'
+## Form generated from reading UI file 'texScalerflFupN.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.1.0
 ##
@@ -105,6 +105,11 @@ class Ui_MainWindow(object):
 
         self.frame_4 = QFrame(self.frame_2)
         self.frame_4.setObjectName(u"frame_4")
+        sizePolicy = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.frame_4.sizePolicy().hasHeightForWidth())
+        self.frame_4.setSizePolicy(sizePolicy)
         self.frame_4.setFont(font1)
         self.frame_4.setStyleSheet(u"")
         self.horizontalLayout_3 = QHBoxLayout(self.frame_4)
@@ -137,18 +142,14 @@ class Ui_MainWindow(object):
         __qtablewidgetitem4.setFont(font1);
         self.tableWidget.setHorizontalHeaderItem(4, __qtablewidgetitem4)
         self.tableWidget.setObjectName(u"tableWidget")
-        sizePolicy = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.tableWidget.sizePolicy().hasHeightForWidth())
-        self.tableWidget.setSizePolicy(sizePolicy)
+        sizePolicy1 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Expanding)
+        sizePolicy1.setHorizontalStretch(0)
+        sizePolicy1.setVerticalStretch(0)
+        sizePolicy1.setHeightForWidth(self.tableWidget.sizePolicy().hasHeightForWidth())
+        self.tableWidget.setSizePolicy(sizePolicy1)
         self.tableWidget.setMinimumSize(QSize(550, 0))
-        self.tableWidget.setMaximumSize(QSize(1000, 16777215))
-        font4 = QFont()
-        font4.setFamilies([u"Franklin Gothic Medium Cond"])
-        font4.setPointSize(9)
-        font4.setStyleStrategy(QFont.PreferAntialias)
-        self.tableWidget.setFont(font4)
+        self.tableWidget.setMaximumSize(QSize(50000, 16777215))
+        self.tableWidget.setFont(font1)
         self.tableWidget.setStyleSheet(u"selection-background-color: rgb(204, 232, 255);")
         self.tableWidget.setEditTriggers(QAbstractItemView.NoEditTriggers)
         self.tableWidget.setProperty("showDropIndicator", False)
@@ -169,11 +170,11 @@ class Ui_MainWindow(object):
 
         self.frame_6 = QFrame(self.frame_4)
         self.frame_6.setObjectName(u"frame_6")
-        sizePolicy1 = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Preferred)
-        sizePolicy1.setHorizontalStretch(0)
-        sizePolicy1.setVerticalStretch(0)
-        sizePolicy1.setHeightForWidth(self.frame_6.sizePolicy().hasHeightForWidth())
-        self.frame_6.setSizePolicy(sizePolicy1)
+        sizePolicy2 = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Preferred)
+        sizePolicy2.setHorizontalStretch(0)
+        sizePolicy2.setVerticalStretch(0)
+        sizePolicy2.setHeightForWidth(self.frame_6.sizePolicy().hasHeightForWidth())
+        self.frame_6.setSizePolicy(sizePolicy2)
         self.verticalLayout_2 = QVBoxLayout(self.frame_6)
         self.verticalLayout_2.setObjectName(u"verticalLayout_2")
         self.verticalLayout_2.setContentsMargins(-1, -1, 0, -1)
@@ -205,20 +206,20 @@ class Ui_MainWindow(object):
 
         self.frame_7 = QFrame(self.groupBox)
         self.frame_7.setObjectName(u"frame_7")
-        sizePolicy2 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
-        sizePolicy2.setHorizontalStretch(0)
-        sizePolicy2.setVerticalStretch(0)
-        sizePolicy2.setHeightForWidth(self.frame_7.sizePolicy().hasHeightForWidth())
-        self.frame_7.setSizePolicy(sizePolicy2)
+        sizePolicy3 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
+        sizePolicy3.setHorizontalStretch(0)
+        sizePolicy3.setVerticalStretch(0)
+        sizePolicy3.setHeightForWidth(self.frame_7.sizePolicy().hasHeightForWidth())
+        self.frame_7.setSizePolicy(sizePolicy3)
         self.horizontalLayout_5 = QHBoxLayout(self.frame_7)
         self.horizontalLayout_5.setObjectName(u"horizontalLayout_5")
         self.size_thres_entry = QLineEdit(self.frame_7)
         self.size_thres_entry.setObjectName(u"size_thres_entry")
-        sizePolicy3 = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Fixed)
-        sizePolicy3.setHorizontalStretch(0)
-        sizePolicy3.setVerticalStretch(0)
-        sizePolicy3.setHeightForWidth(self.size_thres_entry.sizePolicy().hasHeightForWidth())
-        self.size_thres_entry.setSizePolicy(sizePolicy3)
+        sizePolicy4 = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Fixed)
+        sizePolicy4.setHorizontalStretch(0)
+        sizePolicy4.setVerticalStretch(0)
+        sizePolicy4.setHeightForWidth(self.size_thres_entry.sizePolicy().hasHeightForWidth())
+        self.size_thres_entry.setSizePolicy(sizePolicy4)
         self.size_thres_entry.setMinimumSize(QSize(40, 0))
         self.size_thres_entry.setMaximumSize(QSize(50, 16777215))
         self.size_thres_entry.setFont(font1)
@@ -236,6 +237,31 @@ class Ui_MainWindow(object):
 
 
         self.verticalLayout_5.addWidget(self.frame_7)
+
+        self.frame_11 = QFrame(self.groupBox)
+        self.frame_11.setObjectName(u"frame_11")
+        font4 = QFont()
+        font4.setFamilies([u"Franklin Gothic Demi Cond"])
+        font4.setPointSize(9)
+        font4.setStyleStrategy(QFont.PreferAntialias)
+        self.frame_11.setFont(font4)
+        self.frame_11.setFrameShape(QFrame.NoFrame)
+        self.frame_11.setFrameShadow(QFrame.Plain)
+        self.verticalLayout_7 = QVBoxLayout(self.frame_11)
+        self.verticalLayout_7.setObjectName(u"verticalLayout_7")
+        self.verticalLayout_7.setContentsMargins(-1, 0, -1, 0)
+        self.selected_label = QLabel(self.frame_11)
+        self.selected_label.setObjectName(u"selected_label")
+
+        self.verticalLayout_7.addWidget(self.selected_label)
+
+        self.res_set_label = QLabel(self.frame_11)
+        self.res_set_label.setObjectName(u"res_set_label")
+
+        self.verticalLayout_7.addWidget(self.res_set_label)
+
+
+        self.verticalLayout_5.addWidget(self.frame_11)
 
 
         self.verticalLayout_2.addWidget(self.groupBox)
@@ -304,22 +330,23 @@ class Ui_MainWindow(object):
 
         self.frame_8 = QFrame(self.set_res_group)
         self.frame_8.setObjectName(u"frame_8")
-        sizePolicy4 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Maximum)
-        sizePolicy4.setHorizontalStretch(0)
-        sizePolicy4.setVerticalStretch(0)
-        sizePolicy4.setHeightForWidth(self.frame_8.sizePolicy().hasHeightForWidth())
-        self.frame_8.setSizePolicy(sizePolicy4)
+        sizePolicy5 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Maximum)
+        sizePolicy5.setHorizontalStretch(0)
+        sizePolicy5.setVerticalStretch(0)
+        sizePolicy5.setHeightForWidth(self.frame_8.sizePolicy().hasHeightForWidth())
+        self.frame_8.setSizePolicy(sizePolicy5)
         self.frame_8.setFont(font1)
+        self.frame_8.setLineWidth(0)
         self.horizontalLayout_6 = QHBoxLayout(self.frame_8)
         self.horizontalLayout_6.setObjectName(u"horizontalLayout_6")
         self.horizontalLayout_6.setContentsMargins(0, -1, 0, -1)
         self.size_res_entry = QLineEdit(self.frame_8)
         self.size_res_entry.setObjectName(u"size_res_entry")
-        sizePolicy5 = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
-        sizePolicy5.setHorizontalStretch(0)
-        sizePolicy5.setVerticalStretch(0)
-        sizePolicy5.setHeightForWidth(self.size_res_entry.sizePolicy().hasHeightForWidth())
-        self.size_res_entry.setSizePolicy(sizePolicy5)
+        sizePolicy6 = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
+        sizePolicy6.setHorizontalStretch(0)
+        sizePolicy6.setVerticalStretch(0)
+        sizePolicy6.setHeightForWidth(self.size_res_entry.sizePolicy().hasHeightForWidth())
+        self.size_res_entry.setSizePolicy(sizePolicy6)
         self.size_res_entry.setMinimumSize(QSize(40, 0))
         self.size_res_entry.setMaximumSize(QSize(50, 16777215))
         self.size_res_entry.setFont(font1)
@@ -388,7 +415,7 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_8.addWidget(self.rename_old_btn)
 
-        self.horizontalSpacer_2 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+        self.horizontalSpacer_2 = QSpacerItem(40, 0, QSizePolicy.Preferred, QSizePolicy.Minimum)
 
         self.horizontalLayout_8.addItem(self.horizontalSpacer_2)
 
@@ -469,6 +496,8 @@ class Ui_MainWindow(object):
         self.size_thres_entry.setText("")
         self.size_thres_entry.setPlaceholderText(QCoreApplication.translate("MainWindow", u"2048", None))
         self.set_thres_btn.setText(QCoreApplication.translate("MainWindow", u"By Threshold", None))
+        self.selected_label.setText(QCoreApplication.translate("MainWindow", u"TextLabel", None))
+        self.res_set_label.setText(QCoreApplication.translate("MainWindow", u"TextLabel", None))
         self.set_res_group.setTitle(QCoreApplication.translate("MainWindow", u"Set Resolution", None))
         self.res_512_btn.setText(QCoreApplication.translate("MainWindow", u"512", None))
         self.res_1024_btn.setText(QCoreApplication.translate("MainWindow", u"1024", None))
@@ -481,7 +510,7 @@ class Ui_MainWindow(object):
         self.size_res_entry.setPlaceholderText(QCoreApplication.translate("MainWindow", u"1024", None))
         self.set_res_btn.setText(QCoreApplication.translate("MainWindow", u"Set Resolution", None))
         self.overwrite_btn.setText(QCoreApplication.translate("MainWindow", u"Overwrite Existing Texture", None))
-        self.rename_old_btn.setText(QCoreApplication.translate("MainWindow", u"Rename Existing Texture", None))
+        self.rename_old_btn.setText(QCoreApplication.translate("MainWindow", u"Create Backup Folder", None))
         self.execute_btn.setText(QCoreApplication.translate("MainWindow", u"Execute", None))
     # retranslateUi
 

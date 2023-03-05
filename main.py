@@ -6,7 +6,6 @@ import time
 import traceback
 
 import OpenImageIO as oiio
-# import PySide6
 import qdarktheme
 from OpenImageIO import ImageInput
 
@@ -49,7 +48,6 @@ class WorkerSignals(QObject):
 
     progress
         int indicating % progress
-
     '''
     finished = Signal()
     error = Signal(tuple)
@@ -110,6 +108,8 @@ class MyWindow(QMainWindow):
 
         self.files = list()
         self.selected_row = list()
+        self.seleted_row_count = 0
+        self.res_set_row_count = 0
         self.LastStateRole = QtCore.Qt.UserRole
 
         self.ui.tableWidget.setColumnWidth(0, 500)
@@ -120,7 +120,7 @@ class MyWindow(QMainWindow):
         ######################################################################
         # Generate table checkbox and LastStateRole
         ######################################################################
-        self.addTableCheckbox()
+        # self.addTableCheckbox()
         self.ui.tableWidget.cellChanged.connect(self.onCellChanged)
         self.ui.open_file_btn.clicked.connect(lambda: self.browsefile())
         self.ui.open_path_btn.clicked.connect(lambda: self.browsedir())
@@ -138,8 +138,13 @@ class MyWindow(QMainWindow):
         self.ui.select_none_btn.clicked.connect(lambda: self.selectNone())
         self.ui.execute_btn.clicked.connect(lambda: self.worker_to_execute())
         self.ui.restart_btn.clicked.connect(lambda: self.restart())
+        # self.ui.selected_label.setText("")
+        # self.ui.res_set_label.setText("")
+        self.ui.selected_label.hide()
+        self.ui.res_set_label.hide()
+        self.ui.groupBox.adjustSize()
         self.progressbar(0)
-        # self.ui.progressBar.hide()
+        self.ui.progressBar.hide()
 
     def browsefile(self):
         f = self.openFileNamesDialog()
@@ -152,7 +157,12 @@ class MyWindow(QMainWindow):
 
     def browsedir(self):
         self.files.clear()
-        f = self.openFolderDir()
+        options = QFileDialog.Options()
+        options |= QFileDialog.DontUseNativeDialog
+        folderName = QFileDialog.getExistingDirectory(self, "Select Directory", options=options)
+        if folderName:
+            print(folderName)
+            f = folderName
         if f:
             for root, dirs, files in os.walk(f, topdown=False):
                 for name in files:
@@ -160,8 +170,21 @@ class MyWindow(QMainWindow):
                     self.files.append(os.path.join(root, name))
             self.files = [fi for fi in self.files if fi.endswith(('.exr', '.png', '.jpg', '.hdr', '.tif', '.tga'))]
         if self.files:
-            self.ui.path_label.setText(str(f) + r" : {0} files".format(len(self.files)))
+            self.ui.path_label.setText(str(f) + f"     ::::     {len(self.files)} Images")
             self.init_info(self.files)
+
+    def init_info(self, files):
+        self.selected_row.clear()
+        run = -1
+        for f in files:
+            img = ImageInput.open(f)
+            spec = img.spec()
+            run += 1
+            globals()[f'foo_{run}'] = FileLine(run, filename=f, enable=0, x=spec.width, y=spec.height,
+                                               tile=spec.tile_width > 0, target_x=0, target_tile=0)
+            img.close()
+            self.generate_table(run, globals()[f'foo_{run}'])
+        self.ui.selected_label.show()
 
     def addTableCheckbox(self):
         for row in range(self.ui.tableWidget.rowCount()):
@@ -180,25 +203,29 @@ class MyWindow(QMainWindow):
                 if currentState == QtCore.Qt.Checked:
                     if row not in self.selected_row:
                         self.selected_row.append(row)
-                        # print(self.selected_row)
+                        # self.seleted_row_count += 1
                 else:
                     try:
                         self.selected_row.remove(row)
+                        # self.seleted_row_count -= 1
                         # print(self.selected_row)
                     except ValueError:
                         pass
                 item.setData(self.LastStateRole, currentState)
+        self.ui.selected_label.setText(f'Selected Images: {len(self.selected_row)}')
 
     def selectAll(self):
         self.selected_row = []
         for row in range(self.ui.tableWidget.rowCount()):
             self.selected_row.append(row)
             self.ui.tableWidget.item(row, 1).setCheckState(QtCore.Qt.Checked)
+        self.ui.selected_label.setText(f'Selected Images: {len(self.selected_row)}')
 
     def selectNone(self):
         self.selected_row = []
         for row in range(self.ui.tableWidget.rowCount()):
             self.ui.tableWidget.item(row, 1).setCheckState(QtCore.Qt.Unchecked)
+        self.ui.selected_label.setText(f'Selected Images: {len(self.selected_row)}')
 
     def setThreshold(self, size):
         if size:
@@ -210,19 +237,17 @@ class MyWindow(QMainWindow):
                     self.selected_row.append(f)
                     self.ui.tableWidget.item(f, 1).setCheckState(QtCore.Qt.Checked)
                     self.ui.tableWidget.selectRow(f)
-            # print(self.selected_row)  # store row number as self.selected_row
         else:
             msg = QMessageBox()
             msg.setIcon(QMessageBox.Question)
             msg.setText('Size Threshold Not Set')
             msg.setWindowTitle("Size Threshold")
             msg.exec()
-            # load and set stylesheet
             with open(style_path, "r") as fh:
                 msg.setStyleSheet(fh.read())
             self.ui.size_thres_entry.setFocus()
 
-    def setResolution(self, res):
+    def setResolution(self, res, label_num=int):
         if res:
             if self.selected_row:
                 for f in self.selected_row:
@@ -230,6 +255,8 @@ class MyWindow(QMainWindow):
                     var.line[5] = res
                     # print(var.line[5])
                     self.ui.tableWidget.setItem(f, 3, QTableWidgetItem(str(var.line[5])))
+                updater = Worker(self.updatelabel)
+                self.threadpool.start(updater)
             else:
                 self.no_selection()
         else:
@@ -238,7 +265,6 @@ class MyWindow(QMainWindow):
             msg.setText('Target Size Not Set')
             msg.setWindowTitle("Target Size")
             msg.exec()
-            # load and set stylesheet
             with open(style_path, "r") as fh:
                 msg.setStyleSheet(fh.read())
             self.ui.size_res_entry.setFocus()
@@ -249,6 +275,8 @@ class MyWindow(QMainWindow):
                 var = globals()[f'foo_{f}']
                 var.line[5] = int(var.line[2] * 0.5 ** arg[0])
                 self.ui.tableWidget.setItem(f, 3, QTableWidgetItem(str(var.line[5])))
+            updater = Worker(self.updatelabel)
+            self.threadpool.start(updater)
         else:
             self.no_selection()
 
@@ -272,26 +300,6 @@ class MyWindow(QMainWindow):
             print(fileName)
             return fileName
 
-    def openFolderDir(self):
-        options = QFileDialog.Options()
-        options |= QFileDialog.DontUseNativeDialog
-        folderName = QFileDialog.getExistingDirectory(self, "Select Directory", options=options)
-        if folderName:
-            print(folderName)
-            return folderName
-
-    def init_info(self, files):
-        self.selected_row.clear()
-        run = -1
-        for f in files:
-            img = ImageInput.open(f)
-            spec = img.spec()
-            run += 1
-            globals()[f'foo_{run}'] = FileLine(run, filename=f, enable=0, x=spec.width, y=spec.height,
-                                               tile=spec.tile_width > 0, target_x=0, target_tile=0)
-            img.close()
-            self.generate_table(run, globals()[f'foo_{run}'])
-
     def generate_table(self, r, var):
         self.ui.tableWidget.setRowCount(r + 1)
         self.ui.tableWidget.setItem(r, 0, QTableWidgetItem(var.line[0]))
@@ -304,7 +312,6 @@ class MyWindow(QMainWindow):
         self.ui.tableWidget.item(r, 4).setTextAlignment(Qt.AlignCenter)
         self.addTableCheckbox()
 
-    # TODO: add selection count label to the top of table
     @staticmethod
     def no_selection():
         msg = QMessageBox()
@@ -316,6 +323,14 @@ class MyWindow(QMainWindow):
             msg.setStyleSheet(fh.read())
         msg.exec()
 
+    def updatelabel(self, progress_callback):
+        label_num = 0
+        for f in range(len(self.files)):
+            if not globals()[f'foo_{f}'].line[5] == 0: label_num += 1
+            self.ui.res_set_label.setText(f'Target Resolution Set: {label_num} images')
+        self.ui.res_set_label.show()
+        self.ui.groupBox.adjustSize()
+
     def progressbar(self, pgrs):
         # Progress Bar
         self.ui.progressBar.show()
@@ -326,12 +341,11 @@ class MyWindow(QMainWindow):
     def worker_to_execute(self):
         worker = Worker(self.excute)
         worker.signals.progress.connect(self.progressbar)
-        worker.signals.result.connect(lambda: print("This is Result"))
+        worker.signals.result.connect(lambda: print("this is result signal"))
         worker.signals.finished.connect(lambda: self.finish())
         self.threadpool.start(worker)
 
     def excute(self, progress_callback):
-        # Todo: add compare between orig_size and target size, if same skip resizing
         pgrs = 0
         print('#####################executing#########################')
         if self.selected_row:
@@ -358,42 +372,43 @@ class MyWindow(QMainWindow):
         w = spec.width
         h = spec.height
         aspect = float(w) / float(h)
-        if aspect == 1.0:
-            # source image is square
-            target_height = int(var.line[5])
-        else:
-            # source image is portrait
-            target_height = int(w * var.line[5] / h)
-        resized = oiio.ImageBuf(oiio.ImageSpec(var.line[5], target_height, spec.nchannels, spec.format))
-        oiio.ImageBufAlgo.resize(resized, buf)  # , nthreads=-2
-        ############################ User Chose Rename #########################
-        # TODO: improve "rename old image" method from "add suffix to file" to "add suffix to backup folder"
-        if arg == 1:
-            path, name = os.path.split(var.line[0])
-            name, extension = os.path.splitext(name)
-            new_path = os.path.join(path, 'origsize')
-            try:
-                os.mkdir(new_path)
-            except FileExistsError:
-                # print("Directory ", new_path, " already exists")
-                pass
-            new_name = os.path.join(new_path, name + "_origSize" + extension)
-            if not os.path.exists(new_name):
-                shutil.copy(var.line[0], new_name)
+        if not w == var.line[5]:
+            if aspect == 1.0:
+                # source image is square
+                target_height = int(var.line[5])
             else:
-                os.renames(new_name, new_name + '_deprecated')
+                # source image is portrait
+                target_height = int(h * var.line[5] / w)
+            resized = oiio.ImageBuf(oiio.ImageSpec(var.line[5], target_height, spec.nchannels, spec.format))
+            oiio.ImageBufAlgo.resize(resized, buf)  # , nthreads=-2
+            ############################ User Chose Rename #########################
+            if arg == 1:
+                path, name = os.path.split(var.line[0])
+                name, extension = os.path.splitext(name)
+                new_path = os.path.join(path, 'origsize')
                 try:
-                    shutil.copy(var.line[0], new_name)
+                    os.mkdir(new_path)
                 except FileExistsError:
-                    print("Backup File", new_name, " already exists")
-            resized.write(var.line[0])
-        ############################ User Chose Overwritten #########################
-        if arg == 0:
-            # print(var.line[0], '\n', var.line[1], '\n', var.line[5])
-            resized.write(var.line[0])
-        ########################## Try Catching Error from buf #######################
-        if resized.geterror():
-            print("oiio error:", resized.geterror())
+                    # print("Directory ", new_path, " already exists")
+                    pass
+                try:
+                    shutil.copy(var.line[0], new_path)
+                except FileExistsError:
+                    print(f"Backup File {name} in {new_path} already exists")
+                except PermissionError:
+                    print("Permission denied.")
+                except:
+                    print("Error occurred while copying file.")
+                resized.write(var.line[0])
+            ############################ User Chose Overwritten #########################
+            if arg == 0:
+                # print(var.line[0], '\n', var.line[1], '\n', var.line[5])
+                resized.write(var.line[0])
+            ########################## Try Catching Error from buf #######################
+            if resized.geterror():
+                print("oiio error:", resized.geterror())
+            else:
+                return 1
         else:
             return 0
         buf.reset()
@@ -409,6 +424,9 @@ class MyWindow(QMainWindow):
         self.init_info(self.files)
         self.ui.progressBar.reset()
         self.ui.progressBar.hide()
+        self.ui.res_set_label.hide()
+        self.ui.selected_label.hide()
+        self.ui.groupBox.adjustSize()
 
     def restart(self):
         self.selected_row.clear()
@@ -418,9 +436,11 @@ class MyWindow(QMainWindow):
         if self.ui.tableWidget.rowCount() > 0:
             for row in range(self.ui.tableWidget.rowCount()):
                 self.ui.tableWidget.removeRow(self.ui.tableWidget.rowCount() - 1)
+        self.ui.res_set_label.hide()
+        self.ui.selected_label.hide()
+        self.ui.groupBox.adjustSize()
 
     def lockui(self, state):
-        #Todo: Add progress bar resizing to executing state
         self.ui.execute_btn.setDisabled(state)
         self.ui.frame_3.setDisabled(state)
         self.ui.frame_4.setDisabled(state)
@@ -429,9 +449,12 @@ class MyWindow(QMainWindow):
         # if state:
         #     self.ui.rename_old_btn.hide()
         #     self.ui.overwrite_btn.hide()
+        #     self.ui.progressBar.adjustSize()
         # else:
         #     self.ui.rename_old_btn.show()
         #     self.ui.overwrite_btn.show()
+        #     self.ui.progressBar.adjustSize()
+
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
