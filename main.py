@@ -17,6 +17,9 @@ from PySide6.QtCore import QThreadPool, QRunnable, QObject, Slot, Signal
 from filetable_class import FileLine
 from ui_texScaler import Ui_MainWindow
 
+from wrappers import func_timer
+
+# TODO: Add right click preview function to table
 CURRENT_PATH = os.path.dirname(__file__)
 style_path = os.path.join(CURRENT_PATH, 'style', 'font.css')
 
@@ -175,15 +178,13 @@ class MyWindow(QMainWindow):
 
     def init_info(self, files):
         self.selected_row.clear()
-        run = -1
-        for f in files:
+        for index, f in enumerate(files):
             img = ImageInput.open(f)
             spec = img.spec()
-            run += 1
-            globals()[f'foo_{run}'] = FileLine(run, filename=f, enable=0, x=spec.width, y=spec.height,
-                                               tile=spec.tile_width > 0, target_x=0, target_tile=0)
+            globals()[f'foo_{index}'] = FileLine(index, filename=f, enable=0, x=spec.width, y=spec.height,
+                                                 tile=spec.tile_width > 0, target_x=0, target_tile=0)
             img.close()
-            self.generate_table(run, globals()[f'foo_{run}'])
+            self.generate_table(index, globals()[f'foo_{index}'])
         self.ui.selected_label.show()
 
     def addTableCheckbox(self):
@@ -203,12 +204,11 @@ class MyWindow(QMainWindow):
                 if currentState == QtCore.Qt.Checked:
                     if row not in self.selected_row:
                         self.selected_row.append(row)
-                        # self.seleted_row_count += 1
+                        # print(row)
+                        # print(self.selected_row)
                 else:
                     try:
                         self.selected_row.remove(row)
-                        # self.seleted_row_count -= 1
-                        # print(self.selected_row)
                     except ValueError:
                         pass
                 item.setData(self.LastStateRole, currentState)
@@ -233,7 +233,7 @@ class MyWindow(QMainWindow):
             for f in range(self.ui.tableWidget.rowCount()):
                 self.ui.tableWidget.item(f, 1).setCheckState(QtCore.Qt.Unchecked)
                 var = globals()[f'foo_{f}']
-                if var.line[2] > int(size):
+                if var.x > int(size):
                     self.selected_row.append(f)
                     self.ui.tableWidget.item(f, 1).setCheckState(QtCore.Qt.Checked)
                     self.ui.tableWidget.selectRow(f)
@@ -252,9 +252,9 @@ class MyWindow(QMainWindow):
             if self.selected_row:
                 for f in self.selected_row:
                     var = globals()[f'foo_{f}']
-                    var.line[5] = res
-                    # print(var.line[5])
-                    self.ui.tableWidget.setItem(f, 3, QTableWidgetItem(str(var.line[5])))
+                    var.target_x = res
+                    self.ui.tableWidget.setItem(f, 3, QTableWidgetItem(str(res)))
+                    self.ui.tableWidget.item(f, 3).setTextAlignment(Qt.AlignCenter)
                 updater = Worker(self.updatelabel)
                 self.threadpool.start(updater)
             else:
@@ -273,8 +273,8 @@ class MyWindow(QMainWindow):
         if self.selected_row:
             for f in self.selected_row:
                 var = globals()[f'foo_{f}']
-                var.line[5] = int(var.line[2] * 0.5 ** arg[0])
-                self.ui.tableWidget.setItem(f, 3, QTableWidgetItem(str(var.line[5])))
+                var.target_x = int(var.x * 0.5 ** arg[0])
+                self.ui.tableWidget.setItem(f, 3, QTableWidgetItem(str(var.target_x)))
             updater = Worker(self.updatelabel)
             self.threadpool.start(updater)
         else:
@@ -300,16 +300,16 @@ class MyWindow(QMainWindow):
             print(fileName)
             return fileName
 
-    def generate_table(self, r, var):
-        self.ui.tableWidget.setRowCount(r + 1)
-        self.ui.tableWidget.setItem(r, 0, QTableWidgetItem(var.line[0]))
-        # self.ui.tableWidget.setItem(r, 1, QTableWidgetItem(int(var.line[1])))
-        self.ui.tableWidget.setItem(r, 2, QTableWidgetItem(str(var.line[2])))
-        self.ui.tableWidget.setItem(r, 3, QTableWidgetItem(str(var.line[5])))
-        self.ui.tableWidget.setItem(r, 4, QTableWidgetItem(str(var.line[4])))
-        self.ui.tableWidget.item(r, 2).setTextAlignment(Qt.AlignCenter)
-        self.ui.tableWidget.item(r, 3).setTextAlignment(Qt.AlignCenter)
-        self.ui.tableWidget.item(r, 4).setTextAlignment(Qt.AlignCenter)
+    def generate_table(self, index, var):
+        self.ui.tableWidget.setRowCount(index + 1)
+        self.ui.tableWidget.setItem(index, 0, QTableWidgetItem(var.filename))
+        # self.ui.tableWidget.setItem(index, 1, QTableWidgetItem(int(var.enable)))
+        self.ui.tableWidget.setItem(index, 2, QTableWidgetItem(str(var.x)))
+        self.ui.tableWidget.setItem(index, 3, QTableWidgetItem(str(var.target_x)))
+        self.ui.tableWidget.setItem(index, 4, QTableWidgetItem(str(var.tile)))
+        self.ui.tableWidget.item(index, 2).setTextAlignment(Qt.AlignCenter)
+        self.ui.tableWidget.item(index, 3).setTextAlignment(Qt.AlignCenter)
+        self.ui.tableWidget.item(index, 4).setTextAlignment(Qt.AlignCenter)
         self.addTableCheckbox()
 
     @staticmethod
@@ -326,7 +326,7 @@ class MyWindow(QMainWindow):
     def updatelabel(self, progress_callback):
         label_num = 0
         for f in range(len(self.files)):
-            if not globals()[f'foo_{f}'].line[5] == 0: label_num += 1
+            if not globals()[f'foo_{f}'].target_x == 0: label_num += 1
             self.ui.res_set_label.setText(f'Target Resolution Set: {label_num} images')
         self.ui.res_set_label.show()
         self.ui.groupBox.adjustSize()
@@ -345,45 +345,39 @@ class MyWindow(QMainWindow):
         worker.signals.finished.connect(lambda: self.finish())
         self.threadpool.start(worker)
 
+    @func_timer
     def excute(self, progress_callback):
-        pgrs = 0
         print('#####################executing#########################')
         if self.selected_row:
             self.lockui(1)
-            total_pgrs = len(self.selected_row)
-            start_t = time.perf_counter()
             rename_btn = self.ui.rename_old_btn.isChecked()
-            for f in self.selected_row:
+            for pgrs, f in enumerate(self.selected_row):
                 var = globals()[f'foo_{f}']
                 self.scale_image(var, rename_btn)
-                pgrs += 1
-                progress_callback.emit(round(pgrs / total_pgrs * 100))
-            end_t = time.perf_counter()
-            total_duration = end_t - start_t
-            print("total_duration :::", total_duration)
+                progress_callback.emit(round(pgrs+1 / len(self.selected_row) * 100))
             print("iteration finished")
             self.lockui(0)
         else:
             self.no_selection()
 
     def scale_image(self, var, arg):
-        buf = oiio.ImageBuf(var.line[0])
+        buf = oiio.ImageBuf(var.filename)
         spec = buf.spec()
         w = spec.width
         h = spec.height
         aspect = float(w) / float(h)
-        if not w == var.line[5]:
+        if not w == var.target_x:
             if aspect == 1.0:
                 # source image is square
-                target_height = int(var.line[5])
+                target_height = int(var.target_x)
             else:
                 # source image is portrait
-                target_height = int(h * var.line[5] / w)
-            resized = oiio.ImageBuf(oiio.ImageSpec(var.line[5], target_height, spec.nchannels, spec.format))
+                target_height = int(h * var.target_x / w)
+            resized = oiio.ImageBuf(oiio.ImageSpec(var.target_x, target_height, spec.nchannels, spec.format))
             oiio.ImageBufAlgo.resize(resized, buf)  # , nthreads=-2
             # User Chose Rename
             if arg == 1:
-                path, name = os.path.split(var.line[0])
+                path, name = os.path.split(var.filename)
                 name, extension = os.path.splitext(name)
                 new_path = os.path.join(path, 'origsize')
                 try:
@@ -392,17 +386,17 @@ class MyWindow(QMainWindow):
                     # print("Directory ", new_path, " already exists")
                     pass
                 try:
-                    shutil.copy(var.line[0], new_path)
+                    shutil.copy(var.filename, new_path)
                 except FileExistsError:
                     print(f"Backup File {name} in {new_path} already exists")
                 except PermissionError:
                     print("Permission denied.")
                 except:
                     print("Error occurred while copying file.")
-                resized.write(var.line[0])
+                resized.write(var.filename)
             # User Chose Overwritten
             if arg == 0:
-                resized.write(var.line[0])
+                resized.write(var.filename)
             # Try Catching Error from buf
             if resized.geterror():
                 print("oiio error:", resized.geterror())
@@ -417,7 +411,7 @@ class MyWindow(QMainWindow):
         msg = QMessageBox.question(self, "Success", "Scaled Texture Exported!!", QMessageBox.Open | QMessageBox.Ok)
         if msg == QMessageBox.Open:
             from subprocess import Popen
-            f = os.path.realpath(globals()[f'foo_{0}'].line[0])
+            f = os.path.realpath(globals()[f'foo_{0}'].filename)
             Popen(f'explorer /select,{f}')
         self.selected_row.clear()
         self.init_info(self.files)

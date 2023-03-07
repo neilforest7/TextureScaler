@@ -1,8 +1,0 @@
-<RCC>
-  <qresource prefix="icons">
-    <file>icons/file-copy-fill 357.svg</file>
-    <file>icons/folder-open-fill 363.svg</file>
-    <file>icons/reload 30.svg</file>
-    <file>icons/shrink 213.svg</file>
-  </qresource>
-</RCC>
