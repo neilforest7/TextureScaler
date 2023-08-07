@@ -153,7 +153,7 @@ class MyWindow(QMainWindow):
         f = self.openFileNamesDialog()
         if f:
             self.files = f
-            self.files = [fi for fi in self.files if fi.endswith(('.exr', '.png', '.jpg', '.hdr', '.tif', '.tga'))]
+            self.files = [fi for fi in self.files if fi.endswith(('.exr', '.png', '.jpg', '.hdr', '.tif', '.tga', '.jpeg'))]
         if self.files:
             self.ui.path_label.setText(os.path.dirname(self.files[0]) + r" : {0} files".format(len(self.files)))
             self.init_info(self.files)
@@ -171,7 +171,7 @@ class MyWindow(QMainWindow):
                     for name in files:
                         # print(os.path.join(root, name))
                         self.files.append(os.path.join(root, name))
-                self.files = [fi for fi in self.files if fi.endswith(('.exr', '.png', '.jpg', '.hdr', '.tif', '.tga'))]
+                self.files = [fi for fi in self.files if fi.endswith(('.exr', '.png', '.jpg', '.hdr', '.tif', '.tga', '.jpeg'))]
             if self.files:
                 self.ui.path_label.setText(str(f) + f"     ::::     {len(self.files)} Images")
                 self.init_info(self.files)
