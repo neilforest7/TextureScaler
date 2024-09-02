@@ -4,6 +4,10 @@ import os
 import shutil
 import sys
 import traceback
+import logging
+import time
+from functools import wraps
+from datetime import datetime
 
 import OpenImageIO as oiio
 import qdarktheme
@@ -16,13 +20,42 @@ from PySide6.QtCore import QObject, Signal, QTimer, Qt, Slot
 from filetable_class import FileLine
 from ui_texScaler import Ui_MainWindow
 
-from wrappers import func_timer
+# 设置日志
+log_dir = os.path.join(os.path.dirname(__file__), 'logs')
+os.makedirs(log_dir, exist_ok=True)
+timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+log_file = os.path.join(log_dir, f'logs_{timestamp}.txt')
+logging.basicConfig(filename=log_file, level=logging.INFO, encoding='utf-8',
+                    format='%(asctime)s - %(levelname)s - %(message)s')
+
+def log_function(func):
+    @wraps(func)
+    def wrapper(*args, **kwargs):
+        start_time = time.time()
+        try:
+            logging.info(f'执行函数: {func.__name__}')
+            result = func(*args, **kwargs)
+            end_time = time.time()
+            execution_time = end_time - start_time
+            logging.info(f'函数 {func.__name__} 执行完毕，耗时 {execution_time:.4f} 秒')
+            return result
+        except Exception as e:
+            end_time = time.time()
+            execution_time = end_time - start_time
+            error_msg = f'函数 {func.__name__} 执行出错: {str(e)}, 耗时 {execution_time:.4f} 秒'
+            logging.error(error_msg)
+            logging.error(traceback.format_exc())
+            raise  # 重新抛出异常，以便程序可以继续处理它
+
+    return wrapper
 
 # TODO: Add right click preview function to table
 CURRENT_PATH = os.path.dirname(__file__)
 style_path = os.path.join(CURRENT_PATH, 'style', 'font.css')
 
+BACKUP_FOLDER_NAME = "origsize"
 
+@log_function
 def resource_path(relative_path):
     # Get absolute path to resource, works for dev and for PyInstaller
     try:
@@ -58,8 +91,10 @@ class WorkerSignals(QObject):
 
 
 class MyWindow(QMainWindow):
+    update_table_signal = Signal(set)
     finish_signal = Signal(int, int, int, int)
 
+    @log_function
     def __init__(self, parent=None):
         QMainWindow.__init__(self)
         self.ui = Ui_MainWindow()
@@ -122,6 +157,7 @@ class MyWindow(QMainWindow):
         self.original_open_path_text = self.ui.open_path_btn.text()
 
         self.finish_signal.connect(self.finish)
+        self.update_table_signal.connect(self.update_table)
 
     def process_async_events(self):
         self.loop.stop()
@@ -133,6 +169,7 @@ class MyWindow(QMainWindow):
     def check_file_permission(self, file_path):
         return os.access(file_path, os.R_OK | os.W_OK)
 
+    @log_function
     def browsefile(self):
         f = self.openFileNamesDialog()
         if f:
@@ -161,6 +198,7 @@ class MyWindow(QMainWindow):
             if no_permission_files:
                 QMessageBox.warning(self, "权限警告", f"以下 {len(no_permission_files)} 个文件没有读取和写入权限，已被跳过：\n" + "\n".join(no_permission_files[:10]) + ("\n..." if len(no_permission_files) > 10 else ""))
 
+    @log_function
     def browsedir(self):
         options = QFileDialog.Options()
         options |= QFileDialog.DontUseNativeDialog
@@ -170,6 +208,9 @@ class MyWindow(QMainWindow):
             new_files = set()
             no_permission_files = []
             for root, dirs, files in os.walk(folderName):
+                # 跳过名为 BACKUP_FOLDER_NAME 的文件夹
+                if BACKUP_FOLDER_NAME in dirs:
+                    dirs.remove(BACKUP_FOLDER_NAME)
                 for name in files:
                     if name.lower().endswith(('.exr', '.png', '.jpg', '.hdr', '.tif', '.tga', '.jpeg')):
                         file_path = self.normalize_path(os.path.join(root, name))
@@ -193,10 +234,13 @@ class MyWindow(QMainWindow):
             if no_permission_files:
                 QMessageBox.warning(self, "权限警告", f"以下 {len(no_permission_files)} 个文件没有读取和写入权限，已被跳过：\n" + "\n".join(no_permission_files[:10]) + ("\n..." if len(no_permission_files) > 10 else ""))
 
+    @log_function
     async def init_info(self):
         self.selected_row.clear()
-        await asyncio.to_thread(self.update_table, self.files)
+        self.update_table_signal.emit(self.files)
 
+    @Slot(set)
+    @log_function
     def update_table(self, files):
         self.ui.tableWidget.setRowCount(0)  # 清空表格
         for index, f in enumerate(files):
@@ -215,6 +259,7 @@ class MyWindow(QMainWindow):
         self.ui.selected_label.show()
         print("表格生成完成")
 
+    @log_function
     def generate_table(self, index, var):
         row_count = self.ui.tableWidget.rowCount()
         self.ui.tableWidget.insertRow(row_count)
@@ -233,6 +278,7 @@ class MyWindow(QMainWindow):
         item.setData(self.LastStateRole, item.checkState())
         self.ui.tableWidget.setItem(row_count, 1, item)
 
+    @log_function
     def addTableCheckbox(self):
         for row in range(self.ui.tableWidget.rowCount()):
             item = QtWidgets.QTableWidgetItem()
@@ -250,8 +296,6 @@ class MyWindow(QMainWindow):
                 if currentState == QtCore.Qt.Checked:
                     if row not in self.selected_row:
                         self.selected_row.append(row)
-                        # print(row)
-                        # print(self.selected_row)
                 else:
                     try:
                         self.selected_row.remove(row)
@@ -260,6 +304,7 @@ class MyWindow(QMainWindow):
                 item.setData(self.LastStateRole, currentState)
         self.ui.selected_label.setText(f'已选择图片: {len(self.selected_row)}')
 
+    @log_function
     def selectAll(self):
         self.selected_row = []
         for row in range(self.ui.tableWidget.rowCount()):
@@ -267,12 +312,14 @@ class MyWindow(QMainWindow):
             self.ui.tableWidget.item(row, 1).setCheckState(QtCore.Qt.Checked)
         self.ui.selected_label.setText(f'已选择图片: {len(self.selected_row)}')
 
+    @log_function
     def selectNone(self):
         self.selected_row = []
         for row in range(self.ui.tableWidget.rowCount()):
             self.ui.tableWidget.item(row, 1).setCheckState(QtCore.Qt.Unchecked)
         self.ui.selected_label.setText(f'已选择图片: {len(self.selected_row)}')
 
+    @log_function
     def setThreshold(self, size):
         threshold = 2048  # 默认阈值
         if size:
@@ -296,6 +343,7 @@ class MyWindow(QMainWindow):
         self.ui.selected_label.show()
         self.ui.size_thres_entry.setText(str(threshold))
 
+    @log_function
     def setResolution(self, res, label_num=int):
         if res:
             if self.selected_row:
@@ -317,6 +365,7 @@ class MyWindow(QMainWindow):
                 msg.setStyleSheet(fh.read())
             self.ui.size_res_entry.setFocus()
 
+    @log_function
     def halfResolution(self, *arg):
         if self.selected_row:
             for f in self.selected_row:
@@ -327,6 +376,7 @@ class MyWindow(QMainWindow):
         else:
             self.no_selection()
 
+    @log_function
     def openFileNamesDialog(self):
         options = QFileDialog.Options()
         options |= QFileDialog.DontUseNativeDialog
@@ -334,30 +384,31 @@ class MyWindow(QMainWindow):
                                                 "图像 (*.exr *.png *.jpg *.jpeg *.hdr *.tif *.tga);;所有文件 (*)",
                                                 options=options)
         if files:
-            # print(files)
             return files
 
+    @log_function
     def saveFileDialog(self):
         options = QFileDialog.Options()
         options |= QFileDialog.DontUseNativeDialog
         fileName, _ = QFileDialog.getSaveFileName(self, "保存文件", "",
                                                   "批处理脚本 (*.bat)",
-                                                  options=options)  # ;;Text Files (*.txt);;All Files (*)
+                                                  options=options)
         if fileName:
             print(fileName)
             return fileName
 
     @staticmethod
+    @log_function
     def no_selection():
         msg = QMessageBox()
         msg.setIcon(QMessageBox.Question)
         msg.setText('未选择纹理\n' + '请使用复选框选择纹理')
         msg.setWindowTitle("未选择")
-        # load and set stylesheet
         with open(style_path, "r") as fh:
             msg.setStyleSheet(fh.read())
         msg.exec()
 
+    @log_function
     async def updatelabel(self):
         label_num = 0
         for f in range(len(self.files)):
@@ -368,17 +419,21 @@ class MyWindow(QMainWindow):
         self.ui.res_set_label.show()
         self.ui.groupBox.adjustSize()
 
+    @log_function
     def progressbar(self, pgrs):
-        # Progress Bar
         self.ui.progressBar.show()
-        # self.ui.progressBar.setRange(0,1000)
         self.ui.progressBar.setTextVisible(1)
         self.ui.progressBar.setValue(pgrs)
 
+    @log_function
     def worker_to_execute(self):
         asyncio.run_coroutine_threadsafe(self.execute(), self.loop)
 
+    @log_function
     async def execute(self):
+        logging.info('=' * 80)
+        logging.info(f'开始执行批处理操作 - {datetime.now().strftime("%Y-%m-%d %H:%M:%S")}')
+        logging.info('=' * 80)
         print('#####################执行中#########################')
         if not self.selected_row:
             QMessageBox.warning(self, "错误", "请先选择至少一个文件")
@@ -388,7 +443,7 @@ class MyWindow(QMainWindow):
         processed_files = 0
         successful_files = 0
         failed_files = 0
-        self.processed_files_set = set()  # 用于存储成功处理的文件路径
+        self.processed_files_set = set()
 
         for row in self.selected_row:
             file_path = self.ui.tableWidget.item(row, 0).text()
@@ -409,10 +464,14 @@ class MyWindow(QMainWindow):
             progress = (processed_files / total_files) * 100
             self.progressbar(progress)
 
-        # 处理完成后发送信号
+        logging.info('=' * 80)
+        logging.info(f'批处理操作完成: 总文件数 {total_files}, 处理文件数 {processed_files}, 成功 {successful_files}, 失败 {failed_files}')
+        logging.info(f'结束执行批处理操作 - {datetime.now().strftime("%Y-%m-%d %H:%M:%S")}')
+        logging.info('=' * 80)
         self.finish_signal.emit(total_files, processed_files, successful_files, failed_files)
 
     @Slot(int, int, int, int)
+    @log_function
     def finish(self, total_files, processed_files, successful_files, failed_files):
         result_message = f"处理结果:\n\n" \
                          f"总文件数: {total_files}\n" \
@@ -433,9 +492,9 @@ class MyWindow(QMainWindow):
                 f = os.path.realpath(next(iter(self.files)))
                 Popen(f'explorer /select,"{f}"')
         
-        # 重新读取文件夹并更新表格
         self.reload_and_update_table()
 
+    @log_function
     def reload_and_update_table(self):
         if self.files:
             if hasattr(self, 'processed_files_set'):
@@ -458,6 +517,7 @@ class MyWindow(QMainWindow):
 
         self.update_button_texts()
 
+    @log_function
     def restart(self):
         self.selected_row.clear()
         self.files.clear()
@@ -471,6 +531,7 @@ class MyWindow(QMainWindow):
         if hasattr(self, 'processed_files_set'):
             del self.processed_files_set
 
+    @log_function
     def lockui(self, state):
         self.ui.execute_btn.setDisabled(state)
         self.ui.frame_3.setDisabled(state)
@@ -486,14 +547,16 @@ class MyWindow(QMainWindow):
         self.ui.frame_10.adjustSize()
         self.ui.progressBar.adjustSize()
 
+    @log_function
     def update_button_texts(self):
         if self.files:
-            self.ui.open_file_btn.setText("添加图片...")
-            self.ui.open_path_btn.setText("添加文件夹...")
+            self.ui.open_file_btn.setText("Add Images...")
+            self.ui.open_path_btn.setText("Add Directory...")
         else:
             self.ui.open_file_btn.setText(self.original_open_file_text)
             self.ui.open_path_btn.setText(self.original_open_path_text)
 
+    @log_function
     async def scale_image(self, var, arg):
         try:
             print(f"开始处理文件: {var.filename}")
@@ -516,11 +579,10 @@ class MyWindow(QMainWindow):
                         QMessageBox.critical(self, "错误", error_msg)
                         return False
                     
-                    # 文件操作
                     if arg == 1:
                         path, name = os.path.split(var.filename)
                         name, extension = os.path.splitext(name)
-                        new_path = os.path.join(path, 'origsize')
+                        new_path = os.path.join(path, BACKUP_FOLDER_NAME)
                         try:
                             os.mkdir(new_path)
                         except FileExistsError:
@@ -531,7 +593,6 @@ class MyWindow(QMainWindow):
                         except Exception as e:
                             print(f"备份文件时出错: {str(e)}")
                     
-                    # 写入操作
                     write_success = await asyncio.to_thread(lambda: resized.write(var.filename))
                     if not write_success:
                         error_msg = f"写入文件失败: {oiio.geterror()}"

@@ -1,13 +1,16 @@
 import sys
 import ctypes
-import win32com.shell.shell as shell
-ASADMIN = 'asadmin'
+
+def is_admin():
+    try:
+        return ctypes.windll.shell32.IsUserAnAdmin()
+    except:
+        return False
 
 def elevate():
-    if sys.argv[-1] != ASADMIN:
-        script = sys.executable
-        params = ' '.join([script] + sys.argv[1:] + [ASADMIN])
-        shell.ShellExecuteEx(lpVerb='runas', lpFile=sys.executable, lpParameters=params)
+    if not is_admin():
+        # 重新启动程序并请求管理员权限
+        ctypes.windll.shell32.ShellExecuteW(None, "runas", sys.executable, " ".join(sys.argv), None, 1)
         sys.exit(0)
 
 if __name__ == '__main__':
