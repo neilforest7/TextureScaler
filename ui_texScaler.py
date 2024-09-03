@@ -12,7 +12,7 @@ from PySide6.QtCore import *
 from PySide6.QtGui import *
 from PySide6.QtWidgets import *
 
-import icons_new_rc
+import resources.icons_new_rc as icons_new_rc
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
