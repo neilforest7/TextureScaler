@@ -1,5 +1,4 @@
 import asyncio
-import math
 import os
 import shutil
 import sys
@@ -8,12 +7,13 @@ import logging
 import time
 from functools import wraps
 from datetime import datetime
+from operator import attrgetter
 
 import OpenImageIO as oiio
 import qdarktheme
 from OpenImageIO import ImageInput
 
-from PySide6 import QtWidgets, QtCore, QtGui
+from PySide6 import QtWidgets, QtCore
 from PySide6.QtWidgets import QApplication, QMainWindow, QTableWidgetItem, QFileDialog, QMessageBox
 from PySide6.QtCore import QObject, Signal, QTimer, Qt, Slot
 
@@ -27,6 +27,12 @@ timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
 log_file = os.path.join(log_dir, f'logs_{timestamp}.txt')
 logging.basicConfig(filename=log_file, level=logging.INFO, encoding='utf-8',
                     format='%(asctime)s - %(levelname)s - %(message)s')
+
+# 添加以下行来确保日志级别正确设置
+logging.getLogger().setLevel(logging.INFO)
+
+# 添加一个测试日志消息
+logging.info("日志系统初始化完成")
 
 def log_function(func):
     @wraps(func)
@@ -101,6 +107,8 @@ class MyWindow(QMainWindow):
         self.ui.setupUi(self)
         self.show()
 
+        logging.info("MyWindow 初始化开始")
+
         # load and set stylesheet
         with open(style_path, "r") as fh:
             self.setStyleSheet(fh.read())
@@ -116,10 +124,8 @@ class MyWindow(QMainWindow):
         self.ui.tableWidget.setColumnWidth(2, 70)
         self.ui.tableWidget.setColumnWidth(3, 70)
         self.ui.tableWidget.setColumnWidth(4, 50)
-        ######################################################################
+        
         # Generate table checkbox and LastStateRole
-        ######################################################################
-        # self.addTableCheckbox()
         self.ui.tableWidget.cellChanged.connect(self.onCellChanged)
         self.ui.open_file_btn.clicked.connect(lambda: self.browsefile())
         self.ui.open_path_btn.clicked.connect(lambda: self.browsedir())
@@ -158,6 +164,8 @@ class MyWindow(QMainWindow):
 
         self.finish_signal.connect(self.finish)
         self.update_table_signal.connect(self.update_table)
+
+        logging.info("MyWindow 初始化完成")
 
     def process_async_events(self):
         self.loop.stop()
@@ -243,23 +251,32 @@ class MyWindow(QMainWindow):
     @log_function
     def update_table(self, files):
         self.ui.tableWidget.setRowCount(0)  # 清空表格
+        file_list = []
         for index, f in enumerate(files):
             try:
                 img = ImageInput.open(f)
                 if img:
                     spec = img.spec()
-                    globals()[f'foo_{index}'] = FileLine(index, filename=f, enable=0, x=spec.width, y=spec.height,
-                                                         tile=spec.tile_width > 0, target_x=0, target_tile=0)
+                    file_line = FileLine(index, filename=f, enable=0, x=spec.width, y=spec.height,
+                                         tile=spec.tile_width > 0, target_x=0, target_tile=0)
+                    file_list.append(file_line)
                     img.close()
-                    self.generate_table(index, globals()[f'foo_{index}'])
                 else:
                     print(f"无法打开图片: {f}")
             except Exception as e:
                 print(f"处理文件 {f} 时出错: {str(e)}")
+        
+        # 按文件名排序
+        file_list.sort(key=attrgetter('filename'))
+        
+        # 重新生成表格
+        for index, file_line in enumerate(file_list):
+            globals()[f'foo_{index}'] = file_line
+            self.generate_table(index, file_line)
+        
         self.ui.selected_label.show()
         print("表格生成完成")
 
-    @log_function
     def generate_table(self, index, var):
         row_count = self.ui.tableWidget.rowCount()
         self.ui.tableWidget.insertRow(row_count)
@@ -278,7 +295,6 @@ class MyWindow(QMainWindow):
         item.setData(self.LastStateRole, item.checkState())
         self.ui.tableWidget.setItem(row_count, 1, item)
 
-    @log_function
     def addTableCheckbox(self):
         for row in range(self.ui.tableWidget.rowCount()):
             item = QtWidgets.QTableWidgetItem()
@@ -293,31 +309,21 @@ class MyWindow(QMainWindow):
             lastState = item.data(self.LastStateRole)
             currentState = item.checkState()
             if currentState != lastState:
-                if currentState == QtCore.Qt.Checked:
-                    if row not in self.selected_row:
-                        self.selected_row.append(row)
-                else:
-                    try:
-                        self.selected_row.remove(row)
-                    except ValueError:
-                        pass
                 item.setData(self.LastStateRole, currentState)
+                self.update_selected_rows()
         self.ui.selected_label.setText(f'已选择图片: {len(self.selected_row)}')
 
     @log_function
     def selectAll(self):
-        self.selected_row = []
         for row in range(self.ui.tableWidget.rowCount()):
-            self.selected_row.append(row)
             self.ui.tableWidget.item(row, 1).setCheckState(QtCore.Qt.Checked)
-        self.ui.selected_label.setText(f'已选择图片: {len(self.selected_row)}')
+        self.update_selected_rows()
 
     @log_function
     def selectNone(self):
-        self.selected_row = []
         for row in range(self.ui.tableWidget.rowCount()):
             self.ui.tableWidget.item(row, 1).setCheckState(QtCore.Qt.Unchecked)
-        self.ui.selected_label.setText(f'已选择图片: {len(self.selected_row)}')
+        self.update_selected_rows()
 
     @log_function
     def setThreshold(self, size):
@@ -330,17 +336,14 @@ class MyWindow(QMainWindow):
         else:
             print("未设置阈值，使用默认值2048")
 
-        self.selected_row = []
         for f in range(self.ui.tableWidget.rowCount()):
             self.ui.tableWidget.item(f, 1).setCheckState(QtCore.Qt.Unchecked)
             var = globals()[f'foo_{f}']
             if var.x > threshold:
-                self.selected_row.append(f)
                 self.ui.tableWidget.item(f, 1).setCheckState(QtCore.Qt.Checked)
                 self.ui.tableWidget.selectRow(f)
         
-        self.ui.selected_label.setText(f'已选择图片: {len(self.selected_row)}')
-        self.ui.selected_label.show()
+        self.update_selected_rows()
         self.ui.size_thres_entry.setText(str(threshold))
 
     @log_function
@@ -408,7 +411,6 @@ class MyWindow(QMainWindow):
             msg.setStyleSheet(fh.read())
         msg.exec()
 
-    @log_function
     async def updatelabel(self):
         label_num = 0
         for f in range(len(self.files)):
@@ -419,7 +421,6 @@ class MyWindow(QMainWindow):
         self.ui.res_set_label.show()
         self.ui.groupBox.adjustSize()
 
-    @log_function
     def progressbar(self, pgrs):
         self.ui.progressBar.show()
         self.ui.progressBar.setTextVisible(1)
@@ -427,7 +428,18 @@ class MyWindow(QMainWindow):
 
     @log_function
     def worker_to_execute(self):
+        # 在执行操作前更新选中的行
+        self.update_selected_rows()
         asyncio.run_coroutine_threadsafe(self.execute(), self.loop)
+
+    @log_function
+    def update_selected_rows(self):
+        self.selected_row = []
+        for row in range(self.ui.tableWidget.rowCount()):
+            if self.ui.tableWidget.item(row, 1).checkState() == Qt.Checked:
+                self.selected_row.append(row)
+        logging.info(f"更新选中的行: {len(self.selected_row)} 行被选中")
+        self.ui.selected_label.setText(f'已选择图片: {len(self.selected_row)}')
 
     @log_function
     async def execute(self):
@@ -435,6 +447,7 @@ class MyWindow(QMainWindow):
         logging.info(f'开始执行批处理操作 - {datetime.now().strftime("%Y-%m-%d %H:%M:%S")}')
         logging.info('=' * 80)
         print('#####################执行中#########################')
+        
         if not self.selected_row:
             QMessageBox.warning(self, "错误", "请先选择至少一个文件")
             return
@@ -447,10 +460,9 @@ class MyWindow(QMainWindow):
 
         for row in self.selected_row:
             file_path = self.ui.tableWidget.item(row, 0).text()
-            is_checked = self.ui.tableWidget.item(row, 1).checkState() == Qt.Checked
             target_size = self.ui.tableWidget.item(row, 3).text()
             
-            if not is_checked or not target_size or target_size == '0':
+            if not target_size or target_size == '0':
                 continue
             
             processed_files += 1
@@ -523,6 +535,7 @@ class MyWindow(QMainWindow):
         self.files.clear()
         self.ui.path_label.clear()
         self.ui.rename_old_btn.setChecked(1)
+        self.ui.overwrite_btn.setChecked(0)
         self.ui.tableWidget.setRowCount(0)
         self.ui.res_set_label.hide()
         self.ui.selected_label.hide()
@@ -572,6 +585,8 @@ class MyWindow(QMainWindow):
                     else:
                         target_height = int(h * var.target_x / w)
                     print(f"调整大小: {w}x{h} -> {var.target_x}x{target_height}")
+                    logging.info(f"正在对文件{var.filename}进行调整大小")
+                    logging.info(f"调整大小: {w}x{h} -> {var.target_x}x{target_height}")
                     resized = oiio.ImageBuf(oiio.ImageSpec(var.target_x, target_height, spec.nchannels, spec.format))
                     if not oiio.ImageBufAlgo.resize(resized, buf):
                         error_msg = f"调整大小失败: {oiio.geterror()}"
@@ -627,11 +642,14 @@ class MyWindow(QMainWindow):
 
 
 if __name__ == '__main__':
+    logging.info("程序启动")
     app = QApplication(sys.argv)
     app.setStyle('Fusion')
     app.setStyleSheet(qdarktheme.load_stylesheet('light'))
     window = MyWindow()
 
     window.show()
+
+    logging.info("主窗口显示")
 
     sys.exit(app.exec())
