@@ -19,7 +19,7 @@ from PySide6.QtCore import QObject, Signal, QTimer, Qt, Slot, QEvent, QPoint, QP
 from PySide6.QtGui import QPixmap, QCursor
 
 from filetable_class import FileLine
-from ui_texScaler import Ui_MainWindow
+from resources.ui_texScaler import Ui_MainWindow
 
 # 设置日志
 log_dir = os.path.join(os.path.dirname(__file__), 'logs')
