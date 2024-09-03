@@ -14,8 +14,9 @@ import qdarktheme
 from OpenImageIO import ImageInput
 
 from PySide6 import QtWidgets, QtCore
-from PySide6.QtWidgets import QApplication, QMainWindow, QTableWidgetItem, QFileDialog, QMessageBox
-from PySide6.QtCore import QObject, Signal, QTimer, Qt, Slot
+from PySide6.QtWidgets import QApplication, QMainWindow, QTableWidgetItem, QFileDialog, QMessageBox, QLabel
+from PySide6.QtCore import QObject, Signal, QTimer, Qt, Slot, QEvent, QPoint, QPointF
+from PySide6.QtGui import QPixmap, QCursor
 
 from filetable_class import FileLine
 from ui_texScaler import Ui_MainWindow
@@ -164,6 +165,14 @@ class MyWindow(QMainWindow):
 
         self.finish_signal.connect(self.finish)
         self.update_table_signal.connect(self.update_table)
+
+        self.ui.tableWidget.setMouseTracking(True)
+        self.ui.tableWidget.viewport().installEventFilter(self)
+        
+        self.preview_label = QLabel(self)
+        self.preview_label.setAlignment(Qt.AlignCenter)
+        self.preview_label.setStyleSheet("background-color: #2d2d2d; border: 1px solid #555;")
+        self.preview_label.hide()
 
         logging.info("MyWindow 初始化完成")
 
@@ -639,6 +648,60 @@ class MyWindow(QMainWindow):
                 buf.clear()
             if 'resized' in locals():
                 resized.clear()
+
+    def eventFilter(self, source, event):
+        if source == self.ui.tableWidget.viewport():
+            if event.type() == QEvent.MouseMove:
+                pos = event.position().toPoint()  # 使用 position() 替代 pos()
+                item = self.ui.tableWidget.itemAt(pos)
+                if item and item.column() == 0:  # 确保鼠标在第一列(文件名列)
+                    self.show_preview(item)
+                else:
+                    self.hide_preview()
+            elif event.type() == QEvent.Leave:
+                self.hide_preview()
+        return super().eventFilter(source, event)
+
+    def show_preview(self, item):
+        file_path = item.text()
+        if os.path.exists(file_path):
+            pixmap = QPixmap(file_path)
+            if not pixmap.isNull():
+                scaled_pixmap = pixmap.scaled(100, 100, Qt.KeepAspectRatio, Qt.SmoothTransformation)
+                self.preview_label.setPixmap(scaled_pixmap)
+                self.preview_label.adjustSize()
+                
+                # 获取鼠标的全局位置
+                cursor_pos = self.ui.tableWidget.mapToGlobal(self.ui.tableWidget.viewport().mapFromGlobal(QCursor.pos()))
+                
+                # 获取屏幕分辨率并计算缩放因子
+                screen = QApplication.primaryScreen().geometry()
+                scale_factor = min(screen.width() / 1920, screen.height() / 1080)
+                
+                # 计算缩放后的偏移量
+                offset_x = int(-230 * scale_factor)
+                offset_y = int(-150 * scale_factor)
+                
+                # 计算预览图的位置
+                preview_pos = cursor_pos + QPoint(offset_x - self.preview_label.width(), offset_y - self.preview_label.height())
+                
+                # 确保预览图不会超出屏幕边界
+                if preview_pos.x() < screen.left():
+                    preview_pos.setX(cursor_pos.x() + 10)
+                if preview_pos.y() < screen.top():
+                    preview_pos.setY(cursor_pos.y() + 10)
+                
+                print(f"Screen resolution: {screen.width()}x{screen.height()}")
+                print(f"Scale factor: {scale_factor}")
+                print(f"Cursor position: {cursor_pos}")
+                print(f"Preview position: {preview_pos}")
+                print(f"Preview size: {self.preview_label.width()}x{self.preview_label.height()}")
+                
+                self.preview_label.move(preview_pos)
+                self.preview_label.show()
+
+    def hide_preview(self):
+        self.preview_label.hide()
 
 
 if __name__ == '__main__':
