@@ -11,6 +11,3 @@ def mktx(filename):
                                         "texture.exr", config)
     if not ok:
         print("error:", oiio.geterror())
-
-
-mktx('A:/Projects/3d/Maya_projects/Tiktok_mini/04_Assets/Textures/a-2-6/body_BaseColor.1001.exr')
